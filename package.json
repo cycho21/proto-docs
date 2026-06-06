@@ -1,0 +1,14 @@
+{
+  "name": "proto-docs",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "proto-docs": "node scripts/proto-docs/src/cli.ts",
+    "test": "node --test scripts/proto-docs/test/*.test.ts"
+  },
+  "bin": {
+    "proto-docs": "scripts/proto-docs/src/cli.ts"
+  },
+  "devDependencies": {}
+}

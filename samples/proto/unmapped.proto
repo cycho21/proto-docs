@@ -1,0 +1,8 @@
+syntax = "proto3";
+
+package sample.asset.v1;
+
+message FusionRequest {
+  // TODO: Human review required.
+  string fusion_material_id = 1;
+}

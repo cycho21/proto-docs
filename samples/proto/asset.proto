@@ -1,0 +1,22 @@
+syntax = "proto3";
+
+package sample.asset.v1;
+
+// Asset service for sample documentation.
+service AssetService {
+  // Gets an asset by key.
+  rpc GetAsset (GetAssetRequest) returns (Asset);
+}
+
+message GetAssetRequest {
+  // Internal key that identifies the asset.
+  string asset_key = 1;
+}
+
+message Asset {
+  // Internal key that identifies the asset.
+  string asset_key = 1;
+
+  // Internal key that identifies the asset owner.
+  string owner_key = 2;
+}

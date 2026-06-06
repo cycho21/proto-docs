@@ -1,0 +1,14 @@
+# Local agent/development environment
+.ai/
+.harness/
+.pi/
+.project-memory/
+.worktrees/
+/AGENTS.md
+
+# Dependencies/build outputs
+node_modules/
+dist/
+build/
+coverage/
+*.log
