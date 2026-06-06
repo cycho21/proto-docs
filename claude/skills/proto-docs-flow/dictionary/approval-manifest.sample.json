@@ -1,0 +1,10 @@
+{
+  "dictionaryChanges": [
+    {
+      "path": "docs/dictionary/word-dictionary.json",
+      "approvedBy": "@domain-owner",
+      "reason": "Approved sample dictionary contract for scaffold",
+      "approvedAt": "2026-06-06"
+    }
+  ]
+}
