@@ -23,10 +23,12 @@ This skill is for Dictionary lifecycle work. For `.proto` comment editing and ge
 - Prefer field-level entries such as `asset_key` for shared semantics.
 - Add `Message.field` entries such as `TransferRequest.asset_key` only for message-specific overrides.
 - If neither `Message.field` nor `field` exists, do not proceed with comment generation. Create a candidate and ask the user/domain owner for meaning.
+- Reuse existing approved Dictionary entries; never regenerate the full Dictionary for re-approval.
 - Prefer `add-candidate` before changing an approved Dictionary.
-- Only use `add-approved` after explicit approval evidence exists; the script requires `--approval-manifest`.
+- Only use `add-approved` after explicit approval evidence exists; the script requires `--approval-manifest` with `dictionaryChanges[].approvedScopes`.
+- Approval applies only to listed scopes. Existing approved scopes not listed in `approvedScopes` must not be changed.
 - After approved Dictionary changes, run `validate` and then `hash --approval-manifest <path>` to update `word-dictionary.sha256`.
-- If approval evidence is missing, the script must fail and remind the LLM to create a candidate or ask the user/domain owner.
+- If approval evidence is missing or changed scopes exceed `approvedScopes`, the script/hook must fail and remind the LLM to create candidates only for missing scopes.
 - Keep entries UTF-8 JSON with stable two-space indentation.
 - Required fields:
   - `term`
@@ -81,7 +83,7 @@ node $SKILL/scripts/dictionary-manager.js add-candidate \
 
 ### Add an approved entry
 
-Only use after explicit approval evidence exists. Prefer a field-level `--scope asset_key` when the meaning is shared across messages; use `--scope TransferRequest.asset_key` only for an override.
+Only use after explicit approval evidence exists. Prefer a field-level `--scope asset_key` when the meaning is shared across messages; use `--scope TransferRequest.asset_key` only for an override. The same scope must be listed in `dictionaryChanges[].approvedScopes` in the approval manifest.
 
 ```bash
 node $SKILL/scripts/dictionary-manager.js add-approved \
@@ -121,5 +123,5 @@ Before reporting completion:
 2. `canonical_description` is not a synonym-only phrase.
 3. `approved_examples` include the exact preferred comment text.
 4. `forbidden_aliases` capture likely ambiguous or unsafe wording.
-5. Approved Dictionary changes have approval manifest evidence and a refreshed hash.
+5. Approved Dictionary changes have approval manifest evidence for exactly the changed scopes and a refreshed hash.
 6. `validate` passes.

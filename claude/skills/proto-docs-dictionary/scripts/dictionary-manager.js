@@ -61,13 +61,17 @@ function reminder(title, lines) {
   console.error('');
 }
 
-function requireApprovalManifest(dictionaryPath) {
+function approvedScopes(change) {
+  return new Set([...(change.approvedScopes ?? []), ...(change.scopes ?? [])].map(String));
+}
+
+function requireApprovalManifest(dictionaryPath, requiredScopes = []) {
   const manifestPath = arg('approval-manifest');
   if (!manifestPath) {
     reminder('Approval manifest is required for approved Dictionary changes.', [
-      'Do not add approved Dictionary entries from LLM inference alone.',
-      'Create a candidate first, then use add-approved/hash only after user/domain-owner approval evidence exists.',
-      'Pass --approval-manifest <path> with dictionaryChanges evidence.'
+      'Do not regenerate or re-approve the full existing Dictionary.',
+      'Reuse existing approved entries; create candidates only for scopes missing from Message.field and field lookup.',
+      'Pass --approval-manifest <path> with dictionaryChanges[].approvedScopes evidence for changed scopes only.'
     ]);
     throw new Error('--approval-manifest is required');
   }
@@ -82,6 +86,13 @@ function requireApprovalManifest(dictionaryPath) {
   if (!match) throw new Error(`${manifestPath} has no dictionaryChanges entry for ${dictionaryPath}`);
   for (const field of ['approvedBy', 'reason', 'approvedAt']) {
     if (!match[field]) throw new Error(`${manifestPath} dictionaryChanges entry missing ${field}`);
+  }
+  const scopes = approvedScopes(match);
+  if (requiredScopes.length > 0 && scopes.size === 0) {
+    throw new Error(`${manifestPath} dictionaryChanges entry must include approvedScopes[] for changed Dictionary scopes`);
+  }
+  for (const scope of requiredScopes) {
+    if (!scopes.has(scope)) throw new Error(`${manifestPath} does not approve Dictionary scope ${scope}`);
   }
   return { manifestPath, approval: match };
 }
@@ -173,8 +184,8 @@ function commandAddCandidate() {
 function commandAddApproved() {
   const dictionaryPath = arg('dictionary');
   if (!dictionaryPath) throw new Error('--dictionary is required');
-  const approval = requireApprovalManifest(dictionaryPath);
   const entry = buildEntry('approved');
+  const approval = requireApprovalManifest(dictionaryPath, [entry.scope]);
   const dictionary = readJson(dictionaryPath, {});
   if (dictionary[entry.scope] && !process.argv.includes('--force')) {
     throw new Error(`${entry.scope} already exists; pass --force to overwrite`);

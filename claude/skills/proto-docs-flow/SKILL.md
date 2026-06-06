@@ -19,6 +19,7 @@ This Claude local skill is self-contained. Keep the workflow assets under this s
 - Resolve Dictionary entries in this order: first `Message.field`, then `field`.
 - Use field-level entries for shared semantics, and `Message.field` entries only when a message-specific override is needed.
 - If neither `Message.field` nor `field` exists, stop. Do not invent a comment. Ask the user/domain owner for meaning or create a candidate under `dictionary/candidates/`.
+- Reuse existing approved Dictionary entries. Do not regenerate or submit the full Dictionary for re-approval.
 - Do not edit `dictionary/word-dictionary.json` directly.
 - Create missing-term candidates only under `dictionary/candidates/`.
 - Change Proto comments only; never change field, message, service, RPC, option, or field number definitions.
