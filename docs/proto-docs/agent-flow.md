@@ -25,12 +25,4 @@ Dictionary Skill
 
 ## Claude Code
 
-Install or copy the common skill under `claude/skills/proto-docs-flow/SKILL.md`. Invoke the skill when generating or validating Proto comments.
-
-## Pi
-
-Pi can read the same `SKILL.md` shape. The repository also includes `.pi/skills/proto-docs-flow/SKILL.md` for local project use.
-
-## Codex
-
-Codex reads `AGENTS.md` instructions. Use `codex/proto-docs-skills/AGENTS.md` as the reusable flow reference or copy its contents into the project-level `AGENTS.md` when enabling this workflow for Codex sessions.
+Install or copy the local skills under `claude/skills/`. Invoke `proto-docs-dictionary` when creating or maintaining Dictionary entries, and `proto-docs-flow` when generating or validating Proto comments.
