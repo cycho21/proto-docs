@@ -51,6 +51,41 @@ function hashDictionary(dictionaryPath) {
   return crypto.createHash('sha256').update(bytes).digest('hex');
 }
 
+function normalizePath(value) {
+  return path.normalize(value).replace(/\\/g, '/');
+}
+
+function reminder(title, lines) {
+  console.error(`\n[PROTO DOCS DICTIONARY REMINDER] ${title}`);
+  for (const line of lines) console.error(`- ${line}`);
+  console.error('');
+}
+
+function requireApprovalManifest(dictionaryPath) {
+  const manifestPath = arg('approval-manifest');
+  if (!manifestPath) {
+    reminder('Approval manifest is required for approved Dictionary changes.', [
+      'Do not add approved Dictionary entries from LLM inference alone.',
+      'Create a candidate first, then use add-approved/hash only after user/domain-owner approval evidence exists.',
+      'Pass --approval-manifest <path> with dictionaryChanges evidence.'
+    ]);
+    throw new Error('--approval-manifest is required');
+  }
+  const manifest = readJson(manifestPath, null);
+  const changes = manifest?.dictionaryChanges;
+  if (!Array.isArray(changes)) throw new Error(`${manifestPath} must contain dictionaryChanges[]`);
+  const dictionaryNorm = normalizePath(dictionaryPath);
+  const match = changes.find((change) => {
+    const changePath = normalizePath(String(change.path ?? ''));
+    return dictionaryNorm === changePath || dictionaryNorm.endsWith(changePath);
+  });
+  if (!match) throw new Error(`${manifestPath} has no dictionaryChanges entry for ${dictionaryPath}`);
+  for (const field of ['approvedBy', 'reason', 'approvedAt']) {
+    if (!match[field]) throw new Error(`${manifestPath} dictionaryChanges entry missing ${field}`);
+  }
+  return { manifestPath, approval: match };
+}
+
 function buildEntry(status) {
   const scope = arg('scope');
   const term = arg('term', scope?.split('.').at(-1));
@@ -138,6 +173,7 @@ function commandAddCandidate() {
 function commandAddApproved() {
   const dictionaryPath = arg('dictionary');
   if (!dictionaryPath) throw new Error('--dictionary is required');
+  const approval = requireApprovalManifest(dictionaryPath);
   const entry = buildEntry('approved');
   const dictionary = readJson(dictionaryPath, {});
   if (dictionary[entry.scope] && !process.argv.includes('--force')) {
@@ -146,7 +182,7 @@ function commandAddApproved() {
   dictionary[entry.scope] = entry;
   const sorted = Object.fromEntries(Object.entries(dictionary).sort(([a], [b]) => a.localeCompare(b)));
   writeJson(dictionaryPath, sorted);
-  console.log(JSON.stringify({ dictionary: dictionaryPath, added: entry.scope }, null, 2));
+  console.log(JSON.stringify({ dictionary: dictionaryPath, added: entry.scope, approval }, null, 2));
 }
 
 function commandValidate() {
@@ -162,6 +198,7 @@ function commandHash() {
   const hashPath = arg('hash');
   if (!dictionaryPath) throw new Error('--dictionary is required');
   if (!hashPath) throw new Error('--hash is required');
+  const approval = requireApprovalManifest(dictionaryPath);
   const issues = validateDictionary(dictionaryPath);
   if (issues.length) {
     console.log(JSON.stringify({ ok: false, issues }, null, 2));
@@ -171,7 +208,7 @@ function commandHash() {
   ensureParent(hashPath);
   const hash = hashDictionary(dictionaryPath);
   fs.writeFileSync(hashPath, `${hash}\n`, 'utf8');
-  console.log(JSON.stringify({ ok: true, hash, written: hashPath }, null, 2));
+  console.log(JSON.stringify({ ok: true, hash, written: hashPath, approval }, null, 2));
 }
 
 function usage() {

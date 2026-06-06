@@ -53,7 +53,7 @@ npm run proto-docs -- generate-docs -- --generator markdown-sample
 
 ## 개발 모델
 
-Proto Docs는 LLM을 “의미 후보 생성과 주석 작성”에만 사용하고, 의미 확정은 사용자 승인으로, 최종 문서 생성은 결정론적 코드로 분리합니다.
+Proto Docs는 LLM을 “의미 후보 생성과 주석 작성”에만 사용하고, 의미 확정은 사용자 승인으로, 최종 문서 생성은 결정론적 코드로 분리합니다. Claude hook/script는 위반이 감지되면 LLM에게 `[PROTO DOCS REMINDER]`를 출력하고 진행을 차단하도록 구성됩니다.
 
 ![의미 통제 모델](docs/assets/proto-docs-semantic-control.svg)
 

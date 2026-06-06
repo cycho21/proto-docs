@@ -24,8 +24,9 @@ This skill is for Dictionary lifecycle work. For `.proto` comment editing and ge
 - Add `Message.field` entries such as `TransferRequest.asset_key` only for message-specific overrides.
 - If neither `Message.field` nor `field` exists, do not proceed with comment generation. Create a candidate and ask the user/domain owner for meaning.
 - Prefer `add-candidate` before changing an approved Dictionary.
-- Only use `add-approved` after explicit approval evidence exists.
-- After approved Dictionary changes, run `validate` and then `hash` to update `word-dictionary.sha256`.
+- Only use `add-approved` after explicit approval evidence exists; the script requires `--approval-manifest`.
+- After approved Dictionary changes, run `validate` and then `hash --approval-manifest <path>` to update `word-dictionary.sha256`.
+- If approval evidence is missing, the script must fail and remind the LLM to create a candidate or ask the user/domain owner.
 - Keep entries UTF-8 JSON with stable two-space indentation.
 - Required fields:
   - `term`
@@ -50,6 +51,7 @@ SKILL=claude/skills/proto-docs-dictionary
 FLOW_DICT=claude/skills/proto-docs-flow/dictionary/word-dictionary.json
 FLOW_HASH=claude/skills/proto-docs-flow/dictionary/word-dictionary.sha256
 FLOW_CANDIDATES=claude/skills/proto-docs-flow/dictionary/candidates
+FLOW_APPROVAL=claude/skills/proto-docs-flow/dictionary/approval-manifest.sample.json
 ```
 
 ### Create a new empty Dictionary
@@ -84,6 +86,7 @@ Only use after explicit approval evidence exists. Prefer a field-level `--scope 
 ```bash
 node $SKILL/scripts/dictionary-manager.js add-approved \
   --dictionary $FLOW_DICT \
+  --approval-manifest $FLOW_APPROVAL \
   --scope Asset.material_id \
   --term material_id \
   --description "Internal key that identifies the asset material." \
@@ -106,7 +109,8 @@ node $SKILL/scripts/dictionary-manager.js validate \
 ```bash
 node $SKILL/scripts/dictionary-manager.js hash \
   --dictionary $FLOW_DICT \
-  --hash $FLOW_HASH
+  --hash $FLOW_HASH \
+  --approval-manifest $FLOW_APPROVAL
 ```
 
 ## Review Checklist
@@ -117,5 +121,5 @@ Before reporting completion:
 2. `canonical_description` is not a synonym-only phrase.
 3. `approved_examples` include the exact preferred comment text.
 4. `forbidden_aliases` capture likely ambiguous or unsafe wording.
-5. Approved Dictionary changes have approval evidence and a refreshed hash.
+5. Approved Dictionary changes have approval manifest evidence and a refreshed hash.
 6. `validate` passes.
