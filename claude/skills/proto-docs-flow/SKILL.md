@@ -16,6 +16,9 @@ This Claude local skill is self-contained. Keep the workflow assets under this s
 ## Rules
 
 - Treat `dictionary/word-dictionary.json` in this skill as the approved semantic source.
+- Resolve Dictionary entries in this order: first `Message.field`, then `field`.
+- Use field-level entries for shared semantics, and `Message.field` entries only when a message-specific override is needed.
+- If neither `Message.field` nor `field` exists, stop. Do not invent a comment. Ask the user/domain owner for meaning or create a candidate under `dictionary/candidates/`.
 - Do not edit `dictionary/word-dictionary.json` directly.
 - Create missing-term candidates only under `dictionary/candidates/`.
 - Change Proto comments only; never change field, message, service, RPC, option, or field number definitions.
@@ -57,9 +60,10 @@ node <skill>/scripts/proto-docs/src/cli.ts verify \
 ## Flow
 
 1. Run `scan` to inspect the target Proto.
-2. Run `generate-candidates` for missing terms.
-3. Add or update comments using only canonical descriptions or approved examples.
-4. Run `guard-ast` to ensure only comments changed.
-5. Run `lint-comments` to validate comment wording against the Dictionary.
-6. Run `guard-dictionary` if Dictionary files changed.
-7. Run `verify` before reporting completion.
+2. For each field, look up `Message.field`; if absent, look up `field`.
+3. If both mappings are absent, do not proceed with comment generation for that field. Run `generate-candidates` and ask the user/domain owner for the intended meaning.
+4. Add or update comments using only canonical descriptions or approved examples.
+5. Run `guard-ast` to ensure only comments changed.
+6. Run `lint-comments` to validate comment wording against the Dictionary.
+7. Run `guard-dictionary` if Dictionary files changed.
+8. Run `verify` before reporting completion.

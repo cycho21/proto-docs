@@ -19,6 +19,10 @@ This skill is for Dictionary lifecycle work. For `.proto` comment editing and ge
 ## Rules
 
 - Do not invent domain meaning. Ask the user/domain owner for canonical descriptions when unclear.
+- Dictionary lookup is `Message.field` first, then `field`.
+- Prefer field-level entries such as `asset_key` for shared semantics.
+- Add `Message.field` entries such as `TransferRequest.asset_key` only for message-specific overrides.
+- If neither `Message.field` nor `field` exists, do not proceed with comment generation. Create a candidate and ask the user/domain owner for meaning.
 - Prefer `add-candidate` before changing an approved Dictionary.
 - Only use `add-approved` after explicit approval evidence exists.
 - After approved Dictionary changes, run `validate` and then `hash` to update `word-dictionary.sha256`.
@@ -58,7 +62,7 @@ node $SKILL/scripts/dictionary-manager.js init \
 
 ### Add a candidate entry
 
-Use this when approval is not complete yet.
+Use this when approval is not complete yet. Prefer a field-level `--scope asset_key` when the meaning is shared across messages; use `--scope TransferRequest.asset_key` only for an override.
 
 ```bash
 node $SKILL/scripts/dictionary-manager.js add-candidate \
@@ -75,7 +79,7 @@ node $SKILL/scripts/dictionary-manager.js add-candidate \
 
 ### Add an approved entry
 
-Only use after explicit approval evidence exists.
+Only use after explicit approval evidence exists. Prefer a field-level `--scope asset_key` when the meaning is shared across messages; use `--scope TransferRequest.asset_key` only for an override.
 
 ```bash
 node $SKILL/scripts/dictionary-manager.js add-approved \

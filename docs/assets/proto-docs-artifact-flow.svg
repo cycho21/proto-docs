@@ -1,0 +1,66 @@
+<svg width="1100" height="560" viewBox="0 0 1100 560" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
+  <title id="title">Artifact Flow</title>
+  <desc id="desc">Artifacts moving from proto input to dictionary candidates, approved dictionary, commented proto, generated docs, and verification result.</desc>
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L0,6 L9,3 z" fill="#334155"/></marker>
+    <style>
+      .file { fill:#ffffff; stroke:#334155; stroke-width:2; rx:10; }
+      .candidate { fill:#fef3c7; stroke:#d97706; stroke-width:2; rx:10; }
+      .approved { fill:#dcfce7; stroke:#16a34a; stroke-width:2; rx:10; }
+      .proto { fill:#dbeafe; stroke:#2563eb; stroke-width:2; rx:10; }
+      .doc { fill:#f3e8ff; stroke:#9333ea; stroke-width:2; rx:10; }
+      .gate { fill:#fee2e2; stroke:#dc2626; stroke-width:2; rx:10; }
+      .label { font:700 15px sans-serif; fill:#0f172a; text-anchor:middle; dominant-baseline:middle; }
+      .small { font:12px sans-serif; fill:#475569; text-anchor:middle; dominant-baseline:middle; }
+      .arrow { stroke:#334155; stroke-width:2.5; fill:none; marker-end:url(#arrow); }
+      .dashed { stroke:#64748b; stroke-width:2; stroke-dasharray:6 6; fill:none; marker-end:url(#arrow); }
+    </style>
+  </defs>
+
+  <text x="40" y="42" font-family="sans-serif" font-size="22" font-weight="700" fill="#0f172a">산출물 흐름: 후보와 승인 Dictionary를 분리하고, 문서는 코드가 생성</text>
+
+  <rect x="60" y="90" width="190" height="72" class="proto"/>
+  <text x="155" y="116" class="label">원본 Proto</text>
+  <text x="155" y="139" class="small">필드/메시지/서비스</text>
+
+  <rect x="330" y="90" width="210" height="72" class="candidate"/>
+  <text x="435" y="116" class="label">Dictionary Candidates</text>
+  <text x="435" y="139" class="small">LLM 추론 결과</text>
+
+  <rect x="620" y="90" width="220" height="72" class="approved"/>
+  <text x="730" y="116" class="label">Approved Dictionary</text>
+  <text x="730" y="139" class="small">사용자 승인 의미</text>
+
+  <rect x="900" y="90" width="190" height="72" class="file"/>
+  <text x="995" y="116" class="label">Hash / Manifest</text>
+  <text x="995" y="139" class="small">변경 증적</text>
+
+  <rect x="210" y="250" width="220" height="72" class="proto"/>
+  <text x="320" y="276" class="label">주석 달린 Proto</text>
+  <text x="320" y="299" class="small">Dictionary 문구 기반</text>
+
+  <rect x="520" y="250" width="210" height="72" class="gate"/>
+  <text x="625" y="276" class="label">Guards</text>
+  <text x="625" y="299" class="small">AST / lint / dictionary</text>
+
+  <rect x="810" y="250" width="210" height="72" class="doc"/>
+  <text x="915" y="276" class="label">Generated Docs</text>
+  <text x="915" y="299" class="small">기계적 문서 생성</text>
+
+  <rect x="380" y="410" width="260" height="72" class="approved"/>
+  <text x="510" y="436" class="label">verify 결과</text>
+  <text x="510" y="459" class="small">재현 가능하고 추적 가능한 완료 상태</text>
+
+  <path d="M250 126 H330" class="arrow"/>
+  <path d="M540 126 H620" class="arrow"/>
+  <path d="M840 126 H900" class="arrow"/>
+  <path d="M730 162 C700 210 430 210 350 250" class="dashed"/>
+  <path d="M430 286 H520" class="arrow"/>
+  <path d="M730 286 H810" class="arrow"/>
+  <path d="M625 322 C625 365 555 380 520 410" class="arrow"/>
+  <path d="M915 322 C915 390 660 390 590 410" class="arrow"/>
+
+  <text x="435" y="58" class="small">승인 전</text>
+  <text x="730" y="58" class="small">승인 후</text>
+  <text x="915" y="225" class="small">LLM 아님: 결정론적 코드</text>
+</svg>
