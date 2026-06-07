@@ -1,13 +1,19 @@
 import fs from 'node:fs';
 import path from 'node:path';
 
-export function listProtoFiles(inputPath) {
+export function listProtoFiles(inputPath: string): string[] {
   const stat = fs.statSync(inputPath);
   if (stat.isFile()) return [inputPath];
-  return fs.readdirSync(inputPath)
-    .filter((name) => name.endsWith('.proto'))
-    .sort()
-    .map((name) => path.join(inputPath, name));
+  const results: string[] = [];
+  for (const name of fs.readdirSync(inputPath).sort()) {
+    const full = path.join(inputPath, name);
+    if (fs.statSync(full).isDirectory()) {
+      results.push(...listProtoFiles(full));
+    } else if (name.endsWith('.proto')) {
+      results.push(full);
+    }
+  }
+  return results;
 }
 
 export function scanProtoFile(file) {
