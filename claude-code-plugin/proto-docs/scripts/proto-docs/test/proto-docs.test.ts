@@ -5,7 +5,7 @@ import os from 'node:os';
 import path from 'node:path';
 import childProcess from 'node:child_process';
 import { loadDictionary } from '../src/dictionary.ts';
-import { findMissingMappings, promoteCandidateOverride, validateCandidateOutput, writeCandidates } from '../src/candidates.ts';
+import { findMissingMappings, promoteCandidateOverride, reviewCandidates, validateCandidateOutput, writeCandidates } from '../src/candidates.ts';
 import { lintComments } from '../src/linter.ts';
 import { compareProtoStructure } from '../src/astGuard.ts';
 import { guardDictionaryChange, sha256File } from '../src/dictionaryGuard.ts';
@@ -72,6 +72,27 @@ test('message override candidate can be promoted and still validates', () => {
   assert.equal(validateCandidateOutput(out).ok, true);
 });
 
+test('candidate review groups scopes for natural-language approval UX', () => {
+  const out = tmpDir();
+  writeCandidates([
+    { file: 'workflow.proto', message: 'BuildSettlementReportRequest', field: 'amount', field_type: 'int64', repeated: false, number: 1, scope: 'BuildSettlementReportRequest.amount' },
+    { file: 'workflow.proto', message: 'SettlementLine', field: 'amount', field_type: 'int64', repeated: false, number: 2, scope: 'SettlementLine.amount' },
+    { file: 'workflow.proto', message: 'TransferAuditEvent', field: 'status', field_type: 'string', repeated: false, number: 3, scope: 'TransferAuditEvent.status' }
+  ], out, '2026-06-06');
+  promoteCandidateOverride(out, 'SettlementLine', 'amount');
+
+  const review = reviewCandidates(out);
+  assert.equal(review.ok, true);
+  assert.equal(review.summary.fieldLevelCandidates, 2);
+  assert.equal(review.summary.messageFieldUsages, 3);
+  assert.equal(review.summary.promotedMessageOverrides, 1);
+  assert.deepEqual(review.recommendedApprovalBatches[0].scopes, ['amount', 'status']);
+  assert.deepEqual(review.messageOverrideReview.promoted.map((item) => item.scope), ['SettlementLine.amount']);
+  const amountGroup = review.messageOverrideReview.pendingByField.find((item) => item.field === 'amount');
+  assert.equal(amountGroup.count, 1);
+  assert.deepEqual(amountGroup.messageScopes, ['BuildSettlementReportRequest.amount']);
+});
+
 test('forbidden alias fails lint', () => {
   const dir = tmpDir();
   const proto = write(path.join(dir, 'bad.proto'), fs.readFileSync(validProto, 'utf8').replace('Internal key that identifies the asset owner.', 'User id for asset owner.'));
@@ -105,6 +126,21 @@ test('dictionary comments are applied, lint clean, and proto structure is preser
   assert.match(afterText, /\/\/ Internal key that identifies the asset owner\.\n  string owner_key = 2;/);
   assert.deepEqual(lintComments(after, dictionary), []);
   assert.equal(compareProtoStructure(before, after).equal, true);
+});
+
+test('CLI review-candidates summarizes approval batches without dumping every file', () => {
+  const dictionary = loadDictionary(dictPath);
+  const misses = findMissingMappings(unmappedProto, dictionary);
+  const out = tmpDir();
+  writeCandidates(misses, out, '2026-06-06');
+  const result = run(['review-candidates', '--candidates', out]);
+  assert.equal(result.status, 0, result.stderr || result.stdout);
+  const review = JSON.parse(result.stdout);
+  assert.equal(review.ok, true);
+  assert.equal(review.approvalBatches[0].id, 'field-level-defaults');
+  assert.equal(review.approvalBatches[0].scopeCount, 1);
+  assert.deepEqual(review.approvalBatches[0].sampleScopes, ['fusion_material_id']);
+  assert.equal('pendingByField' in review.messageOverrideReview, false);
 });
 
 test('CLI apply-comments writes annotated proto that passes lint and AST guard', () => {

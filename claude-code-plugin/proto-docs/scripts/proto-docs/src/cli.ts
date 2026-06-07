@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 import { loadDictionary } from './dictionary.ts';
 import { scanProtoPath } from './protoScanner.ts';
-import { findMissingMappings, promoteCandidateOverride, validateCandidateOutput, writeCandidates } from './candidates.ts';
+import { compactCandidateReview, findMissingMappings, promoteCandidateOverride, reviewCandidates, validateCandidateOutput, writeCandidates } from './candidates.ts';
 import { lintComments } from './linter.ts';
 import { compareProtoStructure } from './astGuard.ts';
 import { guardDictionaryChange } from './dictionaryGuard.ts';
@@ -39,6 +39,9 @@ try {
   } else if (cmd === 'validate-candidates') {
     const result = validateCandidateOutput(candidatesDir);
     print(result);
+  } else if (cmd === 'review-candidates') {
+    const result = reviewCandidates(candidatesDir);
+    print(flag('detailed') ? result : compactCandidateReview(result));
   } else if (cmd === 'promote-candidate-override') {
     const result = promoteCandidateOverride(candidatesDir, messageName, fieldName);
     print(result);
@@ -74,7 +77,7 @@ try {
     print({ ok, lintIssues: lint, astEqual: ast.equal, dictionaryGuard: dictionary, freshness: fresh });
     if (!ok) process.exitCode = 1;
   } else {
-    print('Usage: proto-docs <scan|generate-candidates|validate-candidates|promote-candidate-override|apply-comments|lint-comments|guard-ast|guard-dictionary|generate-docs|check-freshness|verify> [--proto path] [--dictionary path]');
+    print('Usage: proto-docs <scan|generate-candidates|validate-candidates|review-candidates|promote-candidate-override|apply-comments|lint-comments|guard-ast|guard-dictionary|generate-docs|check-freshness|verify> [--proto path] [--dictionary path]');
   }
 } catch (error) {
   fail(error.message);

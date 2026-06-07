@@ -260,6 +260,124 @@ export function promoteCandidateOverride(outputDir, messageName, fieldName) {
   return { messagePath, scope: field.message_dictionary_override.scope };
 }
 
+function sampleList(items, limit = 10) {
+  return {
+    count: items.length,
+    sample: items.slice(0, limit),
+    omitted: Math.max(0, items.length - limit)
+  };
+}
+
+export function reviewCandidates(outputDir) {
+  validateCandidateOutput(outputDir);
+  const dictionaryPath = path.join(outputDir, 'word-dictionary.json');
+  const wordDictionary = JSON.parse(fs.readFileSync(dictionaryPath, 'utf8'));
+  const messagesDir = path.join(outputDir, 'messages');
+  const fieldScopes = Object.keys(wordDictionary).sort();
+  const pendingByField = new Map();
+  const promoted = [];
+  let messageFiles = 0;
+  let messageFieldUsages = 0;
+
+  for (const fileName of fs.readdirSync(messagesDir).sort()) {
+    if (!fileName.endsWith('.json')) continue;
+    messageFiles += 1;
+    const candidate = JSON.parse(fs.readFileSync(path.join(messagesDir, fileName), 'utf8'));
+    for (const field of candidate.fields ?? []) {
+      messageFieldUsages += 1;
+      if (field.message_dictionary_override) {
+        promoted.push({
+          scope: field.message_dictionary_override.scope,
+          field: field.field_name,
+          message: candidate.message_name,
+          description: field.message_dictionary_override.canonical_description
+        });
+        continue;
+      }
+      const item = pendingByField.get(field.field_name) ?? {
+        field: field.field_name,
+        defaultScope: field.word_dictionary_scope,
+        defaultDescription: field.word_dictionary_entry?.canonical_description,
+        count: 0,
+        messageScopes: [],
+        sampleMessages: [],
+        recommendation: 'Use the field-level Dictionary entry by default. Promote a Message.field override only when domain review confirms a different meaning.'
+      };
+      item.count += 1;
+      item.messageScopes.push(field.message_field_scope);
+      if (item.sampleMessages.length < 5) item.sampleMessages.push(candidate.message_name);
+      pendingByField.set(field.field_name, item);
+    }
+  }
+
+  const pending = [...pendingByField.values()].sort((a, b) => a.field.localeCompare(b.field));
+  promoted.sort((a, b) => a.scope.localeCompare(b.scope));
+
+  return {
+    ok: true,
+    summary: {
+      fieldLevelCandidates: fieldScopes.length,
+      messageFiles,
+      messageFieldUsages,
+      promotedMessageOverrides: promoted.length,
+      pendingMessageOverrideReview: pending.reduce((sum, item) => sum + item.count, 0)
+    },
+    recommendedApprovalBatches: [
+      {
+        id: 'field-level-defaults',
+        title: 'Approve field-level defaults first when their common meaning is acceptable.',
+        scopes: fieldScopes
+      }
+    ],
+    messageOverrideReview: {
+      promoted,
+      pendingByField: pending
+    },
+    nextPrompts: [
+      'Approve the field-level-defaults batch, or list field scopes to hold back.',
+      'For message-specific meanings, name only the Message.field scopes that should become overrides.',
+      'Leave all other message candidates pending; they do not need to be merged.'
+    ]
+  };
+}
+
+export function compactCandidateReview(review) {
+  const fieldBatch = review.recommendedApprovalBatches.find((batch) => batch.id === 'field-level-defaults');
+  const topPending = [...review.messageOverrideReview.pendingByField]
+    .sort((a, b) => b.count - a.count || a.field.localeCompare(b.field))
+    .slice(0, 10)
+    .map((item) => ({
+      field: item.field,
+      usageCount: item.count,
+      sampleMessages: item.sampleMessages,
+      recommendation: item.recommendation
+    }));
+
+  return {
+    ok: review.ok,
+    summary: review.summary,
+    approvalBatches: [
+      {
+        id: fieldBatch.id,
+        title: fieldBatch.title,
+        scopeCount: fieldBatch.scopes.length,
+        sampleScopes: sampleList(fieldBatch.scopes, 15).sample,
+        omittedScopes: sampleList(fieldBatch.scopes, 15).omitted,
+        approvalPrompt: 'Approve this whole batch if the shared field-level meanings are acceptable; otherwise list scopes to hold back.'
+      }
+    ],
+    messageOverrideReview: {
+      promotedCount: review.messageOverrideReview.promoted.length,
+      promotedSamples: sampleList(review.messageOverrideReview.promoted.map((item) => item.scope), 10).sample,
+      pendingFieldGroupCount: review.messageOverrideReview.pendingByField.length,
+      topPendingFieldGroups: topPending,
+      reviewPrompt: 'Only name Message.field scopes that truly need message-specific meaning. Leave the rest pending/default.'
+    },
+    nextPrompts: review.nextPrompts,
+    detailedOutput: 'Run review-candidates --detailed to inspect every pending field group and Message.field scope.'
+  };
+}
+
 export function writeCandidates(misses, outputDir, detectedAt = new Date().toISOString().slice(0, 10)) {
   fs.mkdirSync(outputDir, { recursive: true });
   const messagesDir = path.join(outputDir, 'messages');

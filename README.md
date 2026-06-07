@@ -64,11 +64,12 @@ claude-code-plugin/proto-docs/
 
 1. Proto 파일을 스캔합니다.
 2. Dictionary에 없는 필드는 후보로 생성합니다.
-3. 후보 의미는 사용자 또는 도메인 담당자가 승인합니다.
-4. 승인된 후보만 Dictionary로 승격합니다.
-5. Proto 주석은 승인된 Dictionary 설명만 사용해 작성합니다.
-6. hook과 CLI가 Proto 구조 변경, Dictionary 변경, 주석 불일치를 검증합니다.
-7. 문서를 생성하고 최신성을 확인합니다.
+3. 후보를 `review-candidates`로 field-level 기본 승인 묶음, message-specific override 후보, 보류 항목으로 요약합니다.
+4. 후보 의미는 사용자 또는 도메인 담당자가 묶음 단위로 승인합니다.
+5. 승인된 후보만 Dictionary로 승격합니다.
+6. Proto 주석은 승인된 Dictionary 설명만 사용해 작성합니다.
+7. hook과 CLI가 Proto 구조 변경, Dictionary 변경, 주석 불일치를 검증합니다.
+8. 문서를 생성하고 최신성을 확인합니다.
 
 ## 제공 commands
 

@@ -30,6 +30,28 @@ Generate candidates in two layers:
 - If an override is needed, promote the reviewed override entry from `inference.candidate_override` to `message_dictionary_override` with `npm run proto-docs -- promote-candidate-override -- --candidates .proto-docs/dictionary/candidates --message <MessageName> --field <field_name>`.
 - Do not edit approved `word-dictionary.json` directly without approval evidence.
 
+## Natural-language candidate review UX
+
+When the user asks to review candidates, do not dump every candidate scope and ask the user to pick from a long list. First run the compact grouped review:
+
+```bash
+npm run proto-docs -- review-candidates -- --candidates .proto-docs/dictionary/candidates
+```
+
+Use `--detailed` only when the user asks to inspect every pending field group:
+
+```bash
+npm run proto-docs -- review-candidates -- --candidates .proto-docs/dictionary/candidates --detailed
+```
+
+Present the compact result in three groups:
+
+1. Field-level defaults batch: common field scopes that can be approved together when their shared meaning is acceptable.
+2. Message-specific overrides already promoted: `Message.field` scopes that will be merged only if approval evidence includes them.
+3. Pending message review by field: grouped message usages that should remain pending unless the user explicitly says the message context changes the meaning.
+
+Ask for approval in batches, for example: “Approve the field-level defaults batch, hold back these scopes, and name only the Message.field overrides to promote.” Do not require the user to inspect every `candidates/messages/*.json` file.
+
 ## Mechanical validation
 
 Run after creating or editing candidates:
@@ -38,7 +60,7 @@ Run after creating or editing candidates:
 npm run proto-docs -- validate-candidates -- --candidates .proto-docs/dictionary/candidates
 ```
 
-Promote a message-specific override only after LLM/domain review determines the message context changes the field meaning:
+Promote a message-specific override only after LLM/domain review determines the message context changes the meaning:
 
 ```bash
 npm run proto-docs -- promote-candidate-override -- --candidates .proto-docs/dictionary/candidates --message SettlementLine --field asset_key
