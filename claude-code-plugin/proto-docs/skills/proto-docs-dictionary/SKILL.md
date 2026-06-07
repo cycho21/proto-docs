@@ -51,7 +51,7 @@ The candidate hook also runs this check after candidate file edits.
 Only after human/domain approval, promote approved scopes from candidates:
 
 ```bash
-node claude/skills/proto-docs-dictionary/scripts/dictionary-manager.js promote-candidates \
+node ${CLAUDE_PLUGIN_ROOT}/skills/proto-docs-dictionary/scripts/dictionary-manager.js promote-candidates \
   --candidates docs/dictionary/candidates \
   --dictionary docs/dictionary/word-dictionary.json \
   --approval-manifest docs/dictionary/approval-manifest.json

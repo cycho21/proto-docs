@@ -1,7 +1,7 @@
 {
   "dictionaryChanges": [
     {
-      "path": "claude/skills/proto-docs-flow/dictionary/word-dictionary.json",
+      "path": "${CLAUDE_PLUGIN_ROOT}/skills/proto-docs-flow/dictionary/word-dictionary.json",
       "approvedScopes": [
         "GetAssetRequest.asset_key",
         "Asset.asset_key",

@@ -6,19 +6,19 @@
         "hooks": [
           {
             "type": "command",
-            "command": "node claude/skills/proto-docs-flow/hooks/proto-docs-post-tool-use.js"
+            "command": "node "${CLAUDE_PLUGIN_ROOT}/skills/proto-docs-flow/hooks/proto-docs-post-tool-use.js""
           },
           {
             "type": "command",
-            "command": "node claude/skills/proto-docs-flow/hooks/proto-docs-dictionary-post-tool-use.js"
+            "command": "node "${CLAUDE_PLUGIN_ROOT}/skills/proto-docs-flow/hooks/proto-docs-dictionary-post-tool-use.js""
           },
           {
             "type": "command",
-            "command": "node claude/skills/proto-docs-flow/hooks/proto-docs-schema-post-tool-use.js"
+            "command": "node "${CLAUDE_PLUGIN_ROOT}/skills/proto-docs-flow/hooks/proto-docs-schema-post-tool-use.js""
           },
           {
             "type": "command",
-            "command": "node claude/skills/proto-docs-flow/hooks/proto-docs-candidates-post-tool-use.js"
+            "command": "node "${CLAUDE_PLUGIN_ROOT}/skills/proto-docs-flow/hooks/proto-docs-candidates-post-tool-use.js""
           }
         ]
       }

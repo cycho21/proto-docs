@@ -28,7 +28,7 @@ This Claude local skill is self-contained. Keep the workflow assets under this s
 
 ## Commands
 
-Run from the repository root. Replace `<skill>` with this skill directory, for example `claude/skills/proto-docs-flow`.
+Run from the repository root. Replace `<skill>` with this skill directory, for example `${CLAUDE_PLUGIN_ROOT}/skills/proto-docs-flow`.
 
 ```bash
 node <skill>/scripts/proto-docs/src/cli.ts scan \

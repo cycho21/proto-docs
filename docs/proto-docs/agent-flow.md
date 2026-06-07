@@ -25,4 +25,10 @@ Dictionary Skill
 
 ## Claude Code
 
-Install or copy the local skills under `claude/skills/`. Invoke `proto-docs-dictionary` when creating or maintaining Dictionary entries, and `proto-docs-flow` when generating or validating Proto comments.
+Load the Claude Code plugin from `claude-code-plugin/proto-docs`.
+
+```bash
+claude --plugin-dir ./claude-code-plugin/proto-docs
+```
+
+Invoke `proto-docs-dictionary` when creating or maintaining Dictionary entries, and `proto-docs-flow` when generating or validating Proto comments.
