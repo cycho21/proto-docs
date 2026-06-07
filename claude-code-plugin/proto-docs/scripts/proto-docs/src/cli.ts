@@ -19,10 +19,10 @@ function fail(message, details) { console.error(message); if (details) console.e
 
 const cmd = process.argv[2] ?? 'help';
 const protoPath = arg('proto', 'samples/proto/asset.proto');
-const dictPath = arg('dictionary', 'docs/dictionary/word-dictionary.json');
-const candidatesDir = arg('candidates', 'docs/dictionary/candidates');
+const dictPath = arg('dictionary', '.proto-docs/dictionary/word-dictionary.json');
+const candidatesDir = arg('candidates', '.proto-docs/dictionary/candidates');
 const docsDir = arg('docs', 'docs/generated');
-const baselineHashPath = arg('dictionary-baseline-hash', 'docs/dictionary/word-dictionary.sha256');
+const baselineHashPath = arg('dictionary-baseline-hash', '.proto-docs/dictionary/word-dictionary.sha256');
 const outPath = arg('out', protoPath);
 const messageName = arg('message', undefined);
 const fieldName = arg('field', undefined);

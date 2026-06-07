@@ -1,7 +1,7 @@
 {
   "dictionaryChanges": [
     {
-      "path": "docs/dictionary/word-dictionary.json",
+      "path": ".proto-docs/dictionary/word-dictionary.json",
       "approvedScopes": [
         "GetAssetRequest.asset_key",
         "Asset.asset_key",

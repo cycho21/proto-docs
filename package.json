@@ -4,11 +4,11 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "proto-docs": "node scripts/proto-docs/src/cli.ts",
-    "test": "node --test scripts/proto-docs/test/*.test.ts"
+    "proto-docs": "node claude-code-plugin/proto-docs/scripts/proto-docs/src/cli.ts",
+    "test": "node --test claude-code-plugin/proto-docs/scripts/proto-docs/test/*.test.ts"
   },
   "bin": {
-    "proto-docs": "scripts/proto-docs/src/cli.ts"
+    "proto-docs": "claude-code-plugin/proto-docs/scripts/proto-docs/src/cli.ts"
   },
   "devDependencies": {}
 }

@@ -17,7 +17,7 @@ function readHeadJson(relativePath) { const result = run('git', ['show', `HEAD:$
 function changedScopes(before, after) { const scopes = new Set(); const keys = new Set([...Object.keys(before ?? {}), ...Object.keys(after ?? {})]); for (const key of keys) if (JSON.stringify(before?.[key] ?? null) !== JSON.stringify(after?.[key] ?? null)) scopes.add(key); return [...scopes].sort(); }
 function approvedScopes(approval) { return new Set([...(approval.approvedScopes ?? []), ...(approval.scopes ?? [])].map(String)); }
 function approvalForDictionary(dictionaryPath) {
-  for (const manifestPath of [path.join('docs', 'dictionary', 'approval-manifest.json'), path.join('docs', 'dictionary', 'approval-manifest.sample.json')]) {
+  for (const manifestPath of [path.join('.proto-docs', 'dictionary', 'approval-manifest.json'), path.join('.proto-docs', 'dictionary', 'approval-manifest.sample.json')]) {
     if (!fs.existsSync(manifestPath)) continue;
     const manifest = JSON.parse(fs.readFileSync(manifestPath, 'utf8'));
     const changes = manifest.dictionaryChanges;
@@ -39,12 +39,12 @@ process.stdin.on('end', () => {
   const filePath = changedPath(parseEvent(input));
   if (!filePath) process.exit(0);
   const normalized = String(filePath).replace(/\\/g, '/');
-  if (!normalized.endsWith('/docs/dictionary/word-dictionary.json') &&
-      !normalized.endsWith('/docs/dictionary/word-dictionary.sha256') &&
-      !normalized.startsWith('docs/dictionary/word-dictionary')) process.exit(0);
+  if (!normalized.endsWith('/.proto-docs/dictionary/word-dictionary.json') &&
+      !normalized.endsWith('/.proto-docs/dictionary/word-dictionary.sha256') &&
+      !normalized.startsWith('.proto-docs/dictionary/word-dictionary')) process.exit(0);
 
-  const dictionary = path.join('docs', 'dictionary', 'word-dictionary.json');
-  const hashPath = path.join('docs', 'dictionary', 'word-dictionary.sha256');
+  const dictionary = path.join('.proto-docs', 'dictionary', 'word-dictionary.json');
+  const hashPath = path.join('.proto-docs', 'dictionary', 'word-dictionary.sha256');
   if (!fs.existsSync(dictionary)) process.exit(0);
 
   const manager = path.join(pluginRoot(), 'skills/proto-docs-dictionary/scripts/dictionary-manager.js');

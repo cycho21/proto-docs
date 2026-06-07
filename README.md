@@ -16,11 +16,13 @@ Proto Docs는 Claude Code에서 Proto 주석 작성, Dictionary 후보 생성, �
 
 ## 설치
 
-저장소 루트에서 Claude Code를 다음과 같이 실행합니다.
+대상 프로젝트에 `claude-code-plugin/` 폴더를 복사한 뒤, 프로젝트 루트에서 Claude Code를 다음과 같이 실행합니다.
 
 ```bash
 claude --plugin-dir ./claude-code-plugin/proto-docs
 ```
+
+플러그인 루트인 `claude-code-plugin/proto-docs/`에는 자체 `package.json`이 포함되어 있어, 복사 설치 후에도 hook과 CLI 스크립트가 ESM으로 실행됩니다.
 
 플러그인 manifest는 다음 위치에 있습니다.
 
@@ -51,9 +53,9 @@ claude-code-plugin/proto-docs/
 플러그인을 사용하는 대상 프로젝트는 승인된 Dictionary와 후보 디렉터리를 포함해야 합니다.
 
 ```text
-docs/dictionary/word-dictionary.json
-docs/dictionary/word-dictionary.sha256
-docs/dictionary/candidates/
+.proto-docs/dictionary/word-dictionary.json
+.proto-docs/dictionary/word-dictionary.sha256
+.proto-docs/dictionary/candidates/
 ```
 
 플러그인은 scripts와 schema를 제공하지만, 승인된 Dictionary 데이터는 대상 프로젝트가 소유합니다.

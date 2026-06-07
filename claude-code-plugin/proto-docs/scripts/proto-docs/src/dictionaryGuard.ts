@@ -26,7 +26,7 @@ export function detectDictionaryChanged(dictionaryPath, baselineHashPath) {
   return sha256File(dictionaryPath) !== expected;
 }
 
-export function guardDictionaryChange({ changed = false, dictionaryPath = 'docs/dictionary/word-dictionary.json', baselineHashPath = 'docs/dictionary/word-dictionary.sha256', manifestPath } = {}) {
+export function guardDictionaryChange({ changed = false, dictionaryPath = '.proto-docs/dictionary/word-dictionary.json', baselineHashPath = '.proto-docs/dictionary/word-dictionary.sha256', manifestPath } = {}) {
   const changedByHash = detectDictionaryChanged(dictionaryPath, baselineHashPath);
   const isChanged = Boolean(changed || changedByHash);
   if (!isChanged) return { ok: true, issues: [] };

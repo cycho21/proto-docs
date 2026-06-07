@@ -14,13 +14,13 @@ Claude Code plugin for Proto Dictionary candidate generation, approved Dictionar
 
 ## Install
 
-Install or enable this folder as a Claude Code plugin. From the repository root, start Claude Code with this plugin directory:
+Copy `claude-code-plugin/` into the target project. From the target project root, start Claude Code with this plugin directory:
 
 ```bash
 claude --plugin-dir ./claude-code-plugin/proto-docs
 ```
 
-This loads the plugin manifest, including bundled commands, skills, and hooks.
+This loads the plugin manifest, including bundled commands, skills, and hooks. The plugin root includes its own `package.json` so bundled hook and CLI scripts run as ESM after copy-based installation.
 
 The manifest is at:
 
@@ -39,9 +39,9 @@ hooks/hooks.json
 Target projects should contain:
 
 ```text
-docs/dictionary/word-dictionary.json
-docs/dictionary/word-dictionary.sha256
-docs/dictionary/candidates/
+.proto-docs/dictionary/word-dictionary.json
+.proto-docs/dictionary/word-dictionary.sha256
+.proto-docs/dictionary/candidates/
 ```
 
 The plugin provides scripts and schemas, but approved Dictionary data remains project-owned.
@@ -51,17 +51,17 @@ The plugin provides scripts and schemas, but approved Dictionary data remains pr
 Generate candidates:
 
 ```bash
-node ${CLAUDE_PLUGIN_ROOT}/scripts/proto-docs/src/cli.ts generate-candidates --proto samples/proto/workflow --dictionary docs/dictionary/word-dictionary.json --candidates docs/dictionary/candidates
+node ${CLAUDE_PLUGIN_ROOT}/scripts/proto-docs/src/cli.ts generate-candidates --proto samples/proto/workflow --dictionary .proto-docs/dictionary/word-dictionary.json --candidates .proto-docs/dictionary/candidates
 ```
 
 Validate candidates:
 
 ```bash
-node ${CLAUDE_PLUGIN_ROOT}/scripts/proto-docs/src/cli.ts validate-candidates --candidates docs/dictionary/candidates
+node ${CLAUDE_PLUGIN_ROOT}/scripts/proto-docs/src/cli.ts validate-candidates --candidates .proto-docs/dictionary/candidates
 ```
 
 Apply comments:
 
 ```bash
-node ${CLAUDE_PLUGIN_ROOT}/scripts/proto-docs/src/cli.ts apply-comments --proto path/to/file.proto --dictionary docs/dictionary/word-dictionary.json --out path/to/file.proto
+node ${CLAUDE_PLUGIN_ROOT}/scripts/proto-docs/src/cli.ts apply-comments --proto path/to/file.proto --dictionary .proto-docs/dictionary/word-dictionary.json --out path/to/file.proto
 ```

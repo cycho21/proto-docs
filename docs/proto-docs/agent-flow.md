@@ -15,9 +15,9 @@ Dictionary Skill
 
 ## Agent rules
 
-1. Agents must read `docs/dictionary/word-dictionary.json` as the semantic source of truth.
-2. Agents must not edit `docs/dictionary/word-dictionary.json` directly.
-3. Agents may create files under `docs/dictionary/candidates/` for missing terms.
+1. Agents must read `.proto-docs/dictionary/word-dictionary.json` as the semantic source of truth.
+2. Agents must not edit `.proto-docs/dictionary/word-dictionary.json` directly.
+3. Agents may create files under `.proto-docs/dictionary/candidates/` for missing terms.
 4. Agents may edit Proto comments only.
 5. Agents must run `npm run proto-docs -- verify` before reporting completion.
 6. Agents must not call LLM APIs from this repository workflow.

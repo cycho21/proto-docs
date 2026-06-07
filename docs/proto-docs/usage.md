@@ -11,7 +11,7 @@ npm run proto-docs -- generate-candidates --proto samples/proto/unmapped.proto
 npm run proto-docs -- lint-comments
 npm run proto-docs -- guard-ast --before samples/proto/asset.proto --after samples/proto/asset.proto
 npm run proto-docs -- guard-dictionary
-npm run proto-docs -- guard-dictionary --changed --approval-manifest docs/dictionary/approval-manifest.sample.json
+npm run proto-docs -- guard-dictionary --changed --approval-manifest .proto-docs/dictionary/approval-manifest.sample.json
 npm run proto-docs -- generate-docs --generator buf
 npm run proto-docs -- check-freshness
 ```
@@ -23,7 +23,7 @@ npm test
 npm run proto-docs -- verify
 ```
 
-`verify` performs comment linting, AST guard, dictionary guard, and generated docs freshness checks against the valid sample. Dictionary guard compares `docs/dictionary/word-dictionary.json` with `docs/dictionary/word-dictionary.sha256` and requires approval evidence when the hash differs.
+`verify` performs comment linting, AST guard, dictionary guard, and generated docs freshness checks against the valid sample. Dictionary guard compares `.proto-docs/dictionary/word-dictionary.json` with `.proto-docs/dictionary/word-dictionary.sha256` and requires approval evidence when the hash differs.
 
 ## Network policy
 

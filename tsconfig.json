@@ -8,5 +8,8 @@
     "checkJs": false,
     "outDir": "dist"
   },
-  "include": ["scripts/proto-docs/src/**/*.ts", "scripts/proto-docs/test/**/*.ts"]
+  "include": [
+    "claude-code-plugin/proto-docs/scripts/proto-docs/src/**/*.ts",
+    "claude-code-plugin/proto-docs/scripts/proto-docs/test/**/*.ts"
+  ]
 }

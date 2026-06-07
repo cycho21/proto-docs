@@ -14,13 +14,13 @@ import { BufDocGenerator } from '../src/docGenerator.ts';
 import { applyDictionaryComments } from '../src/commentApplier.ts';
 
 const root = process.cwd();
-const dictPath = path.join(root, 'docs/dictionary/word-dictionary.json');
+const dictPath = path.join(root, '.proto-docs/dictionary/word-dictionary.json');
 const validProto = path.join(root, 'samples/proto/asset.proto');
 const unmappedProto = path.join(root, 'samples/proto/unmapped.proto');
 
 function tmpDir() { return fs.mkdtempSync(path.join(os.tmpdir(), 'proto-docs-test-')); }
 function write(file, content) { fs.mkdirSync(path.dirname(file), { recursive: true }); fs.writeFileSync(file, content); return file; }
-function run(args) { return childProcess.spawnSync(process.execPath, ['scripts/proto-docs/src/cli.ts', ...args], { cwd: root, encoding: 'utf8' }); }
+function run(args) { return childProcess.spawnSync(process.execPath, ['claude-code-plugin/proto-docs/scripts/proto-docs/src/cli.ts', ...args], { cwd: root, encoding: 'utf8' }); }
 
 test('dictionary loading validates sample dictionary', () => {
   const dictionary = loadDictionary(dictPath);
@@ -111,9 +111,9 @@ test('CLI apply-comments writes annotated proto that passes lint and AST guard',
   const dir = tmpDir();
   const before = write(path.join(dir, 'before.proto'), `syntax = "proto3";\n\npackage sample.asset.v1;\n\nmessage GetAssetRequest {\n  string asset_key = 1;\n}\n`);
   const after = path.join(dir, 'after.proto');
-  const apply = run(['apply-comments', '--proto', before, '--dictionary', 'docs/dictionary/word-dictionary.json', '--out', after]);
+  const apply = run(['apply-comments', '--proto', before, '--dictionary', '.proto-docs/dictionary/word-dictionary.json', '--out', after]);
   assert.equal(apply.status, 0, apply.stderr || apply.stdout);
-  const lint = run(['lint-comments', '--proto', after, '--dictionary', 'docs/dictionary/word-dictionary.json']);
+  const lint = run(['lint-comments', '--proto', after, '--dictionary', '.proto-docs/dictionary/word-dictionary.json']);
   assert.equal(lint.status, 0, lint.stderr || lint.stdout);
   const guard = run(['guard-ast', '--before', before, '--after', after]);
   assert.equal(guard.status, 0, guard.stderr || guard.stdout);
@@ -129,9 +129,9 @@ test('AST guard allows comment-only changes and rejects structural changes', () 
 });
 
 test('dictionary guard requires local approval evidence for changed dictionary', () => {
-  assert.equal(guardDictionaryChange({ changed: true, dictionaryPath: 'docs/dictionary/word-dictionary.json' }).ok, false);
-  const manifest = write(path.join(tmpDir(), 'approval.json'), JSON.stringify({ dictionaryChanges: [{ path: 'docs/dictionary/word-dictionary.json', approvedBy: '@domain-owner', reason: 'sample approval', approvedAt: '2026-06-06' }] }));
-  assert.equal(guardDictionaryChange({ changed: true, dictionaryPath: 'docs/dictionary/word-dictionary.json', manifestPath: manifest }).ok, true);
+  assert.equal(guardDictionaryChange({ changed: true, dictionaryPath: '.proto-docs/dictionary/word-dictionary.json' }).ok, false);
+  const manifest = write(path.join(tmpDir(), 'approval.json'), JSON.stringify({ dictionaryChanges: [{ path: '.proto-docs/dictionary/word-dictionary.json', approvedBy: '@domain-owner', reason: 'sample approval', approvedAt: '2026-06-06' }] }));
+  assert.equal(guardDictionaryChange({ changed: true, dictionaryPath: '.proto-docs/dictionary/word-dictionary.json', manifestPath: manifest }).ok, true);
 });
 
 test('dictionary guard detects changed dictionary by baseline hash without caller flag', () => {
@@ -154,7 +154,7 @@ test('freshness checker passes on committed sample and fails on mismatch', () =>
 });
 
 test('CLI verify exits 0 for valid sample', () => {
-  const result = run(['verify', '--proto', 'samples/proto/asset.proto', '--dictionary', 'docs/dictionary/word-dictionary.json', '--docs', 'docs/generated']);
+  const result = run(['verify', '--proto', 'samples/proto/asset.proto', '--dictionary', '.proto-docs/dictionary/word-dictionary.json', '--docs', 'docs/generated']);
   assert.equal(result.status, 0, result.stderr || result.stdout);
   assert.match(result.stdout, /"ok": true/);
 });
@@ -162,7 +162,7 @@ test('CLI verify exits 0 for valid sample', () => {
 test('CLI lint exits 1 for invalid sample', () => {
   const dir = tmpDir();
   const proto = write(path.join(dir, 'bad.proto'), fs.readFileSync(validProto, 'utf8').replace('Internal key that identifies the asset owner.', 'Wallet address for asset owner.'));
-  const result = run(['lint-comments', '--proto', proto, '--dictionary', 'docs/dictionary/word-dictionary.json']);
+  const result = run(['lint-comments', '--proto', proto, '--dictionary', '.proto-docs/dictionary/word-dictionary.json']);
   assert.equal(result.status, 1);
   assert.match(result.stdout, /Forbidden Alias/);
 });

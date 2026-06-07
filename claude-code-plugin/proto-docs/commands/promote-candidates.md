@@ -8,17 +8,17 @@ Use:
 
 ```bash
 node ${CLAUDE_PLUGIN_ROOT}/skills/proto-docs-dictionary/scripts/dictionary-manager.js promote-candidates \
-  --candidates docs/dictionary/candidates \
-  --dictionary docs/dictionary/word-dictionary.json \
-  --approval-manifest docs/dictionary/approval-manifest.json
+  --candidates .proto-docs/dictionary/candidates \
+  --dictionary .proto-docs/dictionary/word-dictionary.json \
+  --approval-manifest .proto-docs/dictionary/approval-manifest.json
 
 node ${CLAUDE_PLUGIN_ROOT}/skills/proto-docs-dictionary/scripts/dictionary-manager.js validate \
-  --dictionary docs/dictionary/word-dictionary.json
+  --dictionary .proto-docs/dictionary/word-dictionary.json
 
 node ${CLAUDE_PLUGIN_ROOT}/skills/proto-docs-dictionary/scripts/dictionary-manager.js hash \
-  --dictionary docs/dictionary/word-dictionary.json \
-  --hash docs/dictionary/word-dictionary.sha256 \
-  --approval-manifest docs/dictionary/approval-manifest.json
+  --dictionary .proto-docs/dictionary/word-dictionary.json \
+  --hash .proto-docs/dictionary/word-dictionary.sha256 \
+  --approval-manifest .proto-docs/dictionary/approval-manifest.json
 ```
 
 Rules:

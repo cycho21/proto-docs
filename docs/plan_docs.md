@@ -252,9 +252,9 @@ LLM 불가:
 #### 권장 경로 정책
 
 ```text
-/docs/dictionary/word-dictionary.json       인간 승인 필수
-/docs/dictionary/candidates/*.json          LLM 생성 허용
-/docs/dictionary/history/*.json             시스템 기록
+/.proto-docs/dictionary/word-dictionary.json       인간 승인 필수
+/.proto-docs/dictionary/candidates/*.json          LLM 생성 허용
+/.proto-docs/dictionary/history/*.json             시스템 기록
 ```
 
 ---
@@ -428,7 +428,7 @@ LLM 또는 자동화 도구는 승인된 Dictionary를 수정하지 않고 candi
 경로:
 
 ```text
-/docs/dictionary/candidates/fusion_material_id.json
+/.proto-docs/dictionary/candidates/fusion_material_id.json
 ```
 
 예시:
@@ -548,7 +548,7 @@ Publish
 감지 대상:
 
 ```text
-/docs/dictionary/word-dictionary.json
+/.proto-docs/dictionary/word-dictionary.json
 ```
 
 조건:
@@ -562,8 +562,8 @@ Dictionary 변경은 CODEOWNERS 또는 지정된 domain owner 승인 필요
 CODEOWNERS 예시:
 
 ```text
-/docs/dictionary/word-dictionary.json @domain-owner @tech-writer
-/docs/dictionary/candidates/ @domain-owner @tech-writer
+/.proto-docs/dictionary/word-dictionary.json @domain-owner @tech-writer
+/.proto-docs/dictionary/candidates/ @domain-owner @tech-writer
 ```
 
 ---
@@ -649,7 +649,7 @@ Dictionary 또는 주석 변경이 잘못된 의미를 포함한 경우 다음 �
 Dictionary 변경은 version을 증가시키고 history에 기록한다.
 
 ```text
-/docs/dictionary/history/<term>/<version>.json
+/.proto-docs/dictionary/history/<term>/<version>.json
 ```
 
 ---

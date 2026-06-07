@@ -21,10 +21,10 @@ process.stdin.on('end', () => {
   const filePath = changedPath(parseEvent(input));
   if (!filePath || !String(filePath).endsWith('.proto')) process.exit(0);
 
-  const dictionary = path.join('docs', 'dictionary', 'word-dictionary.json');
+  const dictionary = path.join('.proto-docs', 'dictionary', 'word-dictionary.json');
   if (!fs.existsSync(dictionary)) {
     reminder('Project Dictionary is missing.', [
-      'Expected docs/dictionary/word-dictionary.json in the target project.',
+      'Expected .proto-docs/dictionary/word-dictionary.json in the target project.',
       'Create/promote approved Dictionary entries before relying on automatic Proto comment validation.'
     ]);
     process.exit(1);

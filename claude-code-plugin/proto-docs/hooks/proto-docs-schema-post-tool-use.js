@@ -17,11 +17,11 @@ process.stdin.on('end', () => {
   const filePath = changedPath(parseEvent(input));
   if (!filePath) process.exit(0);
   const normalized = String(filePath).replace(/\\/g, '/');
-  if (!normalized.endsWith('/docs/dictionary/word-dictionary.schema.json') &&
-      !normalized.endsWith('/docs/dictionary/word-dictionary.json') &&
-      !normalized.startsWith('docs/dictionary/word-dictionary')) process.exit(0);
+  if (!normalized.endsWith('/.proto-docs/dictionary/word-dictionary.schema.json') &&
+      !normalized.endsWith('/.proto-docs/dictionary/word-dictionary.json') &&
+      !normalized.startsWith('.proto-docs/dictionary/word-dictionary')) process.exit(0);
 
-  const dictionaryPath = path.join('docs', 'dictionary', 'word-dictionary.json');
+  const dictionaryPath = path.join('.proto-docs', 'dictionary', 'word-dictionary.json');
   if (!fs.existsSync(dictionaryPath)) process.exit(0);
   const manager = path.join(pluginRoot(), 'skills/proto-docs-dictionary/scripts/dictionary-manager.js');
   const validate = run(process.execPath, [manager, 'validate', '--dictionary', dictionaryPath]);
@@ -29,7 +29,7 @@ process.stdin.on('end', () => {
   if (validate.stderr) process.stderr.write(validate.stderr);
   if ((validate.status ?? 0) !== 0) {
     reminder('Dictionary does not conform to the approved schema contract.', [
-      'Fix docs/dictionary/word-dictionary.json before using it to annotate Proto comments.',
+      'Fix .proto-docs/dictionary/word-dictionary.json before using it to annotate Proto comments.',
       'Do not relax the schema to make invalid Dictionary entries pass.'
     ]);
     process.exit(validate.status ?? 1);

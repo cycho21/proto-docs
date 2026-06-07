@@ -3,13 +3,13 @@
 ## Protected file
 
 ```text
-docs/dictionary/word-dictionary.json
+.proto-docs/dictionary/word-dictionary.json
 ```
 
 AI agents must not directly modify this file during normal comment generation. They may create candidate files under:
 
 ```text
-docs/dictionary/candidates/*.json
+.proto-docs/dictionary/candidates/*.json
 ```
 
 ## Local approval manifest
@@ -22,7 +22,7 @@ Example:
 {
   "dictionaryChanges": [
     {
-      "path": "docs/dictionary/word-dictionary.json",
+      "path": ".proto-docs/dictionary/word-dictionary.json",
       "approvedBy": "@domain-owner",
       "reason": "Approved canonical description for sample term",
       "approvedAt": "2026-06-06"
@@ -42,10 +42,10 @@ Each approved Dictionary change requires at least:
 The guard detects Dictionary changes by comparing the current file hash with:
 
 ```text
-docs/dictionary/word-dictionary.sha256
+.proto-docs/dictionary/word-dictionary.sha256
 ```
 
-The file stores the approved SHA-256 hash of `docs/dictionary/word-dictionary.json`.
+The file stores the approved SHA-256 hash of `.proto-docs/dictionary/word-dictionary.json`.
 If the current Dictionary hash differs from the baseline hash, approval evidence is required.
 
 ## Check commands

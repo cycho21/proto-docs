@@ -34,9 +34,9 @@ process.stdin.on('end', () => {
   const filePath = changedPath(parseEvent(input));
   if (!filePath) process.exit(0);
   const normalized = filePath.replace(/\\/g, '/');
-  if (!normalized.includes('/docs/dictionary/candidates/') && !normalized.startsWith('docs/dictionary/candidates/')) process.exit(0);
+  if (!normalized.includes('/.proto-docs/dictionary/candidates/') && !normalized.startsWith('.proto-docs/dictionary/candidates/')) process.exit(0);
 
-  const candidatesDir = path.join('docs', 'dictionary', 'candidates');
+  const candidatesDir = path.join('.proto-docs', 'dictionary', 'candidates');
   if (!fs.existsSync(candidatesDir)) process.exit(0);
   const cli = path.join(pluginRoot(), 'scripts/proto-docs/src/cli.ts');
   const result = run(process.execPath, [cli, 'validate-candidates', '--candidates', candidatesDir]);
@@ -45,8 +45,8 @@ process.stdin.on('end', () => {
   if ((result.status ?? 0) !== 0) {
     reminder('Candidate Dictionary validation failed.', [
       'Fix candidate JSON shape before continuing.',
-      'Create docs/dictionary/candidates/word-dictionary.json first.',
-      'Message candidates must live under docs/dictionary/candidates/messages/<MessageName>.json.'
+      'Create .proto-docs/dictionary/candidates/word-dictionary.json first.',
+      'Message candidates must live under .proto-docs/dictionary/candidates/messages/<MessageName>.json.'
     ]);
     process.exit(result.status ?? 1);
   }
