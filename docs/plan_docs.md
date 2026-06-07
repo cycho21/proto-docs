@@ -120,7 +120,7 @@ Publish
 * Canonical Description 관리
 * 금지 표현 관리
 * 용어 충돌 검출
-* term scope 판단 보조
+* field_name scope 판단 보조
 * candidate 생성
 
 #### 금지
@@ -128,7 +128,7 @@ Publish
 * 승인된 Dictionary 직접 수정
 * canonical description 임의 변경
 * alias 임의 추가/삭제
-* Dictionary term 삭제
+* Dictionary field_name 삭제
 
 Dictionary Skill은 변경 후보를 생성할 수 있지만, 승인된 Dictionary를 직접 수정하지 않는다.
 
@@ -199,7 +199,7 @@ LLM이 생성한 주석이 Dictionary와 정책을 준수하는지 검사한다.
 Semantic Drift 검출은 자유로운 의미 비교 대신 다음 규칙을 우선한다.
 
 ```text
-주석은 해당 term의 canonical_description 또는 approved example 중 하나를 포함해야 한다.
+주석은 해당 field_name의 canonical_description 또는 approved example 중 하나를 포함해야 한다.
 ```
 
 ---
@@ -239,7 +239,7 @@ LLM 가능:
 
 * Dictionary candidate 생성
 * TODO 생성
-* 누락 term 보고
+* 누락 field_name 보고
 
 LLM 불가:
 
@@ -301,7 +301,7 @@ Dictionary는 단순 용어집이 아니라 의미 계약이다.
 ```json
 {
   "owner_key": {
-    "term": "owner_key",
+    "field_name": "owner_key",
     "scope": "global",
     "canonical_description": "Internal key that identifies an owner.",
     "aliases": [
@@ -325,7 +325,7 @@ Dictionary는 단순 용어집이 아니라 의미 계약이다.
     "last_reviewed_at": "2026-06-06"
   },
   "Asset.owner_key": {
-    "term": "owner_key",
+    "field_name": "owner_key",
     "scope": "Asset.owner_key",
     "canonical_description": "Internal key that identifies the asset owner.",
     "aliases": [],
@@ -351,7 +351,7 @@ Dictionary는 단순 용어집이 아니라 의미 계약이다.
 
 | 필드 | 설명 |
 |---|---|
-| `term` | 실제 proto field 또는 domain term 이름 |
+| `field_name` | 실제 proto field 이름 |
 | `scope` | `global` 또는 `Message.field` |
 | `canonical_description` | 승인된 표준 설명 |
 | `aliases` | 허용되는 대체 표현 |
@@ -370,9 +370,9 @@ Dictionary는 단순 용어집이 아니라 의미 계약이다.
 정책:
 
 1. 기본 매핑은 `Message.field` 단위로 한다.
-2. 여러 메시지에서 완전히 같은 의미로 반복되는 경우에만 `global` term으로 승격한다.
+2. 여러 메시지에서 완전히 같은 의미로 반복되는 경우에만 `global` field_name으로 승격한다.
 3. 같은 field 이름이라도 message가 다르면 다른 의미일 수 있다.
-4. `global` term과 scoped term이 모두 존재하면 scoped term이 우선한다.
+4. `global` field_name과 scoped field_name이 모두 존재하면 scoped field_name이 우선한다.
 5. scope 충돌이 발생하면 Candidate로 생성하고 인간 검토를 요구한다.
 
 예시:
@@ -399,8 +399,8 @@ owner_key        → 공통 owner identifier 의미
 
 ```text
 Message.field
-  > Message-level term
-  > global term
+  > Message-level field_name
+  > global field_name
 ```
 
 ---
@@ -435,7 +435,7 @@ LLM 또는 자동화 도구는 승인된 Dictionary를 수정하지 않고 candi
 
 ```json
 {
-  "term": "fusion_material_id",
+  "field_name": "fusion_material_id",
   "scope": "FusionRequest.fusion_material_id",
   "status": "pending_human_review",
   "suggested_description": "TODO: Human review required",
@@ -455,13 +455,13 @@ LLM 또는 자동화 도구는 승인된 Dictionary를 수정하지 않고 candi
 
 승인자는 다음을 확인한다.
 
-* 기존 term과 중복되지 않는가
-* global term인지 scoped term인지 적절한가
+* 기존 field_name과 중복되지 않는가
+* global field_name인지 scoped field_name인지 적절한가
 * canonical description이 도메인 의미를 정확히 담는가
-* alias가 기존 term과 충돌하지 않는가
+* alias가 기존 field_name과 충돌하지 않는가
 * forbidden alias가 충분한가
 * 공개 문서에 노출 가능한 의미인가
-* deprecated term과 충돌하지 않는가
+* deprecated field_name과 충돌하지 않는가
 * owner가 지정되어 있는가
 
 ---
@@ -475,7 +475,7 @@ LLM 또는 자동화 도구는 승인된 Dictionary를 수정하지 않고 candi
 ```json
 {
   "FusionRequest.fusion_material_id": {
-    "term": "fusion_material_id",
+    "field_name": "fusion_material_id",
     "scope": "FusionRequest.fusion_material_id",
     "canonical_description": "Identifier of a material consumed during fusion.",
     "aliases": [],
@@ -500,10 +500,10 @@ LLM 또는 자동화 도구는 승인된 Dictionary를 수정하지 않고 candi
 
 | Rule | 설명 | Local Mode | Pull Request Mode | Main Branch Mode |
 |---|---|---:|---:|---:|
-| Missing Mapping | Proto field에 대응되는 Dictionary term 없음 | Warning + candidate | Fail | Fail |
+| Missing Mapping | Proto field에 대응되는 Dictionary field_name 없음 | Warning + candidate | Fail | Fail |
 | Forbidden Alias | 주석에 금지 표현 포함 | Fail | Fail | Fail |
 | Unknown Semantic | canonical/approved example과 무관한 의미 사용 | Fail | Fail | Fail |
-| Semantic Drift | 동일 term에 서로 다른 의미 설명 사용 | Fail | Fail | Fail |
+| Semantic Drift | 동일 field_name에 서로 다른 의미 설명 사용 | Fail | Fail | Fail |
 | Missing Comment | 공개 proto에 주석 없음 | Warning | Fail 또는 Warning | Fail |
 | Proto AST Changed | 주석 외 Proto 구조 변경 | Fail | Fail | Fail |
 | Dictionary Direct Change | 승인 없이 Dictionary 변경 | Fail | Fail | Fail |
@@ -649,7 +649,7 @@ Dictionary 또는 주석 변경이 잘못된 의미를 포함한 경우 다음 �
 Dictionary 변경은 version을 증가시키고 history에 기록한다.
 
 ```text
-/.proto-docs/dictionary/history/<term>/<version>.json
+/.proto-docs/dictionary/history/<field_name>/<version>.json
 ```
 
 ---

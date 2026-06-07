@@ -1,8 +1,8 @@
 import fs from 'node:fs';
-import { resolveTerm } from './dictionary.ts';
+import { resolveField } from './dictionary.ts';
 
 function fieldComment(dictionary, messageName, fieldName) {
-  const entry = resolveTerm(dictionary, messageName, fieldName);
+  const entry = resolveField(dictionary, messageName, fieldName);
   return entry?.canonical_description ?? null;
 }
 

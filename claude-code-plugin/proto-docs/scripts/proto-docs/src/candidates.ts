@@ -1,6 +1,6 @@
 import fs from 'node:fs';
 import path from 'node:path';
-import { resolveTerm } from './dictionary.ts';
+import { resolveField } from './dictionary.ts';
 import { scanProtoPath } from './protoScanner.ts';
 
 export function findMissingMappings(protoPath, dictionary) {
@@ -8,7 +8,7 @@ export function findMissingMappings(protoPath, dictionary) {
   for (const file of scanProtoPath(protoPath)) {
     for (const message of file.messages) {
       for (const field of message.fields) {
-        if (!resolveTerm(dictionary, message.name, field.name)) {
+        if (!resolveField(dictionary, message.name, field.name)) {
           misses.push({
             file: file.file,
             message: message.name,
@@ -90,19 +90,19 @@ function candidateFileName(messageName) {
   return `${String(messageName).replace(/[^A-Za-z0-9_.-]/g, '_')}.json`;
 }
 
-function aliasFor(term) {
-  const alias = String(term).replace(/_([a-z0-9])/g, (_, ch) => ch.toUpperCase());
-  return alias === term ? [] : [alias];
+function aliasFor(fieldName) {
+  const alias = String(fieldName).replace(/_([a-z0-9])/g, (_, ch) => ch.toUpperCase());
+  return alias === fieldName ? [] : [alias];
 }
 
-function dictionaryEntry({ term, scope, description, detectedAt, source }) {
+function dictionaryEntry({ fieldName, scope, description, detectedAt, source }) {
   return {
-    term,
+    field_name: fieldName,
     scope,
     canonical_description: description,
-    aliases: aliasFor(term),
+    aliases: aliasFor(fieldName),
     forbidden_aliases: [],
-    allowed_contexts: words(term),
+    allowed_contexts: words(fieldName),
     approved_examples: [description],
     status: 'draft_for_human_review',
     version: 1,
@@ -118,7 +118,7 @@ function buildWordDictionary(misses, detectedAt) {
   for (const miss of misses) {
     if (dictionary[miss.field]) continue;
     dictionary[miss.field] = dictionaryEntry({
-      term: miss.field,
+      fieldName: miss.field,
       scope: miss.field,
       description: generalDescriptionFor(miss),
       detectedAt,
@@ -155,7 +155,7 @@ function buildMessageCandidate(messageName, messageMisses, wordDictionary, detec
         inference: {
           has_message_specific_meaning: false,
           candidate_override: dictionaryEntry({
-            term: miss.field,
+            fieldName: miss.field,
             scope: miss.scope,
             description: messageDescriptionFor(miss),
             detectedAt,
@@ -185,9 +185,11 @@ function assertArray(value, label) {
 }
 
 function validateDraftDictionaryEntry(entry, label) {
-  const required = ['term', 'scope', 'canonical_description', 'aliases', 'forbidden_aliases', 'allowed_contexts', 'approved_examples', 'status', 'version', 'owner', 'last_reviewed_at', 'visibility', 'source'];
+  const required = ['field_name', 'scope', 'canonical_description', 'aliases', 'forbidden_aliases', 'allowed_contexts', 'approved_examples', 'status', 'version', 'owner', 'last_reviewed_at', 'visibility', 'source'];
+  const allowed = new Set(required);
   for (const field of required) if (!(field in entry)) throw new Error(`${label} missing ${field}`);
-  assertNonEmptyString(entry.term, `${label}.term`);
+  for (const field of Object.keys(entry ?? {})) if (!allowed.has(field)) throw new Error(`${label} unknown field ${field}`);
+  assertNonEmptyString(entry.field_name, `${label}.field_name`);
   assertNonEmptyString(entry.scope, `${label}.scope`);
   assertNonEmptyString(entry.canonical_description, `${label}.canonical_description`);
   assertArray(entry.aliases, `${label}.aliases`);

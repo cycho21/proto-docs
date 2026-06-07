@@ -4,7 +4,7 @@ import path from 'node:path';
 import crypto from 'node:crypto';
 
 const REQUIRED = [
-  'term',
+  'field_name',
   'scope',
   'canonical_description',
   'aliases',
@@ -101,17 +101,17 @@ function requireApprovalManifest(dictionaryPath, requiredScopes = []) {
 
 function buildEntry(status) {
   const scope = arg('scope');
-  const term = arg('term', scope?.split('.').at(-1));
+  const fieldName = arg('field-name', arg('field_name', scope?.split('.').at(-1)));
   const description = arg('description');
   const owner = arg('owner');
 
   if (!scope) throw new Error('--scope is required');
-  if (!term) throw new Error('--term is required');
+  if (!fieldName) throw new Error('--field-name is required');
   if (!description) throw new Error('--description is required');
   if (!owner) throw new Error('--owner is required');
 
   return {
-    term,
+    field_name: fieldName,
     scope,
     canonical_description: description,
     aliases: list(arg('aliases', '')),
@@ -147,7 +147,7 @@ function validateEntry(key, entry) {
       }
     }
   }
-  for (const field of ['term', 'scope', 'canonical_description', 'owner']) {
+  for (const field of ['field_name', 'scope', 'canonical_description', 'owner']) {
     if (field in entry && (typeof entry[field] !== 'string' || entry[field].trim() === '')) issues.push(`${key}: ${field} must be a non-empty string`);
   }
   if (entry.scope && entry.scope !== key) issues.push(`${key}: scope must match dictionary key`);

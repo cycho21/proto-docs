@@ -16,7 +16,7 @@
       "number": 1,
       "word_dictionary_scope": "tenant_key",
       "word_dictionary_entry": {
-        "term": "tenant_key",
+        "field_name": "tenant_key",
         "scope": "tenant_key",
         "canonical_description": "Key that identifies the tenant.",
         "aliases": [
@@ -43,7 +43,7 @@
       "inference": {
         "has_message_specific_meaning": false,
         "candidate_override": {
-          "term": "tenant_key",
+          "field_name": "tenant_key",
           "scope": "ExportSettlementReportRequest.tenant_key",
           "canonical_description": "Key that identifies the tenant in the export settlement report request.",
           "aliases": [
@@ -82,7 +82,7 @@
       "number": 2,
       "word_dictionary_scope": "report_key",
       "word_dictionary_entry": {
-        "term": "report_key",
+        "field_name": "report_key",
         "scope": "report_key",
         "canonical_description": "Key that identifies the report.",
         "aliases": [
@@ -109,7 +109,7 @@
       "inference": {
         "has_message_specific_meaning": false,
         "candidate_override": {
-          "term": "report_key",
+          "field_name": "report_key",
           "scope": "ExportSettlementReportRequest.report_key",
           "canonical_description": "Key that identifies the report in the export settlement report request.",
           "aliases": [
@@ -148,7 +148,7 @@
       "number": 3,
       "word_dictionary_scope": "export_format",
       "word_dictionary_entry": {
-        "term": "export_format",
+        "field_name": "export_format",
         "scope": "export_format",
         "canonical_description": "Export Format value.",
         "aliases": [
@@ -175,7 +175,7 @@
       "inference": {
         "has_message_specific_meaning": false,
         "candidate_override": {
-          "term": "export_format",
+          "field_name": "export_format",
           "scope": "ExportSettlementReportRequest.export_format",
           "canonical_description": "Export Format for the export settlement report request.",
           "aliases": [
@@ -214,7 +214,7 @@
       "number": 4,
       "word_dictionary_scope": "delivery_target",
       "word_dictionary_entry": {
-        "term": "delivery_target",
+        "field_name": "delivery_target",
         "scope": "delivery_target",
         "canonical_description": "Delivery Target value.",
         "aliases": [
@@ -241,7 +241,7 @@
       "inference": {
         "has_message_specific_meaning": false,
         "candidate_override": {
-          "term": "delivery_target",
+          "field_name": "delivery_target",
           "scope": "ExportSettlementReportRequest.delivery_target",
           "canonical_description": "Delivery Target for the export settlement report request.",
           "aliases": [
@@ -280,7 +280,7 @@
       "number": 5,
       "word_dictionary_scope": "requested_by",
       "word_dictionary_entry": {
-        "term": "requested_by",
+        "field_name": "requested_by",
         "scope": "requested_by",
         "canonical_description": "Requested By value.",
         "aliases": [
@@ -307,7 +307,7 @@
       "inference": {
         "has_message_specific_meaning": false,
         "candidate_override": {
-          "term": "requested_by",
+          "field_name": "requested_by",
           "scope": "ExportSettlementReportRequest.requested_by",
           "canonical_description": "Requested By for the export settlement report request.",
           "aliases": [

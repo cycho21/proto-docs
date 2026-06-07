@@ -16,7 +16,7 @@
       "number": 1,
       "word_dictionary_scope": "tenant_key",
       "word_dictionary_entry": {
-        "term": "tenant_key",
+        "field_name": "tenant_key",
         "scope": "tenant_key",
         "canonical_description": "Key that identifies the tenant.",
         "aliases": [
@@ -43,7 +43,7 @@
       "inference": {
         "has_message_specific_meaning": false,
         "candidate_override": {
-          "term": "tenant_key",
+          "field_name": "tenant_key",
           "scope": "CreateTransferRequest.tenant_key",
           "canonical_description": "Key that identifies the tenant in the create transfer request.",
           "aliases": [
@@ -82,7 +82,7 @@
       "number": 2,
       "word_dictionary_scope": "source_warehouse_key",
       "word_dictionary_entry": {
-        "term": "source_warehouse_key",
+        "field_name": "source_warehouse_key",
         "scope": "source_warehouse_key",
         "canonical_description": "Key that identifies the source warehouse.",
         "aliases": [
@@ -110,7 +110,7 @@
       "inference": {
         "has_message_specific_meaning": false,
         "candidate_override": {
-          "term": "source_warehouse_key",
+          "field_name": "source_warehouse_key",
           "scope": "CreateTransferRequest.source_warehouse_key",
           "canonical_description": "Key that identifies the source warehouse in the create transfer request.",
           "aliases": [
@@ -150,7 +150,7 @@
       "number": 3,
       "word_dictionary_scope": "destination_warehouse_key",
       "word_dictionary_entry": {
-        "term": "destination_warehouse_key",
+        "field_name": "destination_warehouse_key",
         "scope": "destination_warehouse_key",
         "canonical_description": "Key that identifies the destination warehouse.",
         "aliases": [
@@ -178,7 +178,7 @@
       "inference": {
         "has_message_specific_meaning": false,
         "candidate_override": {
-          "term": "destination_warehouse_key",
+          "field_name": "destination_warehouse_key",
           "scope": "CreateTransferRequest.destination_warehouse_key",
           "canonical_description": "Key that identifies the destination warehouse in the create transfer request.",
           "aliases": [
@@ -218,7 +218,7 @@
       "number": 4,
       "word_dictionary_scope": "transfer_reason",
       "word_dictionary_entry": {
-        "term": "transfer_reason",
+        "field_name": "transfer_reason",
         "scope": "transfer_reason",
         "canonical_description": "Reason associated with transfer.",
         "aliases": [
@@ -245,7 +245,7 @@
       "inference": {
         "has_message_specific_meaning": false,
         "candidate_override": {
-          "term": "transfer_reason",
+          "field_name": "transfer_reason",
           "scope": "CreateTransferRequest.transfer_reason",
           "canonical_description": "Reason associated with the create transfer request.",
           "aliases": [
@@ -284,7 +284,7 @@
       "number": 5,
       "word_dictionary_scope": "lines",
       "word_dictionary_entry": {
-        "term": "lines",
+        "field_name": "lines",
         "scope": "lines",
         "canonical_description": "Lines value.",
         "aliases": [],
@@ -308,7 +308,7 @@
       "inference": {
         "has_message_specific_meaning": false,
         "candidate_override": {
-          "term": "lines",
+          "field_name": "lines",
           "scope": "CreateTransferRequest.lines",
           "canonical_description": "Lines value for the create transfer request.",
           "aliases": [],
@@ -344,7 +344,7 @@
       "number": 6,
       "word_dictionary_scope": "requested_by",
       "word_dictionary_entry": {
-        "term": "requested_by",
+        "field_name": "requested_by",
         "scope": "requested_by",
         "canonical_description": "Requested By value.",
         "aliases": [
@@ -371,7 +371,7 @@
       "inference": {
         "has_message_specific_meaning": false,
         "candidate_override": {
-          "term": "requested_by",
+          "field_name": "requested_by",
           "scope": "CreateTransferRequest.requested_by",
           "canonical_description": "Requested By for the create transfer request.",
           "aliases": [

@@ -3,65 +3,214 @@
   "$id": "https://example.local/proto-docs/candidate-dictionary.schema.json",
   "title": "Proto Docs Candidate Dictionary Bundle",
   "type": "object",
-  "required": ["word_dictionary", "messages"],
+  "required": [
+    "word_dictionary",
+    "messages"
+  ],
   "properties": {
     "word_dictionary": {
       "type": "object",
-      "additionalProperties": { "$ref": "#/$defs/draftDictionaryEntry" }
+      "additionalProperties": {
+        "$ref": "#/$defs/draftDictionaryEntry"
+      }
     },
     "messages": {
       "type": "array",
-      "items": { "$ref": "#/$defs/messageCandidate" }
+      "items": {
+        "$ref": "#/$defs/messageCandidate"
+      }
     }
   },
   "$defs": {
     "draftDictionaryEntry": {
       "type": "object",
-      "required": ["term", "scope", "canonical_description", "aliases", "forbidden_aliases", "allowed_contexts", "approved_examples", "status", "version", "owner", "last_reviewed_at", "visibility", "source"],
+      "required": [
+        "field_name",
+        "scope",
+        "canonical_description",
+        "aliases",
+        "forbidden_aliases",
+        "allowed_contexts",
+        "approved_examples",
+        "status",
+        "version",
+        "owner",
+        "last_reviewed_at",
+        "visibility",
+        "source"
+      ],
       "properties": {
-        "term": { "type": "string", "minLength": 1 },
-        "scope": { "type": "string", "minLength": 1 },
-        "canonical_description": { "type": "string", "minLength": 1 },
-        "aliases": { "type": "array", "items": { "type": "string", "minLength": 1 }, "uniqueItems": true },
-        "forbidden_aliases": { "type": "array", "items": { "type": "string", "minLength": 1 }, "uniqueItems": true },
-        "allowed_contexts": { "type": "array", "items": { "type": "string", "minLength": 1 }, "uniqueItems": true },
-        "approved_examples": { "type": "array", "items": { "type": "string", "minLength": 1 }, "minItems": 1, "uniqueItems": true },
-        "status": { "const": "draft_for_human_review" },
-        "version": { "type": "integer", "minimum": 1 },
-        "owner": { "type": "string", "minLength": 1 },
-        "last_reviewed_at": { "type": "string", "pattern": "^\\d{4}-\\d{2}-\\d{2}$" },
-        "visibility": { "enum": ["public", "internal", "restricted"] },
-        "source": { "type": "string", "minLength": 1 }
+        "field_name": {
+          "type": "string",
+          "minLength": 1
+        },
+        "scope": {
+          "type": "string",
+          "minLength": 1
+        },
+        "canonical_description": {
+          "type": "string",
+          "minLength": 1
+        },
+        "aliases": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "uniqueItems": true
+        },
+        "forbidden_aliases": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "uniqueItems": true
+        },
+        "allowed_contexts": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "uniqueItems": true
+        },
+        "approved_examples": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "minItems": 1,
+          "uniqueItems": true
+        },
+        "status": {
+          "const": "draft_for_human_review"
+        },
+        "version": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "owner": {
+          "type": "string",
+          "minLength": 1
+        },
+        "last_reviewed_at": {
+          "type": "string",
+          "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
+        },
+        "visibility": {
+          "enum": [
+            "public",
+            "internal",
+            "restricted"
+          ]
+        },
+        "source": {
+          "type": "string",
+          "minLength": 1
+        }
       },
       "additionalProperties": false
     },
     "messageCandidate": {
       "type": "object",
-      "required": ["candidate_type", "message_name", "status", "detected_at", "fields"],
+      "required": [
+        "candidate_type",
+        "message_name",
+        "status",
+        "detected_at",
+        "fields"
+      ],
       "properties": {
-        "candidate_type": { "const": "message_dictionary" },
-        "message_name": { "type": "string", "minLength": 1 },
-        "file": { "type": "string" },
-        "status": { "const": "pending_human_review" },
-        "detected_at": { "type": "string", "pattern": "^\\d{4}-\\d{2}-\\d{2}$" },
-        "review_notes": { "type": "array", "items": { "type": "string" } },
+        "candidate_type": {
+          "const": "message_dictionary"
+        },
+        "message_name": {
+          "type": "string",
+          "minLength": 1
+        },
+        "file": {
+          "type": "string"
+        },
+        "status": {
+          "const": "pending_human_review"
+        },
+        "detected_at": {
+          "type": "string",
+          "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
+        },
+        "review_notes": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
         "fields": {
           "type": "array",
           "items": {
             "type": "object",
-            "required": ["field_name", "field_type", "repeated", "number", "word_dictionary_scope", "word_dictionary_entry", "message_field_scope", "effective_dictionary_scope", "message_dictionary_override", "inference", "evidence"],
+            "required": [
+              "field_name",
+              "field_type",
+              "repeated",
+              "number",
+              "word_dictionary_scope",
+              "word_dictionary_entry",
+              "message_field_scope",
+              "effective_dictionary_scope",
+              "message_dictionary_override",
+              "inference",
+              "evidence"
+            ],
             "properties": {
-              "field_name": { "type": "string", "minLength": 1 },
-              "field_type": { "type": "string", "minLength": 1 },
-              "repeated": { "type": "boolean" },
-              "number": { "type": "integer", "minimum": 1 },
-              "word_dictionary_scope": { "type": "string", "minLength": 1 },
-              "word_dictionary_entry": { "$ref": "#/$defs/draftDictionaryEntry" },
-              "message_field_scope": { "type": "string", "minLength": 1 },
-              "effective_dictionary_scope": { "type": "string", "minLength": 1 },
-              "message_dictionary_override": { "anyOf": [{ "type": "null" }, { "$ref": "#/$defs/draftDictionaryEntry" }] },
-              "inference": { "type": "object" },
-              "evidence": { "type": "object" }
+              "field_name": {
+                "type": "string",
+                "minLength": 1
+              },
+              "field_type": {
+                "type": "string",
+                "minLength": 1
+              },
+              "repeated": {
+                "type": "boolean"
+              },
+              "number": {
+                "type": "integer",
+                "minimum": 1
+              },
+              "word_dictionary_scope": {
+                "type": "string",
+                "minLength": 1
+              },
+              "word_dictionary_entry": {
+                "$ref": "#/$defs/draftDictionaryEntry"
+              },
+              "message_field_scope": {
+                "type": "string",
+                "minLength": 1
+              },
+              "effective_dictionary_scope": {
+                "type": "string",
+                "minLength": 1
+              },
+              "message_dictionary_override": {
+                "anyOf": [
+                  {
+                    "type": "null"
+                  },
+                  {
+                    "$ref": "#/$defs/draftDictionaryEntry"
+                  }
+                ]
+              },
+              "inference": {
+                "type": "object"
+              },
+              "evidence": {
+                "type": "object"
+              }
             },
             "additionalProperties": false
           }

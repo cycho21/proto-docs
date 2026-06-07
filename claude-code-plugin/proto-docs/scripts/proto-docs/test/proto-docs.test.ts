@@ -38,6 +38,7 @@ test('missing mapping is detected and message candidate file is generated', () =
   assert.equal(path.basename(written.messages[0]), 'FusionRequest.json');
   assert.deepEqual(validateCandidateOutput(out).ok, true);
   const wordDictionary = JSON.parse(fs.readFileSync(written.wordDictionary, 'utf8'));
+  assert.equal(wordDictionary.fusion_material_id.field_name, 'fusion_material_id');
   assert.equal(wordDictionary.fusion_material_id.scope, 'fusion_material_id');
   assert.equal(wordDictionary.fusion_material_id.status, 'draft_for_human_review');
   const candidate = JSON.parse(fs.readFileSync(written.messages[0], 'utf8'));
@@ -55,6 +56,18 @@ test('missing mapping is detected and message candidate file is generated', () =
   assert.notEqual(candidate.fields[0].word_dictionary_entry.canonical_description, 'TODO: Human review required');
   assert.match(candidate.fields[0].word_dictionary_entry.canonical_description, /fusion material/i);
   assert.match(candidate.fields[0].inference.candidate_override.canonical_description, /fusion request/i);
+});
+
+test('candidate validation rejects stale term field after field_name migration', () => {
+  const out = tmpDir();
+  writeCandidates([
+    { file: 'sample.proto', message: 'SampleRequest', field: 'sample_key', field_type: 'string', repeated: false, number: 1, scope: 'SampleRequest.sample_key' }
+  ], out, '2026-06-06');
+  const dictionaryPath = path.join(out, 'word-dictionary.json');
+  const dictionary = JSON.parse(fs.readFileSync(dictionaryPath, 'utf8'));
+  dictionary.sample_key.term = 'sample_key';
+  fs.writeFileSync(dictionaryPath, `${JSON.stringify(dictionary, null, 2)}\n`);
+  assert.throws(() => validateCandidateOutput(out), /unknown field term/);
 });
 
 test('message override candidate can be promoted and still validates', () => {

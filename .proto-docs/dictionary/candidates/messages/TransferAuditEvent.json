@@ -16,7 +16,7 @@
       "number": 1,
       "word_dictionary_scope": "transfer_key",
       "word_dictionary_entry": {
-        "term": "transfer_key",
+        "field_name": "transfer_key",
         "scope": "transfer_key",
         "canonical_description": "Key that identifies the transfer.",
         "aliases": [
@@ -43,7 +43,7 @@
       "inference": {
         "has_message_specific_meaning": false,
         "candidate_override": {
-          "term": "transfer_key",
+          "field_name": "transfer_key",
           "scope": "TransferAuditEvent.transfer_key",
           "canonical_description": "Key that identifies the transfer in the transfer audit event.",
           "aliases": [
@@ -82,7 +82,7 @@
       "number": 2,
       "word_dictionary_scope": "event_type",
       "word_dictionary_entry": {
-        "term": "event_type",
+        "field_name": "event_type",
         "scope": "event_type",
         "canonical_description": "Event Type value.",
         "aliases": [
@@ -109,7 +109,7 @@
       "inference": {
         "has_message_specific_meaning": false,
         "candidate_override": {
-          "term": "event_type",
+          "field_name": "event_type",
           "scope": "TransferAuditEvent.event_type",
           "canonical_description": "Event Type for the transfer audit event.",
           "aliases": [
@@ -148,7 +148,7 @@
       "number": 3,
       "word_dictionary_scope": "actor_key",
       "word_dictionary_entry": {
-        "term": "actor_key",
+        "field_name": "actor_key",
         "scope": "actor_key",
         "canonical_description": "Key that identifies the actor.",
         "aliases": [
@@ -175,7 +175,7 @@
       "inference": {
         "has_message_specific_meaning": false,
         "candidate_override": {
-          "term": "actor_key",
+          "field_name": "actor_key",
           "scope": "TransferAuditEvent.actor_key",
           "canonical_description": "Key that identifies the actor in the transfer audit event.",
           "aliases": [
@@ -214,7 +214,7 @@
       "number": 4,
       "word_dictionary_scope": "previous_status",
       "word_dictionary_entry": {
-        "term": "previous_status",
+        "field_name": "previous_status",
         "scope": "previous_status",
         "canonical_description": "Status value for previous.",
         "aliases": [
@@ -241,7 +241,7 @@
       "inference": {
         "has_message_specific_meaning": false,
         "candidate_override": {
-          "term": "previous_status",
+          "field_name": "previous_status",
           "scope": "TransferAuditEvent.previous_status",
           "canonical_description": "Status value for the transfer audit event.",
           "aliases": [
@@ -280,7 +280,7 @@
       "number": 5,
       "word_dictionary_scope": "next_status",
       "word_dictionary_entry": {
-        "term": "next_status",
+        "field_name": "next_status",
         "scope": "next_status",
         "canonical_description": "Status value for next.",
         "aliases": [
@@ -307,7 +307,7 @@
       "inference": {
         "has_message_specific_meaning": false,
         "candidate_override": {
-          "term": "next_status",
+          "field_name": "next_status",
           "scope": "TransferAuditEvent.next_status",
           "canonical_description": "Status value for the transfer audit event.",
           "aliases": [
@@ -346,7 +346,7 @@
       "number": 6,
       "word_dictionary_scope": "event_note",
       "word_dictionary_entry": {
-        "term": "event_note",
+        "field_name": "event_note",
         "scope": "event_note",
         "canonical_description": "Free-form note for event.",
         "aliases": [
@@ -373,7 +373,7 @@
       "inference": {
         "has_message_specific_meaning": false,
         "candidate_override": {
-          "term": "event_note",
+          "field_name": "event_note",
           "scope": "TransferAuditEvent.event_note",
           "canonical_description": "Free-form note for the transfer audit event.",
           "aliases": [
@@ -412,7 +412,7 @@
       "number": 7,
       "word_dictionary_scope": "event_at",
       "word_dictionary_entry": {
-        "term": "event_at",
+        "field_name": "event_at",
         "scope": "event_at",
         "canonical_description": "Timestamp when the event occurs.",
         "aliases": [
@@ -439,7 +439,7 @@
       "inference": {
         "has_message_specific_meaning": false,
         "candidate_override": {
-          "term": "event_at",
+          "field_name": "event_at",
           "scope": "TransferAuditEvent.event_at",
           "canonical_description": "Timestamp when the event occurs in the transfer audit event.",
           "aliases": [

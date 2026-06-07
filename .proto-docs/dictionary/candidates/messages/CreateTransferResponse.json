@@ -16,7 +16,7 @@
       "number": 1,
       "word_dictionary_scope": "transfer_key",
       "word_dictionary_entry": {
-        "term": "transfer_key",
+        "field_name": "transfer_key",
         "scope": "transfer_key",
         "canonical_description": "Key that identifies the transfer.",
         "aliases": [
@@ -43,7 +43,7 @@
       "inference": {
         "has_message_specific_meaning": false,
         "candidate_override": {
-          "term": "transfer_key",
+          "field_name": "transfer_key",
           "scope": "CreateTransferResponse.transfer_key",
           "canonical_description": "Key that identifies the transfer in the create transfer response.",
           "aliases": [
@@ -82,7 +82,7 @@
       "number": 2,
       "word_dictionary_scope": "transfer_status",
       "word_dictionary_entry": {
-        "term": "transfer_status",
+        "field_name": "transfer_status",
         "scope": "transfer_status",
         "canonical_description": "Status value for transfer.",
         "aliases": [
@@ -109,7 +109,7 @@
       "inference": {
         "has_message_specific_meaning": false,
         "candidate_override": {
-          "term": "transfer_status",
+          "field_name": "transfer_status",
           "scope": "CreateTransferResponse.transfer_status",
           "canonical_description": "Status value for the create transfer response.",
           "aliases": [
@@ -148,7 +148,7 @@
       "number": 3,
       "word_dictionary_scope": "accepted_lines",
       "word_dictionary_entry": {
-        "term": "accepted_lines",
+        "field_name": "accepted_lines",
         "scope": "accepted_lines",
         "canonical_description": "Accepted Lines value.",
         "aliases": [
@@ -175,7 +175,7 @@
       "inference": {
         "has_message_specific_meaning": false,
         "candidate_override": {
-          "term": "accepted_lines",
+          "field_name": "accepted_lines",
           "scope": "CreateTransferResponse.accepted_lines",
           "canonical_description": "Accepted Lines value for the create transfer response.",
           "aliases": [
@@ -214,7 +214,7 @@
       "number": 4,
       "word_dictionary_scope": "rejected_lines",
       "word_dictionary_entry": {
-        "term": "rejected_lines",
+        "field_name": "rejected_lines",
         "scope": "rejected_lines",
         "canonical_description": "Rejected Lines value.",
         "aliases": [
@@ -241,7 +241,7 @@
       "inference": {
         "has_message_specific_meaning": false,
         "candidate_override": {
-          "term": "rejected_lines",
+          "field_name": "rejected_lines",
           "scope": "CreateTransferResponse.rejected_lines",
           "canonical_description": "Rejected Lines value for the create transfer response.",
           "aliases": [
@@ -280,7 +280,7 @@
       "number": 5,
       "word_dictionary_scope": "created_at",
       "word_dictionary_entry": {
-        "term": "created_at",
+        "field_name": "created_at",
         "scope": "created_at",
         "canonical_description": "Timestamp for the created event.",
         "aliases": [
@@ -307,7 +307,7 @@
       "inference": {
         "has_message_specific_meaning": false,
         "candidate_override": {
-          "term": "created_at",
+          "field_name": "created_at",
           "scope": "CreateTransferResponse.created_at",
           "canonical_description": "Timestamp for the created event in the create transfer response.",
           "aliases": [

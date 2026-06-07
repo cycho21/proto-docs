@@ -16,7 +16,7 @@
       "number": 1,
       "word_dictionary_scope": "assets",
       "word_dictionary_entry": {
-        "term": "assets",
+        "field_name": "assets",
         "scope": "assets",
         "canonical_description": "Assets value.",
         "aliases": [],
@@ -40,7 +40,7 @@
       "inference": {
         "has_message_specific_meaning": false,
         "candidate_override": {
-          "term": "assets",
+          "field_name": "assets",
           "scope": "ListAssetsResponse.assets",
           "canonical_description": "Assets value for the list assets response.",
           "aliases": [],
@@ -76,7 +76,7 @@
       "number": 2,
       "word_dictionary_scope": "next_page_token",
       "word_dictionary_entry": {
-        "term": "next_page_token",
+        "field_name": "next_page_token",
         "scope": "next_page_token",
         "canonical_description": "Next page token for pagination or state progression.",
         "aliases": [
@@ -104,7 +104,7 @@
       "inference": {
         "has_message_specific_meaning": false,
         "candidate_override": {
-          "term": "next_page_token",
+          "field_name": "next_page_token",
           "scope": "ListAssetsResponse.next_page_token",
           "canonical_description": "Next page token for the list assets response.",
           "aliases": [
@@ -144,7 +144,7 @@
       "number": 3,
       "word_dictionary_scope": "total_count",
       "word_dictionary_entry": {
-        "term": "total_count",
+        "field_name": "total_count",
         "scope": "total_count",
         "canonical_description": "Total Count value.",
         "aliases": [
@@ -171,7 +171,7 @@
       "inference": {
         "has_message_specific_meaning": false,
         "candidate_override": {
-          "term": "total_count",
+          "field_name": "total_count",
           "scope": "ListAssetsResponse.total_count",
           "canonical_description": "Total count for the list assets response.",
           "aliases": [

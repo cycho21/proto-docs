@@ -11,7 +11,7 @@
       "type": "object",
       "additionalProperties": false,
       "required": [
-        "term",
+        "field_name",
         "scope",
         "canonical_description",
         "aliases",
@@ -25,7 +25,7 @@
         "visibility"
       ],
       "properties": {
-        "term": {
+        "field_name": {
           "type": "string",
           "minLength": 1,
           "pattern": "^[a-z][a-z0-9_]*$"
@@ -41,22 +41,34 @@
         },
         "aliases": {
           "type": "array",
-          "items": { "type": "string", "minLength": 1 },
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
           "uniqueItems": true
         },
         "forbidden_aliases": {
           "type": "array",
-          "items": { "type": "string", "minLength": 1 },
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
           "uniqueItems": true
         },
         "allowed_contexts": {
           "type": "array",
-          "items": { "type": "string", "minLength": 1 },
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
           "uniqueItems": true
         },
         "approved_examples": {
           "type": "array",
-          "items": { "type": "string", "minLength": 1 },
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
           "minItems": 1,
           "uniqueItems": true
         },
@@ -76,7 +88,11 @@
           "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
         },
         "visibility": {
-          "enum": ["public", "internal", "restricted"]
+          "enum": [
+            "public",
+            "internal",
+            "restricted"
+          ]
         }
       }
     }

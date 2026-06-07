@@ -16,7 +16,7 @@
       "number": 1,
       "word_dictionary_scope": "tenant_key",
       "word_dictionary_entry": {
-        "term": "tenant_key",
+        "field_name": "tenant_key",
         "scope": "tenant_key",
         "canonical_description": "Key that identifies the tenant.",
         "aliases": [
@@ -43,7 +43,7 @@
       "inference": {
         "has_message_specific_meaning": false,
         "candidate_override": {
-          "term": "tenant_key",
+          "field_name": "tenant_key",
           "scope": "ListAssetsRequest.tenant_key",
           "canonical_description": "Key that identifies the tenant in the list assets request.",
           "aliases": [
@@ -82,7 +82,7 @@
       "number": 2,
       "word_dictionary_scope": "warehouse_key",
       "word_dictionary_entry": {
-        "term": "warehouse_key",
+        "field_name": "warehouse_key",
         "scope": "warehouse_key",
         "canonical_description": "Key that identifies the warehouse.",
         "aliases": [
@@ -109,7 +109,7 @@
       "inference": {
         "has_message_specific_meaning": false,
         "candidate_override": {
-          "term": "warehouse_key",
+          "field_name": "warehouse_key",
           "scope": "ListAssetsRequest.warehouse_key",
           "canonical_description": "Key that identifies the warehouse in the list assets request.",
           "aliases": [
@@ -148,7 +148,7 @@
       "number": 3,
       "word_dictionary_scope": "asset_keys",
       "word_dictionary_entry": {
-        "term": "asset_keys",
+        "field_name": "asset_keys",
         "scope": "asset_keys",
         "canonical_description": "Keys that identify the asset values.",
         "aliases": [
@@ -175,7 +175,7 @@
       "inference": {
         "has_message_specific_meaning": false,
         "candidate_override": {
-          "term": "asset_keys",
+          "field_name": "asset_keys",
           "scope": "ListAssetsRequest.asset_keys",
           "canonical_description": "Keys that identify the asset values used by the list assets request.",
           "aliases": [
@@ -214,7 +214,7 @@
       "number": 4,
       "word_dictionary_scope": "lifecycle_status",
       "word_dictionary_entry": {
-        "term": "lifecycle_status",
+        "field_name": "lifecycle_status",
         "scope": "lifecycle_status",
         "canonical_description": "Status value for lifecycle.",
         "aliases": [
@@ -241,7 +241,7 @@
       "inference": {
         "has_message_specific_meaning": false,
         "candidate_override": {
-          "term": "lifecycle_status",
+          "field_name": "lifecycle_status",
           "scope": "ListAssetsRequest.lifecycle_status",
           "canonical_description": "Status value for the list assets request.",
           "aliases": [
@@ -280,7 +280,7 @@
       "number": 5,
       "word_dictionary_scope": "page_size",
       "word_dictionary_entry": {
-        "term": "page_size",
+        "field_name": "page_size",
         "scope": "page_size",
         "canonical_description": "Page Size value.",
         "aliases": [
@@ -307,7 +307,7 @@
       "inference": {
         "has_message_specific_meaning": false,
         "candidate_override": {
-          "term": "page_size",
+          "field_name": "page_size",
           "scope": "ListAssetsRequest.page_size",
           "canonical_description": "Page Size value for the list assets request.",
           "aliases": [
@@ -346,7 +346,7 @@
       "number": 6,
       "word_dictionary_scope": "page_token",
       "word_dictionary_entry": {
-        "term": "page_token",
+        "field_name": "page_token",
         "scope": "page_token",
         "canonical_description": "Page Token value.",
         "aliases": [
@@ -373,7 +373,7 @@
       "inference": {
         "has_message_specific_meaning": false,
         "candidate_override": {
-          "term": "page_token",
+          "field_name": "page_token",
           "scope": "ListAssetsRequest.page_token",
           "canonical_description": "Page Token for the list assets request.",
           "aliases": [

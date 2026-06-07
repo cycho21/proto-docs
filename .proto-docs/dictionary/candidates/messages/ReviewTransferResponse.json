@@ -16,7 +16,7 @@
       "number": 1,
       "word_dictionary_scope": "transfer_key",
       "word_dictionary_entry": {
-        "term": "transfer_key",
+        "field_name": "transfer_key",
         "scope": "transfer_key",
         "canonical_description": "Key that identifies the transfer.",
         "aliases": [
@@ -43,7 +43,7 @@
       "inference": {
         "has_message_specific_meaning": false,
         "candidate_override": {
-          "term": "transfer_key",
+          "field_name": "transfer_key",
           "scope": "ReviewTransferResponse.transfer_key",
           "canonical_description": "Key that identifies the transfer in the review transfer response.",
           "aliases": [
@@ -82,7 +82,7 @@
       "number": 2,
       "word_dictionary_scope": "transfer_status",
       "word_dictionary_entry": {
-        "term": "transfer_status",
+        "field_name": "transfer_status",
         "scope": "transfer_status",
         "canonical_description": "Status value for transfer.",
         "aliases": [
@@ -109,7 +109,7 @@
       "inference": {
         "has_message_specific_meaning": false,
         "candidate_override": {
-          "term": "transfer_status",
+          "field_name": "transfer_status",
           "scope": "ReviewTransferResponse.transfer_status",
           "canonical_description": "Status value for the review transfer response.",
           "aliases": [
@@ -148,7 +148,7 @@
       "number": 3,
       "word_dictionary_scope": "reviewed_by",
       "word_dictionary_entry": {
-        "term": "reviewed_by",
+        "field_name": "reviewed_by",
         "scope": "reviewed_by",
         "canonical_description": "Reviewed By value.",
         "aliases": [
@@ -175,7 +175,7 @@
       "inference": {
         "has_message_specific_meaning": false,
         "candidate_override": {
-          "term": "reviewed_by",
+          "field_name": "reviewed_by",
           "scope": "ReviewTransferResponse.reviewed_by",
           "canonical_description": "Reviewed By for the review transfer response.",
           "aliases": [
@@ -214,7 +214,7 @@
       "number": 4,
       "word_dictionary_scope": "reviewed_at",
       "word_dictionary_entry": {
-        "term": "reviewed_at",
+        "field_name": "reviewed_at",
         "scope": "reviewed_at",
         "canonical_description": "Timestamp for the reviewed event.",
         "aliases": [
@@ -241,7 +241,7 @@
       "inference": {
         "has_message_specific_meaning": false,
         "candidate_override": {
-          "term": "reviewed_at",
+          "field_name": "reviewed_at",
           "scope": "ReviewTransferResponse.reviewed_at",
           "canonical_description": "Timestamp for the reviewed event in the review transfer response.",
           "aliases": [

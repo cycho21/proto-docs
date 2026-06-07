@@ -16,7 +16,7 @@
       "number": 1,
       "word_dictionary_scope": "asset_key",
       "word_dictionary_entry": {
-        "term": "asset_key",
+        "field_name": "asset_key",
         "scope": "asset_key",
         "canonical_description": "Key that identifies the asset.",
         "aliases": [
@@ -43,7 +43,7 @@
       "inference": {
         "has_message_specific_meaning": false,
         "candidate_override": {
-          "term": "asset_key",
+          "field_name": "asset_key",
           "scope": "ReserveInventoryResult.asset_key",
           "canonical_description": "Key that identifies the asset in the reserve inventory result.",
           "aliases": [
@@ -82,7 +82,7 @@
       "number": 2,
       "word_dictionary_scope": "sku_code",
       "word_dictionary_entry": {
-        "term": "sku_code",
+        "field_name": "sku_code",
         "scope": "sku_code",
         "canonical_description": "Code value for sku.",
         "aliases": [
@@ -109,7 +109,7 @@
       "inference": {
         "has_message_specific_meaning": false,
         "candidate_override": {
-          "term": "sku_code",
+          "field_name": "sku_code",
           "scope": "ReserveInventoryResult.sku_code",
           "canonical_description": "Code value for the sku in the reserve inventory result.",
           "aliases": [
@@ -148,7 +148,7 @@
       "number": 3,
       "word_dictionary_scope": "requested_quantity",
       "word_dictionary_entry": {
-        "term": "requested_quantity",
+        "field_name": "requested_quantity",
         "scope": "requested_quantity",
         "canonical_description": "Quantity value for requested.",
         "aliases": [
@@ -175,7 +175,7 @@
       "inference": {
         "has_message_specific_meaning": false,
         "candidate_override": {
-          "term": "requested_quantity",
+          "field_name": "requested_quantity",
           "scope": "ReserveInventoryResult.requested_quantity",
           "canonical_description": "Quantity value for the requested in the reserve inventory result.",
           "aliases": [
@@ -214,7 +214,7 @@
       "number": 4,
       "word_dictionary_scope": "reserved_quantity",
       "word_dictionary_entry": {
-        "term": "reserved_quantity",
+        "field_name": "reserved_quantity",
         "scope": "reserved_quantity",
         "canonical_description": "Quantity value for reserved.",
         "aliases": [
@@ -241,7 +241,7 @@
       "inference": {
         "has_message_specific_meaning": false,
         "candidate_override": {
-          "term": "reserved_quantity",
+          "field_name": "reserved_quantity",
           "scope": "ReserveInventoryResult.reserved_quantity",
           "canonical_description": "Quantity value for the reserved in the reserve inventory result.",
           "aliases": [
@@ -280,7 +280,7 @@
       "number": 5,
       "word_dictionary_scope": "failure_reason",
       "word_dictionary_entry": {
-        "term": "failure_reason",
+        "field_name": "failure_reason",
         "scope": "failure_reason",
         "canonical_description": "Reason associated with failure.",
         "aliases": [
@@ -307,7 +307,7 @@
       "inference": {
         "has_message_specific_meaning": false,
         "candidate_override": {
-          "term": "failure_reason",
+          "field_name": "failure_reason",
           "scope": "ReserveInventoryResult.failure_reason",
           "canonical_description": "Reason associated with the reserve inventory result.",
           "aliases": [

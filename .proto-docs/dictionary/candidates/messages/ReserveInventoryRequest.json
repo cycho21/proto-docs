@@ -16,7 +16,7 @@
       "number": 1,
       "word_dictionary_scope": "tenant_key",
       "word_dictionary_entry": {
-        "term": "tenant_key",
+        "field_name": "tenant_key",
         "scope": "tenant_key",
         "canonical_description": "Key that identifies the tenant.",
         "aliases": [
@@ -43,7 +43,7 @@
       "inference": {
         "has_message_specific_meaning": false,
         "candidate_override": {
-          "term": "tenant_key",
+          "field_name": "tenant_key",
           "scope": "ReserveInventoryRequest.tenant_key",
           "canonical_description": "Key that identifies the tenant in the reserve inventory request.",
           "aliases": [
@@ -82,7 +82,7 @@
       "number": 2,
       "word_dictionary_scope": "warehouse_key",
       "word_dictionary_entry": {
-        "term": "warehouse_key",
+        "field_name": "warehouse_key",
         "scope": "warehouse_key",
         "canonical_description": "Key that identifies the warehouse.",
         "aliases": [
@@ -109,7 +109,7 @@
       "inference": {
         "has_message_specific_meaning": false,
         "candidate_override": {
-          "term": "warehouse_key",
+          "field_name": "warehouse_key",
           "scope": "ReserveInventoryRequest.warehouse_key",
           "canonical_description": "Key that identifies the warehouse in the reserve inventory request.",
           "aliases": [
@@ -148,7 +148,7 @@
       "number": 3,
       "word_dictionary_scope": "order_key",
       "word_dictionary_entry": {
-        "term": "order_key",
+        "field_name": "order_key",
         "scope": "order_key",
         "canonical_description": "Key that identifies the order.",
         "aliases": [
@@ -175,7 +175,7 @@
       "inference": {
         "has_message_specific_meaning": false,
         "candidate_override": {
-          "term": "order_key",
+          "field_name": "order_key",
           "scope": "ReserveInventoryRequest.order_key",
           "canonical_description": "Key that identifies the order in the reserve inventory request.",
           "aliases": [
@@ -214,7 +214,7 @@
       "number": 4,
       "word_dictionary_scope": "lines",
       "word_dictionary_entry": {
-        "term": "lines",
+        "field_name": "lines",
         "scope": "lines",
         "canonical_description": "Lines value.",
         "aliases": [],
@@ -238,7 +238,7 @@
       "inference": {
         "has_message_specific_meaning": false,
         "candidate_override": {
-          "term": "lines",
+          "field_name": "lines",
           "scope": "ReserveInventoryRequest.lines",
           "canonical_description": "Lines value for the reserve inventory request.",
           "aliases": [],
@@ -274,7 +274,7 @@
       "number": 5,
       "word_dictionary_scope": "requested_by",
       "word_dictionary_entry": {
-        "term": "requested_by",
+        "field_name": "requested_by",
         "scope": "requested_by",
         "canonical_description": "Requested By value.",
         "aliases": [
@@ -301,7 +301,7 @@
       "inference": {
         "has_message_specific_meaning": false,
         "candidate_override": {
-          "term": "requested_by",
+          "field_name": "requested_by",
           "scope": "ReserveInventoryRequest.requested_by",
           "canonical_description": "Requested By for the reserve inventory request.",
           "aliases": [

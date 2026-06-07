@@ -16,7 +16,7 @@
       "number": 1,
       "word_dictionary_scope": "tenant_key",
       "word_dictionary_entry": {
-        "term": "tenant_key",
+        "field_name": "tenant_key",
         "scope": "tenant_key",
         "canonical_description": "Key that identifies the tenant.",
         "aliases": [
@@ -43,7 +43,7 @@
       "inference": {
         "has_message_specific_meaning": false,
         "candidate_override": {
-          "term": "tenant_key",
+          "field_name": "tenant_key",
           "scope": "BuildSettlementReportRequest.tenant_key",
           "canonical_description": "Key that identifies the tenant in the build settlement report request.",
           "aliases": [
@@ -82,7 +82,7 @@
       "number": 2,
       "word_dictionary_scope": "report_period_key",
       "word_dictionary_entry": {
-        "term": "report_period_key",
+        "field_name": "report_period_key",
         "scope": "report_period_key",
         "canonical_description": "Key that identifies the report period.",
         "aliases": [
@@ -110,7 +110,7 @@
       "inference": {
         "has_message_specific_meaning": false,
         "candidate_override": {
-          "term": "report_period_key",
+          "field_name": "report_period_key",
           "scope": "BuildSettlementReportRequest.report_period_key",
           "canonical_description": "Key that identifies the report period in the build settlement report request.",
           "aliases": [
@@ -150,7 +150,7 @@
       "number": 3,
       "word_dictionary_scope": "period_start_at",
       "word_dictionary_entry": {
-        "term": "period_start_at",
+        "field_name": "period_start_at",
         "scope": "period_start_at",
         "canonical_description": "Timestamp for the period start event.",
         "aliases": [
@@ -178,7 +178,7 @@
       "inference": {
         "has_message_specific_meaning": false,
         "candidate_override": {
-          "term": "period_start_at",
+          "field_name": "period_start_at",
           "scope": "BuildSettlementReportRequest.period_start_at",
           "canonical_description": "Timestamp for the period start event in the build settlement report request.",
           "aliases": [
@@ -218,7 +218,7 @@
       "number": 4,
       "word_dictionary_scope": "period_end_at",
       "word_dictionary_entry": {
-        "term": "period_end_at",
+        "field_name": "period_end_at",
         "scope": "period_end_at",
         "canonical_description": "Timestamp for the period end event.",
         "aliases": [
@@ -246,7 +246,7 @@
       "inference": {
         "has_message_specific_meaning": false,
         "candidate_override": {
-          "term": "period_end_at",
+          "field_name": "period_end_at",
           "scope": "BuildSettlementReportRequest.period_end_at",
           "canonical_description": "Timestamp for the period end event in the build settlement report request.",
           "aliases": [
@@ -286,7 +286,7 @@
       "number": 5,
       "word_dictionary_scope": "warehouse_keys",
       "word_dictionary_entry": {
-        "term": "warehouse_keys",
+        "field_name": "warehouse_keys",
         "scope": "warehouse_keys",
         "canonical_description": "Keys that identify the warehouse values.",
         "aliases": [
@@ -313,7 +313,7 @@
       "inference": {
         "has_message_specific_meaning": false,
         "candidate_override": {
-          "term": "warehouse_keys",
+          "field_name": "warehouse_keys",
           "scope": "BuildSettlementReportRequest.warehouse_keys",
           "canonical_description": "Keys that identify the warehouse values used by the build settlement report request.",
           "aliases": [
@@ -352,7 +352,7 @@
       "number": 6,
       "word_dictionary_scope": "transfer_keys",
       "word_dictionary_entry": {
-        "term": "transfer_keys",
+        "field_name": "transfer_keys",
         "scope": "transfer_keys",
         "canonical_description": "Keys that identify the transfer values.",
         "aliases": [
@@ -379,7 +379,7 @@
       "inference": {
         "has_message_specific_meaning": false,
         "candidate_override": {
-          "term": "transfer_keys",
+          "field_name": "transfer_keys",
           "scope": "BuildSettlementReportRequest.transfer_keys",
           "canonical_description": "Keys that identify the transfer values used by the build settlement report request.",
           "aliases": [

@@ -1,7 +1,7 @@
 import fs from 'node:fs';
 
 const required = [
-  'term',
+  'field_name',
   'scope',
   'canonical_description',
   'aliases',
@@ -41,7 +41,7 @@ function validateEntry(key, entry) {
   for (const field of Object.keys(entry)) {
     if (!allowed.has(field)) throw new Error(`Dictionary entry ${key} has unknown field ${field}`);
   }
-  assertNonEmptyString(entry.term, `Dictionary entry ${key} has invalid term`);
+  assertNonEmptyString(entry.field_name, `Dictionary entry ${key} has invalid field_name`);
   assertNonEmptyString(entry.scope, `Dictionary entry ${key} has invalid scope`);
   if (entry.scope !== key) throw new Error(`Dictionary entry ${key} scope must match key`);
   assertNonEmptyString(entry.canonical_description, `Dictionary entry ${key} has invalid canonical_description`);
@@ -62,7 +62,7 @@ export function loadDictionary(path) {
   return raw;
 }
 
-export function resolveTerm(dictionary, message, field) {
+export function resolveField(dictionary, message, field) {
   const scoped = `${message}.${field}`;
   return dictionary[scoped] ?? dictionary[field] ?? null;
 }

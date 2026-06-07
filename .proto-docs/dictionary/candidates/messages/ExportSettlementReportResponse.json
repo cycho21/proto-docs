@@ -16,7 +16,7 @@
       "number": 1,
       "word_dictionary_scope": "report_key",
       "word_dictionary_entry": {
-        "term": "report_key",
+        "field_name": "report_key",
         "scope": "report_key",
         "canonical_description": "Key that identifies the report.",
         "aliases": [
@@ -43,7 +43,7 @@
       "inference": {
         "has_message_specific_meaning": false,
         "candidate_override": {
-          "term": "report_key",
+          "field_name": "report_key",
           "scope": "ExportSettlementReportResponse.report_key",
           "canonical_description": "Key that identifies the report in the export settlement report response.",
           "aliases": [
@@ -82,7 +82,7 @@
       "number": 2,
       "word_dictionary_scope": "export_status",
       "word_dictionary_entry": {
-        "term": "export_status",
+        "field_name": "export_status",
         "scope": "export_status",
         "canonical_description": "Status value for export.",
         "aliases": [
@@ -109,7 +109,7 @@
       "inference": {
         "has_message_specific_meaning": false,
         "candidate_override": {
-          "term": "export_status",
+          "field_name": "export_status",
           "scope": "ExportSettlementReportResponse.export_status",
           "canonical_description": "Status value for the export settlement report response.",
           "aliases": [
@@ -148,7 +148,7 @@
       "number": 3,
       "word_dictionary_scope": "download_url",
       "word_dictionary_entry": {
-        "term": "download_url",
+        "field_name": "download_url",
         "scope": "download_url",
         "canonical_description": "URL for download.",
         "aliases": [
@@ -175,7 +175,7 @@
       "inference": {
         "has_message_specific_meaning": false,
         "candidate_override": {
-          "term": "download_url",
+          "field_name": "download_url",
           "scope": "ExportSettlementReportResponse.download_url",
           "canonical_description": "URL for the download in the export settlement report response.",
           "aliases": [
@@ -214,7 +214,7 @@
       "number": 4,
       "word_dictionary_scope": "exported_at",
       "word_dictionary_entry": {
-        "term": "exported_at",
+        "field_name": "exported_at",
         "scope": "exported_at",
         "canonical_description": "Timestamp for the exported event.",
         "aliases": [
@@ -241,7 +241,7 @@
       "inference": {
         "has_message_specific_meaning": false,
         "candidate_override": {
-          "term": "exported_at",
+          "field_name": "exported_at",
           "scope": "ExportSettlementReportResponse.exported_at",
           "canonical_description": "Timestamp for the exported event in the export settlement report response.",
           "aliases": [

@@ -1,12 +1,21 @@
 {
   "GetAssetRequest.asset_key": {
-    "term": "asset_key",
+    "field_name": "asset_key",
     "scope": "GetAssetRequest.asset_key",
     "canonical_description": "Internal key that identifies the asset.",
-    "aliases": ["assetKey"],
-    "forbidden_aliases": ["item id", "token id"],
-    "allowed_contexts": ["asset"],
-    "approved_examples": ["Internal key that identifies the asset."],
+    "aliases": [
+      "assetKey"
+    ],
+    "forbidden_aliases": [
+      "item id",
+      "token id"
+    ],
+    "allowed_contexts": [
+      "asset"
+    ],
+    "approved_examples": [
+      "Internal key that identifies the asset."
+    ],
     "status": "approved",
     "version": 1,
     "owner": "@domain-owner",
@@ -14,13 +23,22 @@
     "visibility": "public"
   },
   "Asset.asset_key": {
-    "term": "asset_key",
+    "field_name": "asset_key",
     "scope": "Asset.asset_key",
     "canonical_description": "Internal key that identifies the asset.",
-    "aliases": ["assetKey"],
-    "forbidden_aliases": ["item id", "token id"],
-    "allowed_contexts": ["asset"],
-    "approved_examples": ["Internal key that identifies the asset."],
+    "aliases": [
+      "assetKey"
+    ],
+    "forbidden_aliases": [
+      "item id",
+      "token id"
+    ],
+    "allowed_contexts": [
+      "asset"
+    ],
+    "approved_examples": [
+      "Internal key that identifies the asset."
+    ],
     "status": "approved",
     "version": 1,
     "owner": "@domain-owner",
@@ -28,13 +46,24 @@
     "visibility": "public"
   },
   "Asset.owner_key": {
-    "term": "owner_key",
+    "field_name": "owner_key",
     "scope": "Asset.owner_key",
     "canonical_description": "Internal key that identifies the asset owner.",
-    "aliases": ["ownerKey"],
-    "forbidden_aliases": ["user id", "wallet address", "account id"],
-    "allowed_contexts": ["asset", "ownership"],
-    "approved_examples": ["Internal key that identifies the asset owner."],
+    "aliases": [
+      "ownerKey"
+    ],
+    "forbidden_aliases": [
+      "user id",
+      "wallet address",
+      "account id"
+    ],
+    "allowed_contexts": [
+      "asset",
+      "ownership"
+    ],
+    "approved_examples": [
+      "Internal key that identifies the asset owner."
+    ],
     "status": "approved",
     "version": 1,
     "owner": "@domain-owner",

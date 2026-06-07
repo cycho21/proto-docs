@@ -16,7 +16,7 @@
       "number": 1,
       "word_dictionary_scope": "tenant_key",
       "word_dictionary_entry": {
-        "term": "tenant_key",
+        "field_name": "tenant_key",
         "scope": "tenant_key",
         "canonical_description": "Key that identifies the tenant.",
         "aliases": [
@@ -43,7 +43,7 @@
       "inference": {
         "has_message_specific_meaning": false,
         "candidate_override": {
-          "term": "tenant_key",
+          "field_name": "tenant_key",
           "scope": "ReviewTransferRequest.tenant_key",
           "canonical_description": "Key that identifies the tenant in the review transfer request.",
           "aliases": [
@@ -82,7 +82,7 @@
       "number": 2,
       "word_dictionary_scope": "transfer_key",
       "word_dictionary_entry": {
-        "term": "transfer_key",
+        "field_name": "transfer_key",
         "scope": "transfer_key",
         "canonical_description": "Key that identifies the transfer.",
         "aliases": [
@@ -109,7 +109,7 @@
       "inference": {
         "has_message_specific_meaning": false,
         "candidate_override": {
-          "term": "transfer_key",
+          "field_name": "transfer_key",
           "scope": "ReviewTransferRequest.transfer_key",
           "canonical_description": "Key that identifies the transfer in the review transfer request.",
           "aliases": [
@@ -148,7 +148,7 @@
       "number": 3,
       "word_dictionary_scope": "reviewer_key",
       "word_dictionary_entry": {
-        "term": "reviewer_key",
+        "field_name": "reviewer_key",
         "scope": "reviewer_key",
         "canonical_description": "Key that identifies the reviewer.",
         "aliases": [
@@ -175,7 +175,7 @@
       "inference": {
         "has_message_specific_meaning": false,
         "candidate_override": {
-          "term": "reviewer_key",
+          "field_name": "reviewer_key",
           "scope": "ReviewTransferRequest.reviewer_key",
           "canonical_description": "Key that identifies the reviewer in the review transfer request.",
           "aliases": [
@@ -214,7 +214,7 @@
       "number": 4,
       "word_dictionary_scope": "review_decision",
       "word_dictionary_entry": {
-        "term": "review_decision",
+        "field_name": "review_decision",
         "scope": "review_decision",
         "canonical_description": "Review Decision value.",
         "aliases": [
@@ -241,7 +241,7 @@
       "inference": {
         "has_message_specific_meaning": false,
         "candidate_override": {
-          "term": "review_decision",
+          "field_name": "review_decision",
           "scope": "ReviewTransferRequest.review_decision",
           "canonical_description": "Review Decision for the review transfer request.",
           "aliases": [
@@ -280,7 +280,7 @@
       "number": 5,
       "word_dictionary_scope": "review_comment",
       "word_dictionary_entry": {
-        "term": "review_comment",
+        "field_name": "review_comment",
         "scope": "review_comment",
         "canonical_description": "Free-form note for review.",
         "aliases": [
@@ -307,7 +307,7 @@
       "inference": {
         "has_message_specific_meaning": false,
         "candidate_override": {
-          "term": "review_comment",
+          "field_name": "review_comment",
           "scope": "ReviewTransferRequest.review_comment",
           "canonical_description": "Free-form note for the review transfer request.",
           "aliases": [

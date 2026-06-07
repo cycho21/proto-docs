@@ -21,7 +21,7 @@ This skill is packaged inside the Proto Docs Claude Code plugin. Runtime assets 
 - If neither `Message.field` nor `field` exists, stop. Do not invent a comment. Ask the user/domain owner for meaning or create a candidate under `.proto-docs/dictionary/candidates/`.
 - Reuse existing approved Dictionary entries. Do not regenerate or submit the full Dictionary for re-approval.
 - Do not edit `.proto-docs/dictionary/word-dictionary.json` directly.
-- Create missing-term candidates only under `.proto-docs/dictionary/candidates/`.
+- Create missing-field candidates only under `.proto-docs/dictionary/candidates/`.
 - Change Proto comments only; never change field, message, service, RPC, option, or field number definitions.
 - Do not call LLM APIs from repository scripts or hooks.
 - Prefer the bundled plugin CLI over project-local scripts.

@@ -16,7 +16,7 @@
       "number": 1,
       "word_dictionary_scope": "reservation_key",
       "word_dictionary_entry": {
-        "term": "reservation_key",
+        "field_name": "reservation_key",
         "scope": "reservation_key",
         "canonical_description": "Key that identifies the reservation.",
         "aliases": [
@@ -43,7 +43,7 @@
       "inference": {
         "has_message_specific_meaning": false,
         "candidate_override": {
-          "term": "reservation_key",
+          "field_name": "reservation_key",
           "scope": "ReserveInventoryResponse.reservation_key",
           "canonical_description": "Key that identifies the reservation in the reserve inventory response.",
           "aliases": [
@@ -82,7 +82,7 @@
       "number": 2,
       "word_dictionary_scope": "reservation_status",
       "word_dictionary_entry": {
-        "term": "reservation_status",
+        "field_name": "reservation_status",
         "scope": "reservation_status",
         "canonical_description": "Status value for reservation.",
         "aliases": [
@@ -109,7 +109,7 @@
       "inference": {
         "has_message_specific_meaning": false,
         "candidate_override": {
-          "term": "reservation_status",
+          "field_name": "reservation_status",
           "scope": "ReserveInventoryResponse.reservation_status",
           "canonical_description": "Status value for the reserve inventory response.",
           "aliases": [
@@ -148,7 +148,7 @@
       "number": 3,
       "word_dictionary_scope": "results",
       "word_dictionary_entry": {
-        "term": "results",
+        "field_name": "results",
         "scope": "results",
         "canonical_description": "Results value.",
         "aliases": [],
@@ -172,7 +172,7 @@
       "inference": {
         "has_message_specific_meaning": false,
         "candidate_override": {
-          "term": "results",
+          "field_name": "results",
           "scope": "ReserveInventoryResponse.results",
           "canonical_description": "Results value for the reserve inventory response.",
           "aliases": [],
@@ -208,7 +208,7 @@
       "number": 4,
       "word_dictionary_scope": "reserved_at",
       "word_dictionary_entry": {
-        "term": "reserved_at",
+        "field_name": "reserved_at",
         "scope": "reserved_at",
         "canonical_description": "Timestamp for the reserved event.",
         "aliases": [
@@ -235,7 +235,7 @@
       "inference": {
         "has_message_specific_meaning": false,
         "candidate_override": {
-          "term": "reserved_at",
+          "field_name": "reserved_at",
           "scope": "ReserveInventoryResponse.reserved_at",
           "canonical_description": "Timestamp for the reserved event in the reserve inventory response.",
           "aliases": [

@@ -1,4 +1,4 @@
-import { resolveTerm } from './dictionary.ts';
+import { resolveField } from './dictionary.ts';
 import { scanProtoPath } from './protoScanner.ts';
 import { findMissingMappings } from './candidates.ts';
 
@@ -25,7 +25,7 @@ export function lintComments(protoPath, dictionary, { failMissing = true } = {})
   for (const file of scanProtoPath(protoPath)) {
     for (const message of file.messages) {
       for (const field of message.fields) {
-        const entry = resolveTerm(dictionary, message.name, field.name);
+        const entry = resolveField(dictionary, message.name, field.name);
         if (!entry) continue;
         if (!field.comment) {
           issues.push({ rule: 'Missing Comment', message: `${message.name}.${field.name} has no comment`, file: file.file });

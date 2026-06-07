@@ -1,6 +1,6 @@
 {
   "tenant_key": {
-    "term": "tenant_key",
+    "field_name": "tenant_key",
     "scope": "tenant_key",
     "canonical_description": "Key that identifies the tenant.",
     "aliases": [
@@ -22,7 +22,7 @@
     "source": "field_name"
   },
   "warehouse_key": {
-    "term": "warehouse_key",
+    "field_name": "warehouse_key",
     "scope": "warehouse_key",
     "canonical_description": "Key that identifies the warehouse.",
     "aliases": [
@@ -44,7 +44,7 @@
     "source": "field_name"
   },
   "asset_keys": {
-    "term": "asset_keys",
+    "field_name": "asset_keys",
     "scope": "asset_keys",
     "canonical_description": "Keys that identify the asset values.",
     "aliases": [
@@ -66,7 +66,7 @@
     "source": "field_name"
   },
   "lifecycle_status": {
-    "term": "lifecycle_status",
+    "field_name": "lifecycle_status",
     "scope": "lifecycle_status",
     "canonical_description": "Status value for lifecycle.",
     "aliases": [
@@ -88,7 +88,7 @@
     "source": "field_name"
   },
   "page_size": {
-    "term": "page_size",
+    "field_name": "page_size",
     "scope": "page_size",
     "canonical_description": "Page Size value.",
     "aliases": [
@@ -110,7 +110,7 @@
     "source": "field_name"
   },
   "page_token": {
-    "term": "page_token",
+    "field_name": "page_token",
     "scope": "page_token",
     "canonical_description": "Page Token value.",
     "aliases": [
@@ -132,7 +132,7 @@
     "source": "field_name"
   },
   "assets": {
-    "term": "assets",
+    "field_name": "assets",
     "scope": "assets",
     "canonical_description": "Assets value.",
     "aliases": [],
@@ -151,7 +151,7 @@
     "source": "field_name"
   },
   "next_page_token": {
-    "term": "next_page_token",
+    "field_name": "next_page_token",
     "scope": "next_page_token",
     "canonical_description": "Next page token for pagination or state progression.",
     "aliases": [
@@ -174,7 +174,7 @@
     "source": "field_name"
   },
   "total_count": {
-    "term": "total_count",
+    "field_name": "total_count",
     "scope": "total_count",
     "canonical_description": "Total Count value.",
     "aliases": [
@@ -196,7 +196,7 @@
     "source": "field_name"
   },
   "asset_key": {
-    "term": "asset_key",
+    "field_name": "asset_key",
     "scope": "asset_key",
     "canonical_description": "Key that identifies the asset.",
     "aliases": [
@@ -218,7 +218,7 @@
     "source": "field_name"
   },
   "sku_code": {
-    "term": "sku_code",
+    "field_name": "sku_code",
     "scope": "sku_code",
     "canonical_description": "Code value for sku.",
     "aliases": [
@@ -240,7 +240,7 @@
     "source": "field_name"
   },
   "batch_code": {
-    "term": "batch_code",
+    "field_name": "batch_code",
     "scope": "batch_code",
     "canonical_description": "Code value for batch.",
     "aliases": [
@@ -262,7 +262,7 @@
     "source": "field_name"
   },
   "available_quantity": {
-    "term": "available_quantity",
+    "field_name": "available_quantity",
     "scope": "available_quantity",
     "canonical_description": "Quantity value for available.",
     "aliases": [
@@ -284,7 +284,7 @@
     "source": "field_name"
   },
   "reserved_quantity": {
-    "term": "reserved_quantity",
+    "field_name": "reserved_quantity",
     "scope": "reserved_quantity",
     "canonical_description": "Quantity value for reserved.",
     "aliases": [
@@ -306,7 +306,7 @@
     "source": "field_name"
   },
   "received_at": {
-    "term": "received_at",
+    "field_name": "received_at",
     "scope": "received_at",
     "canonical_description": "Timestamp for the received event.",
     "aliases": [
@@ -328,7 +328,7 @@
     "source": "field_name"
   },
   "expires_at": {
-    "term": "expires_at",
+    "field_name": "expires_at",
     "scope": "expires_at",
     "canonical_description": "Timestamp for the expires event.",
     "aliases": [
@@ -350,7 +350,7 @@
     "source": "field_name"
   },
   "order_key": {
-    "term": "order_key",
+    "field_name": "order_key",
     "scope": "order_key",
     "canonical_description": "Key that identifies the order.",
     "aliases": [
@@ -372,7 +372,7 @@
     "source": "field_name"
   },
   "lines": {
-    "term": "lines",
+    "field_name": "lines",
     "scope": "lines",
     "canonical_description": "Lines value.",
     "aliases": [],
@@ -391,7 +391,7 @@
     "source": "field_name"
   },
   "requested_by": {
-    "term": "requested_by",
+    "field_name": "requested_by",
     "scope": "requested_by",
     "canonical_description": "Requested By value.",
     "aliases": [
@@ -413,7 +413,7 @@
     "source": "field_name"
   },
   "quantity": {
-    "term": "quantity",
+    "field_name": "quantity",
     "scope": "quantity",
     "canonical_description": "Quantity value.",
     "aliases": [],
@@ -432,7 +432,7 @@
     "source": "field_name"
   },
   "reservation_reason": {
-    "term": "reservation_reason",
+    "field_name": "reservation_reason",
     "scope": "reservation_reason",
     "canonical_description": "Reason associated with reservation.",
     "aliases": [
@@ -454,7 +454,7 @@
     "source": "field_name"
   },
   "reservation_key": {
-    "term": "reservation_key",
+    "field_name": "reservation_key",
     "scope": "reservation_key",
     "canonical_description": "Key that identifies the reservation.",
     "aliases": [
@@ -476,7 +476,7 @@
     "source": "field_name"
   },
   "reservation_status": {
-    "term": "reservation_status",
+    "field_name": "reservation_status",
     "scope": "reservation_status",
     "canonical_description": "Status value for reservation.",
     "aliases": [
@@ -498,7 +498,7 @@
     "source": "field_name"
   },
   "results": {
-    "term": "results",
+    "field_name": "results",
     "scope": "results",
     "canonical_description": "Results value.",
     "aliases": [],
@@ -517,7 +517,7 @@
     "source": "field_name"
   },
   "reserved_at": {
-    "term": "reserved_at",
+    "field_name": "reserved_at",
     "scope": "reserved_at",
     "canonical_description": "Timestamp for the reserved event.",
     "aliases": [
@@ -539,7 +539,7 @@
     "source": "field_name"
   },
   "requested_quantity": {
-    "term": "requested_quantity",
+    "field_name": "requested_quantity",
     "scope": "requested_quantity",
     "canonical_description": "Quantity value for requested.",
     "aliases": [
@@ -561,7 +561,7 @@
     "source": "field_name"
   },
   "failure_reason": {
-    "term": "failure_reason",
+    "field_name": "failure_reason",
     "scope": "failure_reason",
     "canonical_description": "Reason associated with failure.",
     "aliases": [
@@ -583,7 +583,7 @@
     "source": "field_name"
   },
   "report_period_key": {
-    "term": "report_period_key",
+    "field_name": "report_period_key",
     "scope": "report_period_key",
     "canonical_description": "Key that identifies the report period.",
     "aliases": [
@@ -606,7 +606,7 @@
     "source": "field_name"
   },
   "period_start_at": {
-    "term": "period_start_at",
+    "field_name": "period_start_at",
     "scope": "period_start_at",
     "canonical_description": "Timestamp for the period start event.",
     "aliases": [
@@ -629,7 +629,7 @@
     "source": "field_name"
   },
   "period_end_at": {
-    "term": "period_end_at",
+    "field_name": "period_end_at",
     "scope": "period_end_at",
     "canonical_description": "Timestamp for the period end event.",
     "aliases": [
@@ -652,7 +652,7 @@
     "source": "field_name"
   },
   "warehouse_keys": {
-    "term": "warehouse_keys",
+    "field_name": "warehouse_keys",
     "scope": "warehouse_keys",
     "canonical_description": "Keys that identify the warehouse values.",
     "aliases": [
@@ -674,7 +674,7 @@
     "source": "field_name"
   },
   "transfer_keys": {
-    "term": "transfer_keys",
+    "field_name": "transfer_keys",
     "scope": "transfer_keys",
     "canonical_description": "Keys that identify the transfer values.",
     "aliases": [
@@ -696,7 +696,7 @@
     "source": "field_name"
   },
   "report_key": {
-    "term": "report_key",
+    "field_name": "report_key",
     "scope": "report_key",
     "canonical_description": "Key that identifies the report.",
     "aliases": [
@@ -718,7 +718,7 @@
     "source": "field_name"
   },
   "report_status": {
-    "term": "report_status",
+    "field_name": "report_status",
     "scope": "report_status",
     "canonical_description": "Status value for report.",
     "aliases": [
@@ -740,7 +740,7 @@
     "source": "field_name"
   },
   "settlement_lines": {
-    "term": "settlement_lines",
+    "field_name": "settlement_lines",
     "scope": "settlement_lines",
     "canonical_description": "Settlement Lines value.",
     "aliases": [
@@ -762,7 +762,7 @@
     "source": "field_name"
   },
   "total_moved_quantity": {
-    "term": "total_moved_quantity",
+    "field_name": "total_moved_quantity",
     "scope": "total_moved_quantity",
     "canonical_description": "Quantity value for total moved.",
     "aliases": [
@@ -785,7 +785,7 @@
     "source": "field_name"
   },
   "total_settlement_amount": {
-    "term": "total_settlement_amount",
+    "field_name": "total_settlement_amount",
     "scope": "total_settlement_amount",
     "canonical_description": "Amount value for total settlement.",
     "aliases": [
@@ -808,7 +808,7 @@
     "source": "field_name"
   },
   "built_at": {
-    "term": "built_at",
+    "field_name": "built_at",
     "scope": "built_at",
     "canonical_description": "Timestamp for the built event.",
     "aliases": [
@@ -830,7 +830,7 @@
     "source": "field_name"
   },
   "transfer_key": {
-    "term": "transfer_key",
+    "field_name": "transfer_key",
     "scope": "transfer_key",
     "canonical_description": "Key that identifies the transfer.",
     "aliases": [
@@ -852,7 +852,7 @@
     "source": "field_name"
   },
   "source_warehouse_key": {
-    "term": "source_warehouse_key",
+    "field_name": "source_warehouse_key",
     "scope": "source_warehouse_key",
     "canonical_description": "Key that identifies the source warehouse.",
     "aliases": [
@@ -875,7 +875,7 @@
     "source": "field_name"
   },
   "destination_warehouse_key": {
-    "term": "destination_warehouse_key",
+    "field_name": "destination_warehouse_key",
     "scope": "destination_warehouse_key",
     "canonical_description": "Key that identifies the destination warehouse.",
     "aliases": [
@@ -898,7 +898,7 @@
     "source": "field_name"
   },
   "moved_quantity": {
-    "term": "moved_quantity",
+    "field_name": "moved_quantity",
     "scope": "moved_quantity",
     "canonical_description": "Quantity value for moved.",
     "aliases": [
@@ -920,7 +920,7 @@
     "source": "field_name"
   },
   "unit_settlement_amount": {
-    "term": "unit_settlement_amount",
+    "field_name": "unit_settlement_amount",
     "scope": "unit_settlement_amount",
     "canonical_description": "Amount value for unit settlement.",
     "aliases": [
@@ -943,7 +943,7 @@
     "source": "field_name"
   },
   "line_settlement_amount": {
-    "term": "line_settlement_amount",
+    "field_name": "line_settlement_amount",
     "scope": "line_settlement_amount",
     "canonical_description": "Amount value for line settlement.",
     "aliases": [
@@ -966,7 +966,7 @@
     "source": "field_name"
   },
   "currency_code": {
-    "term": "currency_code",
+    "field_name": "currency_code",
     "scope": "currency_code",
     "canonical_description": "Code value for currency.",
     "aliases": [
@@ -988,7 +988,7 @@
     "source": "field_name"
   },
   "export_format": {
-    "term": "export_format",
+    "field_name": "export_format",
     "scope": "export_format",
     "canonical_description": "Export Format value.",
     "aliases": [
@@ -1010,7 +1010,7 @@
     "source": "field_name"
   },
   "delivery_target": {
-    "term": "delivery_target",
+    "field_name": "delivery_target",
     "scope": "delivery_target",
     "canonical_description": "Delivery Target value.",
     "aliases": [
@@ -1032,7 +1032,7 @@
     "source": "field_name"
   },
   "export_status": {
-    "term": "export_status",
+    "field_name": "export_status",
     "scope": "export_status",
     "canonical_description": "Status value for export.",
     "aliases": [
@@ -1054,7 +1054,7 @@
     "source": "field_name"
   },
   "download_url": {
-    "term": "download_url",
+    "field_name": "download_url",
     "scope": "download_url",
     "canonical_description": "URL for download.",
     "aliases": [
@@ -1076,7 +1076,7 @@
     "source": "field_name"
   },
   "exported_at": {
-    "term": "exported_at",
+    "field_name": "exported_at",
     "scope": "exported_at",
     "canonical_description": "Timestamp for the exported event.",
     "aliases": [
@@ -1098,7 +1098,7 @@
     "source": "field_name"
   },
   "transfer_reason": {
-    "term": "transfer_reason",
+    "field_name": "transfer_reason",
     "scope": "transfer_reason",
     "canonical_description": "Reason associated with transfer.",
     "aliases": [
@@ -1120,7 +1120,7 @@
     "source": "field_name"
   },
   "lot_code": {
-    "term": "lot_code",
+    "field_name": "lot_code",
     "scope": "lot_code",
     "canonical_description": "Code value for lot.",
     "aliases": [
@@ -1142,7 +1142,7 @@
     "source": "field_name"
   },
   "handling_instruction": {
-    "term": "handling_instruction",
+    "field_name": "handling_instruction",
     "scope": "handling_instruction",
     "canonical_description": "Handling Instruction value.",
     "aliases": [
@@ -1164,7 +1164,7 @@
     "source": "field_name"
   },
   "transfer_status": {
-    "term": "transfer_status",
+    "field_name": "transfer_status",
     "scope": "transfer_status",
     "canonical_description": "Status value for transfer.",
     "aliases": [
@@ -1186,7 +1186,7 @@
     "source": "field_name"
   },
   "accepted_lines": {
-    "term": "accepted_lines",
+    "field_name": "accepted_lines",
     "scope": "accepted_lines",
     "canonical_description": "Accepted Lines value.",
     "aliases": [
@@ -1208,7 +1208,7 @@
     "source": "field_name"
   },
   "rejected_lines": {
-    "term": "rejected_lines",
+    "field_name": "rejected_lines",
     "scope": "rejected_lines",
     "canonical_description": "Rejected Lines value.",
     "aliases": [
@@ -1230,7 +1230,7 @@
     "source": "field_name"
   },
   "created_at": {
-    "term": "created_at",
+    "field_name": "created_at",
     "scope": "created_at",
     "canonical_description": "Timestamp for the created event.",
     "aliases": [
@@ -1252,7 +1252,7 @@
     "source": "field_name"
   },
   "reviewer_key": {
-    "term": "reviewer_key",
+    "field_name": "reviewer_key",
     "scope": "reviewer_key",
     "canonical_description": "Key that identifies the reviewer.",
     "aliases": [
@@ -1274,7 +1274,7 @@
     "source": "field_name"
   },
   "review_decision": {
-    "term": "review_decision",
+    "field_name": "review_decision",
     "scope": "review_decision",
     "canonical_description": "Review Decision value.",
     "aliases": [
@@ -1296,7 +1296,7 @@
     "source": "field_name"
   },
   "review_comment": {
-    "term": "review_comment",
+    "field_name": "review_comment",
     "scope": "review_comment",
     "canonical_description": "Free-form note for review.",
     "aliases": [
@@ -1318,7 +1318,7 @@
     "source": "field_name"
   },
   "reviewed_by": {
-    "term": "reviewed_by",
+    "field_name": "reviewed_by",
     "scope": "reviewed_by",
     "canonical_description": "Reviewed By value.",
     "aliases": [
@@ -1340,7 +1340,7 @@
     "source": "field_name"
   },
   "reviewed_at": {
-    "term": "reviewed_at",
+    "field_name": "reviewed_at",
     "scope": "reviewed_at",
     "canonical_description": "Timestamp for the reviewed event.",
     "aliases": [
@@ -1362,7 +1362,7 @@
     "source": "field_name"
   },
   "event_type": {
-    "term": "event_type",
+    "field_name": "event_type",
     "scope": "event_type",
     "canonical_description": "Event Type value.",
     "aliases": [
@@ -1384,7 +1384,7 @@
     "source": "field_name"
   },
   "actor_key": {
-    "term": "actor_key",
+    "field_name": "actor_key",
     "scope": "actor_key",
     "canonical_description": "Key that identifies the actor.",
     "aliases": [
@@ -1406,7 +1406,7 @@
     "source": "field_name"
   },
   "previous_status": {
-    "term": "previous_status",
+    "field_name": "previous_status",
     "scope": "previous_status",
     "canonical_description": "Status value for previous.",
     "aliases": [
@@ -1428,7 +1428,7 @@
     "source": "field_name"
   },
   "next_status": {
-    "term": "next_status",
+    "field_name": "next_status",
     "scope": "next_status",
     "canonical_description": "Status value for next.",
     "aliases": [
@@ -1450,7 +1450,7 @@
     "source": "field_name"
   },
   "event_note": {
-    "term": "event_note",
+    "field_name": "event_note",
     "scope": "event_note",
     "canonical_description": "Free-form note for event.",
     "aliases": [
@@ -1472,7 +1472,7 @@
     "source": "field_name"
   },
   "event_at": {
-    "term": "event_at",
+    "field_name": "event_at",
     "scope": "event_at",
     "canonical_description": "Timestamp when the event occurs.",
     "aliases": [
