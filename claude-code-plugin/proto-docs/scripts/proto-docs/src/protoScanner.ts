@@ -26,6 +26,10 @@ export function scanProtoFile(file) {
   let pendingComments = [];
   for (const line of lines) {
     const trimmed = line.trim();
+    if (!trimmed) {
+      pendingComments = [];
+      continue;
+    }
     if (trimmed.startsWith('//')) {
       pendingComments.push(trimmed.replace(/^\/\/\s?/, '').trim());
       continue;
@@ -56,14 +60,15 @@ export function scanProtoFile(file) {
       pendingComments = [];
       continue;
     }
-    const fieldMatch = trimmed.match(/^(repeated\s+)?([A-Za-z_][\w.]*)\s+(\w+)\s*=\s*(\d+)\s*(?:\[[^\]]+\])?\s*;/);
+    const fieldMatch = trimmed.match(/^(repeated\s+)?([A-Za-z_][\w.]*)\s+(\w+)\s*=\s*(\d+)\s*(?:\[[^\]]+\])?\s*;(?:\s*\/\/\s*(.*))?/);
     if (fieldMatch && currentMessage) {
+      const inlineComment = fieldMatch[5]?.trim() ?? '';
       currentMessage.fields.push({
         repeated: Boolean(fieldMatch[1]),
         type: fieldMatch[2],
         name: fieldMatch[3],
         number: Number(fieldMatch[4]),
-        comment: pendingComments.join(' '),
+        comment: pendingComments.length > 0 ? pendingComments.join(' ') : inlineComment,
         file,
         message: currentMessage.name
       });

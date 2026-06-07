@@ -61,7 +61,7 @@ try {
     print(result);
     if (!result.ok) process.exitCode = 1;
   } else if (cmd === 'generate-docs') {
-    const generator = createDocGenerator(arg('generator', 'buf'));
+    const generator = createDocGenerator(arg('generator', 'markdown-sample'));
     print({ written: generator.generate(protoPath, docsDir) });
   } else if (cmd === 'check-freshness') {
     const result = checkFreshness(protoPath, docsDir, { generator: arg('generator', 'markdown-sample') });

@@ -102,7 +102,7 @@ function dictionaryEntry({ fieldName, scope, description, detectedAt, source }) 
     canonical_description: description,
     aliases: aliasFor(fieldName),
     forbidden_aliases: [],
-    allowed_contexts: words(fieldName),
+    allowed_contexts: [...new Set(words(fieldName))],
     approved_examples: [description],
     status: 'draft_for_human_review',
     version: 1,

@@ -34,23 +34,25 @@ export function createDocGenerator(name = 'buf') {
   throw new Error(`Unknown document generator '${name}'`);
 }
 
+export function renderMarkdownForFile(fileResult) {
+  const lines = [`## ${path.basename(fileResult.file)}`, ''];
+  for (const service of fileResult.services) {
+    lines.push(`### Service ${service.name}`, '');
+    for (const rpc of service.rpcs) lines.push(`- RPC \`${rpc.name}\`: ${rpc.comment}`);
+    lines.push('');
+  }
+  for (const message of fileResult.messages) {
+    lines.push(`### Message ${message.name}`, '', '| Field | Type | Number | Description |', '|---|---|---:|---|');
+    for (const field of message.fields) lines.push(`| \`${field.name}\` | \`${field.repeated ? 'repeated ' : ''}${field.type}\` | ${field.number} | ${field.comment} |`);
+    lines.push('');
+  }
+  return lines.join('\n');
+}
+
 export function renderMarkdown(protoPath) {
   const files = scanProtoPath(protoPath);
-  const lines = ['# Proto API Documentation', '', 'Generated deterministically from Proto comments.', ''];
-  for (const file of files) {
-    lines.push(`## ${path.basename(file.file)}`, '');
-    for (const service of file.services) {
-      lines.push(`### Service ${service.name}`, '');
-      for (const rpc of service.rpcs) lines.push(`- RPC \`${rpc.name}\`: ${rpc.comment}`);
-      lines.push('');
-    }
-    for (const message of file.messages) {
-      lines.push(`### Message ${message.name}`, '', '| Field | Type | Number | Description |', '|---|---|---:|---|');
-      for (const field of message.fields) lines.push(`| \`${field.name}\` | \`${field.repeated ? 'repeated ' : ''}${field.type}\` | ${field.number} | ${field.comment} |`);
-      lines.push('');
-    }
-  }
-  return `${lines.join('\n').trim()}\n`;
+  const parts = ['# Proto API Documentation', '', 'Generated deterministically from Proto comments.', '', ...files.map(renderMarkdownForFile)];
+  return `${parts.join('\n').trim()}\n`;
 }
 
 function listGeneratedFiles(outDir) {
@@ -60,8 +62,13 @@ function listGeneratedFiles(outDir) {
 
 function generateMarkdownFromProto(protoPath, outDir, generatorName) {
   fs.mkdirSync(outDir, { recursive: true });
-  const target = path.join(outDir, 'proto-docs.md');
-  const content = `<!-- generator: ${generatorName} -->\n${renderMarkdown(protoPath)}`;
-  fs.writeFileSync(target, content);
-  return [target];
+  const files = scanProtoPath(protoPath);
+  const written = [];
+  for (const file of files) {
+    const baseName = path.basename(file.file, '.proto');
+    const target = path.join(outDir, `${baseName}.md`);
+    fs.writeFileSync(target, `<!-- generator: ${generatorName} -->\n${renderMarkdownForFile(file)}`);
+    written.push(target);
+  }
+  return written;
 }

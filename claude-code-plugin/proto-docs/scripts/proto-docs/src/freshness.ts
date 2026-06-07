@@ -18,6 +18,7 @@ function readFilesRecursive(dir, base = dir) {
 }
 
 export function checkFreshness(protoPath, docsDir, { generator = 'markdown-sample' } = {}) {
+  const uninitialised = !fs.existsSync(docsDir);
   const temp = fs.mkdtempSync(path.join(os.tmpdir(), 'proto-docs-'));
   const gen = generator === 'markdown-sample' ? new SampleMarkdownDocGenerator() : createDocGenerator(generator);
   gen.generate(protoPath, temp);
@@ -28,5 +29,9 @@ export function checkFreshness(protoPath, docsDir, { generator = 'markdown-sampl
     if (expected.get(key) !== actual.get(key)) diffs.push(key);
   }
   fs.rmSync(temp, { recursive: true, force: true });
-  return { ok: diffs.length === 0, diffs };
+  return {
+    ok: diffs.length === 0,
+    diffs,
+    ...(uninitialised && { hint: `Docs not yet initialised. Run: generate-docs --proto <path> --docs ${docsDir}` })
+  };
 }
