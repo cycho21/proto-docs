@@ -1,0 +1,59 @@
+syntax = "proto3";
+
+package samples.workflow.settlement;
+
+import "google/protobuf/timestamp.proto";
+
+service SettlementReportService {
+  // Builds a settlement report for completed transfers.
+  rpc BuildSettlementReport(BuildSettlementReportRequest) returns (BuildSettlementReportResponse);
+
+  // Exports a settlement report to an external delivery target.
+  rpc ExportSettlementReport(ExportSettlementReportRequest) returns (ExportSettlementReportResponse);
+}
+
+message BuildSettlementReportRequest {
+  string tenant_key = 1;
+  string report_period_key = 2;
+  google.protobuf.Timestamp period_start_at = 3;
+  google.protobuf.Timestamp period_end_at = 4;
+  repeated string warehouse_keys = 5;
+  repeated string transfer_keys = 6;
+}
+
+message BuildSettlementReportResponse {
+  string report_key = 1;
+  string report_status = 2;
+  repeated SettlementLine settlement_lines = 3;
+  int64 total_moved_quantity = 4;
+  int64 total_settlement_amount = 5;
+  google.protobuf.Timestamp built_at = 6;
+}
+
+message SettlementLine {
+  string report_key = 1;
+  string transfer_key = 2;
+  string asset_key = 3;
+  string sku_code = 4;
+  string source_warehouse_key = 5;
+  string destination_warehouse_key = 6;
+  int64 moved_quantity = 7;
+  int64 unit_settlement_amount = 8;
+  int64 line_settlement_amount = 9;
+  string currency_code = 10;
+}
+
+message ExportSettlementReportRequest {
+  string tenant_key = 1;
+  string report_key = 2;
+  string export_format = 3;
+  string delivery_target = 4;
+  string requested_by = 5;
+}
+
+message ExportSettlementReportResponse {
+  string report_key = 1;
+  string export_status = 2;
+  string download_url = 3;
+  google.protobuf.Timestamp exported_at = 4;
+}

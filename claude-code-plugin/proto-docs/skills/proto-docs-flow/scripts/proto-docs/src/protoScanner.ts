@@ -1,0 +1,84 @@
+import fs from 'node:fs';
+import path from 'node:path';
+
+export function listProtoFiles(inputPath) {
+  const stat = fs.statSync(inputPath);
+  if (stat.isFile()) return [inputPath];
+  return fs.readdirSync(inputPath)
+    .filter((name) => name.endsWith('.proto'))
+    .sort()
+    .map((name) => path.join(inputPath, name));
+}
+
+export function scanProtoFile(file) {
+  const content = fs.readFileSync(file, 'utf8');
+  const lines = content.split(/\r?\n/);
+  const messages = [];
+  const services = [];
+  let currentMessage = null;
+  let currentService = null;
+  let pendingComments = [];
+  for (const line of lines) {
+    const trimmed = line.trim();
+    if (trimmed.startsWith('//')) {
+      pendingComments.push(trimmed.replace(/^\/\/\s?/, '').trim());
+      continue;
+    }
+    const messageMatch = trimmed.match(/^message\s+(\w+)\s*\{/);
+    if (messageMatch) {
+      currentMessage = { name: messageMatch[1], fields: [] };
+      messages.push(currentMessage);
+      pendingComments = [];
+      continue;
+    }
+    const serviceMatch = trimmed.match(/^service\s+(\w+)\s*\{/);
+    if (serviceMatch) {
+      currentService = { name: serviceMatch[1], rpcs: [] };
+      services.push(currentService);
+      pendingComments = [];
+      continue;
+    }
+    if (trimmed === '}') {
+      currentMessage = null;
+      currentService = null;
+      pendingComments = [];
+      continue;
+    }
+    const rpcMatch = trimmed.match(/^rpc\s+(\w+)\s*\(([^)]+)\)\s*returns\s*\(([^)]+)\)\s*;/);
+    if (rpcMatch && currentService) {
+      currentService.rpcs.push({ name: rpcMatch[1], request: rpcMatch[2].trim(), response: rpcMatch[3].trim(), comment: pendingComments.join(' ') });
+      pendingComments = [];
+      continue;
+    }
+    const fieldMatch = trimmed.match(/^(repeated\s+)?([A-Za-z_][\w.]*)\s+(\w+)\s*=\s*(\d+)\s*(?:\[[^\]]+\])?\s*;/);
+    if (fieldMatch && currentMessage) {
+      currentMessage.fields.push({
+        repeated: Boolean(fieldMatch[1]),
+        type: fieldMatch[2],
+        name: fieldMatch[3],
+        number: Number(fieldMatch[4]),
+        comment: pendingComments.join(' '),
+        file,
+        message: currentMessage.name
+      });
+      pendingComments = [];
+    } else if (trimmed && !trimmed.startsWith('option') && !trimmed.startsWith('syntax') && !trimmed.startsWith('package') && !trimmed.startsWith('import')) {
+      pendingComments = [];
+    }
+  }
+  return { file, messages, services };
+}
+
+export function scanProtoPath(inputPath) {
+  return listProtoFiles(inputPath).map(scanProtoFile);
+}
+
+export function normalizedProtoStructure(inputPath) {
+  return scanProtoPath(inputPath).map((file) => ({
+    messages: file.messages.map((m) => ({
+      name: m.name,
+      fields: m.fields.map((f) => ({ repeated: f.repeated, type: f.type, name: f.name, number: f.number }))
+    })),
+    services: file.services
+  }));
+}

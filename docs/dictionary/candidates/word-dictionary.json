@@ -1,0 +1,1496 @@
+{
+  "tenant_key": {
+    "term": "tenant_key",
+    "scope": "tenant_key",
+    "canonical_description": "Key that identifies the tenant.",
+    "aliases": [
+      "tenantKey"
+    ],
+    "forbidden_aliases": [],
+    "allowed_contexts": [
+      "tenant",
+      "key"
+    ],
+    "approved_examples": [
+      "Key that identifies the tenant."
+    ],
+    "status": "draft_for_human_review",
+    "version": 1,
+    "owner": "@domain-owner",
+    "last_reviewed_at": "2026-06-06",
+    "visibility": "public",
+    "source": "field_name"
+  },
+  "warehouse_key": {
+    "term": "warehouse_key",
+    "scope": "warehouse_key",
+    "canonical_description": "Key that identifies the warehouse.",
+    "aliases": [
+      "warehouseKey"
+    ],
+    "forbidden_aliases": [],
+    "allowed_contexts": [
+      "warehouse",
+      "key"
+    ],
+    "approved_examples": [
+      "Key that identifies the warehouse."
+    ],
+    "status": "draft_for_human_review",
+    "version": 1,
+    "owner": "@domain-owner",
+    "last_reviewed_at": "2026-06-06",
+    "visibility": "public",
+    "source": "field_name"
+  },
+  "asset_keys": {
+    "term": "asset_keys",
+    "scope": "asset_keys",
+    "canonical_description": "Keys that identify the asset values.",
+    "aliases": [
+      "assetKeys"
+    ],
+    "forbidden_aliases": [],
+    "allowed_contexts": [
+      "asset",
+      "keys"
+    ],
+    "approved_examples": [
+      "Keys that identify the asset values."
+    ],
+    "status": "draft_for_human_review",
+    "version": 1,
+    "owner": "@domain-owner",
+    "last_reviewed_at": "2026-06-06",
+    "visibility": "public",
+    "source": "field_name"
+  },
+  "lifecycle_status": {
+    "term": "lifecycle_status",
+    "scope": "lifecycle_status",
+    "canonical_description": "Status value for lifecycle.",
+    "aliases": [
+      "lifecycleStatus"
+    ],
+    "forbidden_aliases": [],
+    "allowed_contexts": [
+      "lifecycle",
+      "status"
+    ],
+    "approved_examples": [
+      "Status value for lifecycle."
+    ],
+    "status": "draft_for_human_review",
+    "version": 1,
+    "owner": "@domain-owner",
+    "last_reviewed_at": "2026-06-06",
+    "visibility": "public",
+    "source": "field_name"
+  },
+  "page_size": {
+    "term": "page_size",
+    "scope": "page_size",
+    "canonical_description": "Page Size value.",
+    "aliases": [
+      "pageSize"
+    ],
+    "forbidden_aliases": [],
+    "allowed_contexts": [
+      "page",
+      "size"
+    ],
+    "approved_examples": [
+      "Page Size value."
+    ],
+    "status": "draft_for_human_review",
+    "version": 1,
+    "owner": "@domain-owner",
+    "last_reviewed_at": "2026-06-06",
+    "visibility": "public",
+    "source": "field_name"
+  },
+  "page_token": {
+    "term": "page_token",
+    "scope": "page_token",
+    "canonical_description": "Page Token value.",
+    "aliases": [
+      "pageToken"
+    ],
+    "forbidden_aliases": [],
+    "allowed_contexts": [
+      "page",
+      "token"
+    ],
+    "approved_examples": [
+      "Page Token value."
+    ],
+    "status": "draft_for_human_review",
+    "version": 1,
+    "owner": "@domain-owner",
+    "last_reviewed_at": "2026-06-06",
+    "visibility": "public",
+    "source": "field_name"
+  },
+  "assets": {
+    "term": "assets",
+    "scope": "assets",
+    "canonical_description": "Assets value.",
+    "aliases": [],
+    "forbidden_aliases": [],
+    "allowed_contexts": [
+      "assets"
+    ],
+    "approved_examples": [
+      "Assets value."
+    ],
+    "status": "draft_for_human_review",
+    "version": 1,
+    "owner": "@domain-owner",
+    "last_reviewed_at": "2026-06-06",
+    "visibility": "public",
+    "source": "field_name"
+  },
+  "next_page_token": {
+    "term": "next_page_token",
+    "scope": "next_page_token",
+    "canonical_description": "Next page token for pagination or state progression.",
+    "aliases": [
+      "nextPageToken"
+    ],
+    "forbidden_aliases": [],
+    "allowed_contexts": [
+      "next",
+      "page",
+      "token"
+    ],
+    "approved_examples": [
+      "Next page token for pagination or state progression."
+    ],
+    "status": "draft_for_human_review",
+    "version": 1,
+    "owner": "@domain-owner",
+    "last_reviewed_at": "2026-06-06",
+    "visibility": "public",
+    "source": "field_name"
+  },
+  "total_count": {
+    "term": "total_count",
+    "scope": "total_count",
+    "canonical_description": "Total Count value.",
+    "aliases": [
+      "totalCount"
+    ],
+    "forbidden_aliases": [],
+    "allowed_contexts": [
+      "total",
+      "count"
+    ],
+    "approved_examples": [
+      "Total Count value."
+    ],
+    "status": "draft_for_human_review",
+    "version": 1,
+    "owner": "@domain-owner",
+    "last_reviewed_at": "2026-06-06",
+    "visibility": "public",
+    "source": "field_name"
+  },
+  "asset_key": {
+    "term": "asset_key",
+    "scope": "asset_key",
+    "canonical_description": "Key that identifies the asset.",
+    "aliases": [
+      "assetKey"
+    ],
+    "forbidden_aliases": [],
+    "allowed_contexts": [
+      "asset",
+      "key"
+    ],
+    "approved_examples": [
+      "Key that identifies the asset."
+    ],
+    "status": "draft_for_human_review",
+    "version": 1,
+    "owner": "@domain-owner",
+    "last_reviewed_at": "2026-06-06",
+    "visibility": "public",
+    "source": "field_name"
+  },
+  "sku_code": {
+    "term": "sku_code",
+    "scope": "sku_code",
+    "canonical_description": "Code value for sku.",
+    "aliases": [
+      "skuCode"
+    ],
+    "forbidden_aliases": [],
+    "allowed_contexts": [
+      "sku",
+      "code"
+    ],
+    "approved_examples": [
+      "Code value for sku."
+    ],
+    "status": "draft_for_human_review",
+    "version": 1,
+    "owner": "@domain-owner",
+    "last_reviewed_at": "2026-06-06",
+    "visibility": "public",
+    "source": "field_name"
+  },
+  "batch_code": {
+    "term": "batch_code",
+    "scope": "batch_code",
+    "canonical_description": "Code value for batch.",
+    "aliases": [
+      "batchCode"
+    ],
+    "forbidden_aliases": [],
+    "allowed_contexts": [
+      "batch",
+      "code"
+    ],
+    "approved_examples": [
+      "Code value for batch."
+    ],
+    "status": "draft_for_human_review",
+    "version": 1,
+    "owner": "@domain-owner",
+    "last_reviewed_at": "2026-06-06",
+    "visibility": "public",
+    "source": "field_name"
+  },
+  "available_quantity": {
+    "term": "available_quantity",
+    "scope": "available_quantity",
+    "canonical_description": "Quantity value for available.",
+    "aliases": [
+      "availableQuantity"
+    ],
+    "forbidden_aliases": [],
+    "allowed_contexts": [
+      "available",
+      "quantity"
+    ],
+    "approved_examples": [
+      "Quantity value for available."
+    ],
+    "status": "draft_for_human_review",
+    "version": 1,
+    "owner": "@domain-owner",
+    "last_reviewed_at": "2026-06-06",
+    "visibility": "public",
+    "source": "field_name"
+  },
+  "reserved_quantity": {
+    "term": "reserved_quantity",
+    "scope": "reserved_quantity",
+    "canonical_description": "Quantity value for reserved.",
+    "aliases": [
+      "reservedQuantity"
+    ],
+    "forbidden_aliases": [],
+    "allowed_contexts": [
+      "reserved",
+      "quantity"
+    ],
+    "approved_examples": [
+      "Quantity value for reserved."
+    ],
+    "status": "draft_for_human_review",
+    "version": 1,
+    "owner": "@domain-owner",
+    "last_reviewed_at": "2026-06-06",
+    "visibility": "public",
+    "source": "field_name"
+  },
+  "received_at": {
+    "term": "received_at",
+    "scope": "received_at",
+    "canonical_description": "Timestamp for the received event.",
+    "aliases": [
+      "receivedAt"
+    ],
+    "forbidden_aliases": [],
+    "allowed_contexts": [
+      "received",
+      "at"
+    ],
+    "approved_examples": [
+      "Timestamp for the received event."
+    ],
+    "status": "draft_for_human_review",
+    "version": 1,
+    "owner": "@domain-owner",
+    "last_reviewed_at": "2026-06-06",
+    "visibility": "public",
+    "source": "field_name"
+  },
+  "expires_at": {
+    "term": "expires_at",
+    "scope": "expires_at",
+    "canonical_description": "Timestamp for the expires event.",
+    "aliases": [
+      "expiresAt"
+    ],
+    "forbidden_aliases": [],
+    "allowed_contexts": [
+      "expires",
+      "at"
+    ],
+    "approved_examples": [
+      "Timestamp for the expires event."
+    ],
+    "status": "draft_for_human_review",
+    "version": 1,
+    "owner": "@domain-owner",
+    "last_reviewed_at": "2026-06-06",
+    "visibility": "public",
+    "source": "field_name"
+  },
+  "order_key": {
+    "term": "order_key",
+    "scope": "order_key",
+    "canonical_description": "Key that identifies the order.",
+    "aliases": [
+      "orderKey"
+    ],
+    "forbidden_aliases": [],
+    "allowed_contexts": [
+      "order",
+      "key"
+    ],
+    "approved_examples": [
+      "Key that identifies the order."
+    ],
+    "status": "draft_for_human_review",
+    "version": 1,
+    "owner": "@domain-owner",
+    "last_reviewed_at": "2026-06-06",
+    "visibility": "public",
+    "source": "field_name"
+  },
+  "lines": {
+    "term": "lines",
+    "scope": "lines",
+    "canonical_description": "Lines value.",
+    "aliases": [],
+    "forbidden_aliases": [],
+    "allowed_contexts": [
+      "lines"
+    ],
+    "approved_examples": [
+      "Lines value."
+    ],
+    "status": "draft_for_human_review",
+    "version": 1,
+    "owner": "@domain-owner",
+    "last_reviewed_at": "2026-06-06",
+    "visibility": "public",
+    "source": "field_name"
+  },
+  "requested_by": {
+    "term": "requested_by",
+    "scope": "requested_by",
+    "canonical_description": "Requested By value.",
+    "aliases": [
+      "requestedBy"
+    ],
+    "forbidden_aliases": [],
+    "allowed_contexts": [
+      "requested",
+      "by"
+    ],
+    "approved_examples": [
+      "Requested By value."
+    ],
+    "status": "draft_for_human_review",
+    "version": 1,
+    "owner": "@domain-owner",
+    "last_reviewed_at": "2026-06-06",
+    "visibility": "public",
+    "source": "field_name"
+  },
+  "quantity": {
+    "term": "quantity",
+    "scope": "quantity",
+    "canonical_description": "Quantity value.",
+    "aliases": [],
+    "forbidden_aliases": [],
+    "allowed_contexts": [
+      "quantity"
+    ],
+    "approved_examples": [
+      "Quantity value."
+    ],
+    "status": "draft_for_human_review",
+    "version": 1,
+    "owner": "@domain-owner",
+    "last_reviewed_at": "2026-06-06",
+    "visibility": "public",
+    "source": "field_name"
+  },
+  "reservation_reason": {
+    "term": "reservation_reason",
+    "scope": "reservation_reason",
+    "canonical_description": "Reason associated with reservation.",
+    "aliases": [
+      "reservationReason"
+    ],
+    "forbidden_aliases": [],
+    "allowed_contexts": [
+      "reservation",
+      "reason"
+    ],
+    "approved_examples": [
+      "Reason associated with reservation."
+    ],
+    "status": "draft_for_human_review",
+    "version": 1,
+    "owner": "@domain-owner",
+    "last_reviewed_at": "2026-06-06",
+    "visibility": "public",
+    "source": "field_name"
+  },
+  "reservation_key": {
+    "term": "reservation_key",
+    "scope": "reservation_key",
+    "canonical_description": "Key that identifies the reservation.",
+    "aliases": [
+      "reservationKey"
+    ],
+    "forbidden_aliases": [],
+    "allowed_contexts": [
+      "reservation",
+      "key"
+    ],
+    "approved_examples": [
+      "Key that identifies the reservation."
+    ],
+    "status": "draft_for_human_review",
+    "version": 1,
+    "owner": "@domain-owner",
+    "last_reviewed_at": "2026-06-06",
+    "visibility": "public",
+    "source": "field_name"
+  },
+  "reservation_status": {
+    "term": "reservation_status",
+    "scope": "reservation_status",
+    "canonical_description": "Status value for reservation.",
+    "aliases": [
+      "reservationStatus"
+    ],
+    "forbidden_aliases": [],
+    "allowed_contexts": [
+      "reservation",
+      "status"
+    ],
+    "approved_examples": [
+      "Status value for reservation."
+    ],
+    "status": "draft_for_human_review",
+    "version": 1,
+    "owner": "@domain-owner",
+    "last_reviewed_at": "2026-06-06",
+    "visibility": "public",
+    "source": "field_name"
+  },
+  "results": {
+    "term": "results",
+    "scope": "results",
+    "canonical_description": "Results value.",
+    "aliases": [],
+    "forbidden_aliases": [],
+    "allowed_contexts": [
+      "results"
+    ],
+    "approved_examples": [
+      "Results value."
+    ],
+    "status": "draft_for_human_review",
+    "version": 1,
+    "owner": "@domain-owner",
+    "last_reviewed_at": "2026-06-06",
+    "visibility": "public",
+    "source": "field_name"
+  },
+  "reserved_at": {
+    "term": "reserved_at",
+    "scope": "reserved_at",
+    "canonical_description": "Timestamp for the reserved event.",
+    "aliases": [
+      "reservedAt"
+    ],
+    "forbidden_aliases": [],
+    "allowed_contexts": [
+      "reserved",
+      "at"
+    ],
+    "approved_examples": [
+      "Timestamp for the reserved event."
+    ],
+    "status": "draft_for_human_review",
+    "version": 1,
+    "owner": "@domain-owner",
+    "last_reviewed_at": "2026-06-06",
+    "visibility": "public",
+    "source": "field_name"
+  },
+  "requested_quantity": {
+    "term": "requested_quantity",
+    "scope": "requested_quantity",
+    "canonical_description": "Quantity value for requested.",
+    "aliases": [
+      "requestedQuantity"
+    ],
+    "forbidden_aliases": [],
+    "allowed_contexts": [
+      "requested",
+      "quantity"
+    ],
+    "approved_examples": [
+      "Quantity value for requested."
+    ],
+    "status": "draft_for_human_review",
+    "version": 1,
+    "owner": "@domain-owner",
+    "last_reviewed_at": "2026-06-06",
+    "visibility": "public",
+    "source": "field_name"
+  },
+  "failure_reason": {
+    "term": "failure_reason",
+    "scope": "failure_reason",
+    "canonical_description": "Reason associated with failure.",
+    "aliases": [
+      "failureReason"
+    ],
+    "forbidden_aliases": [],
+    "allowed_contexts": [
+      "failure",
+      "reason"
+    ],
+    "approved_examples": [
+      "Reason associated with failure."
+    ],
+    "status": "draft_for_human_review",
+    "version": 1,
+    "owner": "@domain-owner",
+    "last_reviewed_at": "2026-06-06",
+    "visibility": "public",
+    "source": "field_name"
+  },
+  "report_period_key": {
+    "term": "report_period_key",
+    "scope": "report_period_key",
+    "canonical_description": "Key that identifies the report period.",
+    "aliases": [
+      "reportPeriodKey"
+    ],
+    "forbidden_aliases": [],
+    "allowed_contexts": [
+      "report",
+      "period",
+      "key"
+    ],
+    "approved_examples": [
+      "Key that identifies the report period."
+    ],
+    "status": "draft_for_human_review",
+    "version": 1,
+    "owner": "@domain-owner",
+    "last_reviewed_at": "2026-06-06",
+    "visibility": "public",
+    "source": "field_name"
+  },
+  "period_start_at": {
+    "term": "period_start_at",
+    "scope": "period_start_at",
+    "canonical_description": "Timestamp for the period start event.",
+    "aliases": [
+      "periodStartAt"
+    ],
+    "forbidden_aliases": [],
+    "allowed_contexts": [
+      "period",
+      "start",
+      "at"
+    ],
+    "approved_examples": [
+      "Timestamp for the period start event."
+    ],
+    "status": "draft_for_human_review",
+    "version": 1,
+    "owner": "@domain-owner",
+    "last_reviewed_at": "2026-06-06",
+    "visibility": "public",
+    "source": "field_name"
+  },
+  "period_end_at": {
+    "term": "period_end_at",
+    "scope": "period_end_at",
+    "canonical_description": "Timestamp for the period end event.",
+    "aliases": [
+      "periodEndAt"
+    ],
+    "forbidden_aliases": [],
+    "allowed_contexts": [
+      "period",
+      "end",
+      "at"
+    ],
+    "approved_examples": [
+      "Timestamp for the period end event."
+    ],
+    "status": "draft_for_human_review",
+    "version": 1,
+    "owner": "@domain-owner",
+    "last_reviewed_at": "2026-06-06",
+    "visibility": "public",
+    "source": "field_name"
+  },
+  "warehouse_keys": {
+    "term": "warehouse_keys",
+    "scope": "warehouse_keys",
+    "canonical_description": "Keys that identify the warehouse values.",
+    "aliases": [
+      "warehouseKeys"
+    ],
+    "forbidden_aliases": [],
+    "allowed_contexts": [
+      "warehouse",
+      "keys"
+    ],
+    "approved_examples": [
+      "Keys that identify the warehouse values."
+    ],
+    "status": "draft_for_human_review",
+    "version": 1,
+    "owner": "@domain-owner",
+    "last_reviewed_at": "2026-06-06",
+    "visibility": "public",
+    "source": "field_name"
+  },
+  "transfer_keys": {
+    "term": "transfer_keys",
+    "scope": "transfer_keys",
+    "canonical_description": "Keys that identify the transfer values.",
+    "aliases": [
+      "transferKeys"
+    ],
+    "forbidden_aliases": [],
+    "allowed_contexts": [
+      "transfer",
+      "keys"
+    ],
+    "approved_examples": [
+      "Keys that identify the transfer values."
+    ],
+    "status": "draft_for_human_review",
+    "version": 1,
+    "owner": "@domain-owner",
+    "last_reviewed_at": "2026-06-06",
+    "visibility": "public",
+    "source": "field_name"
+  },
+  "report_key": {
+    "term": "report_key",
+    "scope": "report_key",
+    "canonical_description": "Key that identifies the report.",
+    "aliases": [
+      "reportKey"
+    ],
+    "forbidden_aliases": [],
+    "allowed_contexts": [
+      "report",
+      "key"
+    ],
+    "approved_examples": [
+      "Key that identifies the report."
+    ],
+    "status": "draft_for_human_review",
+    "version": 1,
+    "owner": "@domain-owner",
+    "last_reviewed_at": "2026-06-06",
+    "visibility": "public",
+    "source": "field_name"
+  },
+  "report_status": {
+    "term": "report_status",
+    "scope": "report_status",
+    "canonical_description": "Status value for report.",
+    "aliases": [
+      "reportStatus"
+    ],
+    "forbidden_aliases": [],
+    "allowed_contexts": [
+      "report",
+      "status"
+    ],
+    "approved_examples": [
+      "Status value for report."
+    ],
+    "status": "draft_for_human_review",
+    "version": 1,
+    "owner": "@domain-owner",
+    "last_reviewed_at": "2026-06-06",
+    "visibility": "public",
+    "source": "field_name"
+  },
+  "settlement_lines": {
+    "term": "settlement_lines",
+    "scope": "settlement_lines",
+    "canonical_description": "Settlement Lines value.",
+    "aliases": [
+      "settlementLines"
+    ],
+    "forbidden_aliases": [],
+    "allowed_contexts": [
+      "settlement",
+      "lines"
+    ],
+    "approved_examples": [
+      "Settlement Lines value."
+    ],
+    "status": "draft_for_human_review",
+    "version": 1,
+    "owner": "@domain-owner",
+    "last_reviewed_at": "2026-06-06",
+    "visibility": "public",
+    "source": "field_name"
+  },
+  "total_moved_quantity": {
+    "term": "total_moved_quantity",
+    "scope": "total_moved_quantity",
+    "canonical_description": "Quantity value for total moved.",
+    "aliases": [
+      "totalMovedQuantity"
+    ],
+    "forbidden_aliases": [],
+    "allowed_contexts": [
+      "total",
+      "moved",
+      "quantity"
+    ],
+    "approved_examples": [
+      "Quantity value for total moved."
+    ],
+    "status": "draft_for_human_review",
+    "version": 1,
+    "owner": "@domain-owner",
+    "last_reviewed_at": "2026-06-06",
+    "visibility": "public",
+    "source": "field_name"
+  },
+  "total_settlement_amount": {
+    "term": "total_settlement_amount",
+    "scope": "total_settlement_amount",
+    "canonical_description": "Amount value for total settlement.",
+    "aliases": [
+      "totalSettlementAmount"
+    ],
+    "forbidden_aliases": [],
+    "allowed_contexts": [
+      "total",
+      "settlement",
+      "amount"
+    ],
+    "approved_examples": [
+      "Amount value for total settlement."
+    ],
+    "status": "draft_for_human_review",
+    "version": 1,
+    "owner": "@domain-owner",
+    "last_reviewed_at": "2026-06-06",
+    "visibility": "public",
+    "source": "field_name"
+  },
+  "built_at": {
+    "term": "built_at",
+    "scope": "built_at",
+    "canonical_description": "Timestamp for the built event.",
+    "aliases": [
+      "builtAt"
+    ],
+    "forbidden_aliases": [],
+    "allowed_contexts": [
+      "built",
+      "at"
+    ],
+    "approved_examples": [
+      "Timestamp for the built event."
+    ],
+    "status": "draft_for_human_review",
+    "version": 1,
+    "owner": "@domain-owner",
+    "last_reviewed_at": "2026-06-06",
+    "visibility": "public",
+    "source": "field_name"
+  },
+  "transfer_key": {
+    "term": "transfer_key",
+    "scope": "transfer_key",
+    "canonical_description": "Key that identifies the transfer.",
+    "aliases": [
+      "transferKey"
+    ],
+    "forbidden_aliases": [],
+    "allowed_contexts": [
+      "transfer",
+      "key"
+    ],
+    "approved_examples": [
+      "Key that identifies the transfer."
+    ],
+    "status": "draft_for_human_review",
+    "version": 1,
+    "owner": "@domain-owner",
+    "last_reviewed_at": "2026-06-06",
+    "visibility": "public",
+    "source": "field_name"
+  },
+  "source_warehouse_key": {
+    "term": "source_warehouse_key",
+    "scope": "source_warehouse_key",
+    "canonical_description": "Key that identifies the source warehouse.",
+    "aliases": [
+      "sourceWarehouseKey"
+    ],
+    "forbidden_aliases": [],
+    "allowed_contexts": [
+      "source",
+      "warehouse",
+      "key"
+    ],
+    "approved_examples": [
+      "Key that identifies the source warehouse."
+    ],
+    "status": "draft_for_human_review",
+    "version": 1,
+    "owner": "@domain-owner",
+    "last_reviewed_at": "2026-06-06",
+    "visibility": "public",
+    "source": "field_name"
+  },
+  "destination_warehouse_key": {
+    "term": "destination_warehouse_key",
+    "scope": "destination_warehouse_key",
+    "canonical_description": "Key that identifies the destination warehouse.",
+    "aliases": [
+      "destinationWarehouseKey"
+    ],
+    "forbidden_aliases": [],
+    "allowed_contexts": [
+      "destination",
+      "warehouse",
+      "key"
+    ],
+    "approved_examples": [
+      "Key that identifies the destination warehouse."
+    ],
+    "status": "draft_for_human_review",
+    "version": 1,
+    "owner": "@domain-owner",
+    "last_reviewed_at": "2026-06-06",
+    "visibility": "public",
+    "source": "field_name"
+  },
+  "moved_quantity": {
+    "term": "moved_quantity",
+    "scope": "moved_quantity",
+    "canonical_description": "Quantity value for moved.",
+    "aliases": [
+      "movedQuantity"
+    ],
+    "forbidden_aliases": [],
+    "allowed_contexts": [
+      "moved",
+      "quantity"
+    ],
+    "approved_examples": [
+      "Quantity value for moved."
+    ],
+    "status": "draft_for_human_review",
+    "version": 1,
+    "owner": "@domain-owner",
+    "last_reviewed_at": "2026-06-06",
+    "visibility": "public",
+    "source": "field_name"
+  },
+  "unit_settlement_amount": {
+    "term": "unit_settlement_amount",
+    "scope": "unit_settlement_amount",
+    "canonical_description": "Amount value for unit settlement.",
+    "aliases": [
+      "unitSettlementAmount"
+    ],
+    "forbidden_aliases": [],
+    "allowed_contexts": [
+      "unit",
+      "settlement",
+      "amount"
+    ],
+    "approved_examples": [
+      "Amount value for unit settlement."
+    ],
+    "status": "draft_for_human_review",
+    "version": 1,
+    "owner": "@domain-owner",
+    "last_reviewed_at": "2026-06-06",
+    "visibility": "public",
+    "source": "field_name"
+  },
+  "line_settlement_amount": {
+    "term": "line_settlement_amount",
+    "scope": "line_settlement_amount",
+    "canonical_description": "Amount value for line settlement.",
+    "aliases": [
+      "lineSettlementAmount"
+    ],
+    "forbidden_aliases": [],
+    "allowed_contexts": [
+      "line",
+      "settlement",
+      "amount"
+    ],
+    "approved_examples": [
+      "Amount value for line settlement."
+    ],
+    "status": "draft_for_human_review",
+    "version": 1,
+    "owner": "@domain-owner",
+    "last_reviewed_at": "2026-06-06",
+    "visibility": "public",
+    "source": "field_name"
+  },
+  "currency_code": {
+    "term": "currency_code",
+    "scope": "currency_code",
+    "canonical_description": "Code value for currency.",
+    "aliases": [
+      "currencyCode"
+    ],
+    "forbidden_aliases": [],
+    "allowed_contexts": [
+      "currency",
+      "code"
+    ],
+    "approved_examples": [
+      "Code value for currency."
+    ],
+    "status": "draft_for_human_review",
+    "version": 1,
+    "owner": "@domain-owner",
+    "last_reviewed_at": "2026-06-06",
+    "visibility": "public",
+    "source": "field_name"
+  },
+  "export_format": {
+    "term": "export_format",
+    "scope": "export_format",
+    "canonical_description": "Export Format value.",
+    "aliases": [
+      "exportFormat"
+    ],
+    "forbidden_aliases": [],
+    "allowed_contexts": [
+      "export",
+      "format"
+    ],
+    "approved_examples": [
+      "Export Format value."
+    ],
+    "status": "draft_for_human_review",
+    "version": 1,
+    "owner": "@domain-owner",
+    "last_reviewed_at": "2026-06-06",
+    "visibility": "public",
+    "source": "field_name"
+  },
+  "delivery_target": {
+    "term": "delivery_target",
+    "scope": "delivery_target",
+    "canonical_description": "Delivery Target value.",
+    "aliases": [
+      "deliveryTarget"
+    ],
+    "forbidden_aliases": [],
+    "allowed_contexts": [
+      "delivery",
+      "target"
+    ],
+    "approved_examples": [
+      "Delivery Target value."
+    ],
+    "status": "draft_for_human_review",
+    "version": 1,
+    "owner": "@domain-owner",
+    "last_reviewed_at": "2026-06-06",
+    "visibility": "public",
+    "source": "field_name"
+  },
+  "export_status": {
+    "term": "export_status",
+    "scope": "export_status",
+    "canonical_description": "Status value for export.",
+    "aliases": [
+      "exportStatus"
+    ],
+    "forbidden_aliases": [],
+    "allowed_contexts": [
+      "export",
+      "status"
+    ],
+    "approved_examples": [
+      "Status value for export."
+    ],
+    "status": "draft_for_human_review",
+    "version": 1,
+    "owner": "@domain-owner",
+    "last_reviewed_at": "2026-06-06",
+    "visibility": "public",
+    "source": "field_name"
+  },
+  "download_url": {
+    "term": "download_url",
+    "scope": "download_url",
+    "canonical_description": "URL for download.",
+    "aliases": [
+      "downloadUrl"
+    ],
+    "forbidden_aliases": [],
+    "allowed_contexts": [
+      "download",
+      "url"
+    ],
+    "approved_examples": [
+      "URL for download."
+    ],
+    "status": "draft_for_human_review",
+    "version": 1,
+    "owner": "@domain-owner",
+    "last_reviewed_at": "2026-06-06",
+    "visibility": "public",
+    "source": "field_name"
+  },
+  "exported_at": {
+    "term": "exported_at",
+    "scope": "exported_at",
+    "canonical_description": "Timestamp for the exported event.",
+    "aliases": [
+      "exportedAt"
+    ],
+    "forbidden_aliases": [],
+    "allowed_contexts": [
+      "exported",
+      "at"
+    ],
+    "approved_examples": [
+      "Timestamp for the exported event."
+    ],
+    "status": "draft_for_human_review",
+    "version": 1,
+    "owner": "@domain-owner",
+    "last_reviewed_at": "2026-06-06",
+    "visibility": "public",
+    "source": "field_name"
+  },
+  "transfer_reason": {
+    "term": "transfer_reason",
+    "scope": "transfer_reason",
+    "canonical_description": "Reason associated with transfer.",
+    "aliases": [
+      "transferReason"
+    ],
+    "forbidden_aliases": [],
+    "allowed_contexts": [
+      "transfer",
+      "reason"
+    ],
+    "approved_examples": [
+      "Reason associated with transfer."
+    ],
+    "status": "draft_for_human_review",
+    "version": 1,
+    "owner": "@domain-owner",
+    "last_reviewed_at": "2026-06-06",
+    "visibility": "public",
+    "source": "field_name"
+  },
+  "lot_code": {
+    "term": "lot_code",
+    "scope": "lot_code",
+    "canonical_description": "Code value for lot.",
+    "aliases": [
+      "lotCode"
+    ],
+    "forbidden_aliases": [],
+    "allowed_contexts": [
+      "lot",
+      "code"
+    ],
+    "approved_examples": [
+      "Code value for lot."
+    ],
+    "status": "draft_for_human_review",
+    "version": 1,
+    "owner": "@domain-owner",
+    "last_reviewed_at": "2026-06-06",
+    "visibility": "public",
+    "source": "field_name"
+  },
+  "handling_instruction": {
+    "term": "handling_instruction",
+    "scope": "handling_instruction",
+    "canonical_description": "Handling Instruction value.",
+    "aliases": [
+      "handlingInstruction"
+    ],
+    "forbidden_aliases": [],
+    "allowed_contexts": [
+      "handling",
+      "instruction"
+    ],
+    "approved_examples": [
+      "Handling Instruction value."
+    ],
+    "status": "draft_for_human_review",
+    "version": 1,
+    "owner": "@domain-owner",
+    "last_reviewed_at": "2026-06-06",
+    "visibility": "public",
+    "source": "field_name"
+  },
+  "transfer_status": {
+    "term": "transfer_status",
+    "scope": "transfer_status",
+    "canonical_description": "Status value for transfer.",
+    "aliases": [
+      "transferStatus"
+    ],
+    "forbidden_aliases": [],
+    "allowed_contexts": [
+      "transfer",
+      "status"
+    ],
+    "approved_examples": [
+      "Status value for transfer."
+    ],
+    "status": "draft_for_human_review",
+    "version": 1,
+    "owner": "@domain-owner",
+    "last_reviewed_at": "2026-06-06",
+    "visibility": "public",
+    "source": "field_name"
+  },
+  "accepted_lines": {
+    "term": "accepted_lines",
+    "scope": "accepted_lines",
+    "canonical_description": "Accepted Lines value.",
+    "aliases": [
+      "acceptedLines"
+    ],
+    "forbidden_aliases": [],
+    "allowed_contexts": [
+      "accepted",
+      "lines"
+    ],
+    "approved_examples": [
+      "Accepted Lines value."
+    ],
+    "status": "draft_for_human_review",
+    "version": 1,
+    "owner": "@domain-owner",
+    "last_reviewed_at": "2026-06-06",
+    "visibility": "public",
+    "source": "field_name"
+  },
+  "rejected_lines": {
+    "term": "rejected_lines",
+    "scope": "rejected_lines",
+    "canonical_description": "Rejected Lines value.",
+    "aliases": [
+      "rejectedLines"
+    ],
+    "forbidden_aliases": [],
+    "allowed_contexts": [
+      "rejected",
+      "lines"
+    ],
+    "approved_examples": [
+      "Rejected Lines value."
+    ],
+    "status": "draft_for_human_review",
+    "version": 1,
+    "owner": "@domain-owner",
+    "last_reviewed_at": "2026-06-06",
+    "visibility": "public",
+    "source": "field_name"
+  },
+  "created_at": {
+    "term": "created_at",
+    "scope": "created_at",
+    "canonical_description": "Timestamp for the created event.",
+    "aliases": [
+      "createdAt"
+    ],
+    "forbidden_aliases": [],
+    "allowed_contexts": [
+      "created",
+      "at"
+    ],
+    "approved_examples": [
+      "Timestamp for the created event."
+    ],
+    "status": "draft_for_human_review",
+    "version": 1,
+    "owner": "@domain-owner",
+    "last_reviewed_at": "2026-06-06",
+    "visibility": "public",
+    "source": "field_name"
+  },
+  "reviewer_key": {
+    "term": "reviewer_key",
+    "scope": "reviewer_key",
+    "canonical_description": "Key that identifies the reviewer.",
+    "aliases": [
+      "reviewerKey"
+    ],
+    "forbidden_aliases": [],
+    "allowed_contexts": [
+      "reviewer",
+      "key"
+    ],
+    "approved_examples": [
+      "Key that identifies the reviewer."
+    ],
+    "status": "draft_for_human_review",
+    "version": 1,
+    "owner": "@domain-owner",
+    "last_reviewed_at": "2026-06-06",
+    "visibility": "public",
+    "source": "field_name"
+  },
+  "review_decision": {
+    "term": "review_decision",
+    "scope": "review_decision",
+    "canonical_description": "Review Decision value.",
+    "aliases": [
+      "reviewDecision"
+    ],
+    "forbidden_aliases": [],
+    "allowed_contexts": [
+      "review",
+      "decision"
+    ],
+    "approved_examples": [
+      "Review Decision value."
+    ],
+    "status": "draft_for_human_review",
+    "version": 1,
+    "owner": "@domain-owner",
+    "last_reviewed_at": "2026-06-06",
+    "visibility": "public",
+    "source": "field_name"
+  },
+  "review_comment": {
+    "term": "review_comment",
+    "scope": "review_comment",
+    "canonical_description": "Free-form note for review.",
+    "aliases": [
+      "reviewComment"
+    ],
+    "forbidden_aliases": [],
+    "allowed_contexts": [
+      "review",
+      "comment"
+    ],
+    "approved_examples": [
+      "Free-form note for review."
+    ],
+    "status": "draft_for_human_review",
+    "version": 1,
+    "owner": "@domain-owner",
+    "last_reviewed_at": "2026-06-06",
+    "visibility": "public",
+    "source": "field_name"
+  },
+  "reviewed_by": {
+    "term": "reviewed_by",
+    "scope": "reviewed_by",
+    "canonical_description": "Reviewed By value.",
+    "aliases": [
+      "reviewedBy"
+    ],
+    "forbidden_aliases": [],
+    "allowed_contexts": [
+      "reviewed",
+      "by"
+    ],
+    "approved_examples": [
+      "Reviewed By value."
+    ],
+    "status": "draft_for_human_review",
+    "version": 1,
+    "owner": "@domain-owner",
+    "last_reviewed_at": "2026-06-06",
+    "visibility": "public",
+    "source": "field_name"
+  },
+  "reviewed_at": {
+    "term": "reviewed_at",
+    "scope": "reviewed_at",
+    "canonical_description": "Timestamp for the reviewed event.",
+    "aliases": [
+      "reviewedAt"
+    ],
+    "forbidden_aliases": [],
+    "allowed_contexts": [
+      "reviewed",
+      "at"
+    ],
+    "approved_examples": [
+      "Timestamp for the reviewed event."
+    ],
+    "status": "draft_for_human_review",
+    "version": 1,
+    "owner": "@domain-owner",
+    "last_reviewed_at": "2026-06-06",
+    "visibility": "public",
+    "source": "field_name"
+  },
+  "event_type": {
+    "term": "event_type",
+    "scope": "event_type",
+    "canonical_description": "Event Type value.",
+    "aliases": [
+      "eventType"
+    ],
+    "forbidden_aliases": [],
+    "allowed_contexts": [
+      "event",
+      "type"
+    ],
+    "approved_examples": [
+      "Event Type value."
+    ],
+    "status": "draft_for_human_review",
+    "version": 1,
+    "owner": "@domain-owner",
+    "last_reviewed_at": "2026-06-06",
+    "visibility": "public",
+    "source": "field_name"
+  },
+  "actor_key": {
+    "term": "actor_key",
+    "scope": "actor_key",
+    "canonical_description": "Key that identifies the actor.",
+    "aliases": [
+      "actorKey"
+    ],
+    "forbidden_aliases": [],
+    "allowed_contexts": [
+      "actor",
+      "key"
+    ],
+    "approved_examples": [
+      "Key that identifies the actor."
+    ],
+    "status": "draft_for_human_review",
+    "version": 1,
+    "owner": "@domain-owner",
+    "last_reviewed_at": "2026-06-06",
+    "visibility": "public",
+    "source": "field_name"
+  },
+  "previous_status": {
+    "term": "previous_status",
+    "scope": "previous_status",
+    "canonical_description": "Status value for previous.",
+    "aliases": [
+      "previousStatus"
+    ],
+    "forbidden_aliases": [],
+    "allowed_contexts": [
+      "previous",
+      "status"
+    ],
+    "approved_examples": [
+      "Status value for previous."
+    ],
+    "status": "draft_for_human_review",
+    "version": 1,
+    "owner": "@domain-owner",
+    "last_reviewed_at": "2026-06-06",
+    "visibility": "public",
+    "source": "field_name"
+  },
+  "next_status": {
+    "term": "next_status",
+    "scope": "next_status",
+    "canonical_description": "Status value for next.",
+    "aliases": [
+      "nextStatus"
+    ],
+    "forbidden_aliases": [],
+    "allowed_contexts": [
+      "next",
+      "status"
+    ],
+    "approved_examples": [
+      "Status value for next."
+    ],
+    "status": "draft_for_human_review",
+    "version": 1,
+    "owner": "@domain-owner",
+    "last_reviewed_at": "2026-06-06",
+    "visibility": "public",
+    "source": "field_name"
+  },
+  "event_note": {
+    "term": "event_note",
+    "scope": "event_note",
+    "canonical_description": "Free-form note for event.",
+    "aliases": [
+      "eventNote"
+    ],
+    "forbidden_aliases": [],
+    "allowed_contexts": [
+      "event",
+      "note"
+    ],
+    "approved_examples": [
+      "Free-form note for event."
+    ],
+    "status": "draft_for_human_review",
+    "version": 1,
+    "owner": "@domain-owner",
+    "last_reviewed_at": "2026-06-06",
+    "visibility": "public",
+    "source": "field_name"
+  },
+  "event_at": {
+    "term": "event_at",
+    "scope": "event_at",
+    "canonical_description": "Timestamp when the event occurs.",
+    "aliases": [
+      "eventAt"
+    ],
+    "forbidden_aliases": [],
+    "allowed_contexts": [
+      "event",
+      "at"
+    ],
+    "approved_examples": [
+      "Timestamp when the event occurs."
+    ],
+    "status": "draft_for_human_review",
+    "version": 1,
+    "owner": "@domain-owner",
+    "last_reviewed_at": "2026-06-06",
+    "visibility": "public",
+    "source": "field_name"
+  }
+}

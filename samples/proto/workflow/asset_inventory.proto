@@ -1,0 +1,71 @@
+syntax = "proto3";
+
+package samples.workflow.asset;
+
+import "google/protobuf/timestamp.proto";
+
+service AssetInventoryService {
+  // Lists assets with warehouse and lifecycle filters.
+  rpc ListAssets(ListAssetsRequest) returns (ListAssetsResponse);
+
+  // Reserves inventory quantity for an order.
+  rpc ReserveInventory(ReserveInventoryRequest) returns (ReserveInventoryResponse);
+}
+
+message ListAssetsRequest {
+  string tenant_key = 1;
+  string warehouse_key = 2;
+  repeated string asset_keys = 3;
+  string lifecycle_status = 4;
+  int32 page_size = 5;
+  string page_token = 6;
+}
+
+message ListAssetsResponse {
+  repeated InventoryAsset assets = 1;
+  string next_page_token = 2;
+  int32 total_count = 3;
+}
+
+message InventoryAsset {
+  string asset_key = 1;
+  string tenant_key = 2;
+  string warehouse_key = 3;
+  string sku_code = 4;
+  string batch_code = 5;
+  int64 available_quantity = 6;
+  int64 reserved_quantity = 7;
+  string lifecycle_status = 8;
+  google.protobuf.Timestamp received_at = 9;
+  google.protobuf.Timestamp expires_at = 10;
+}
+
+message ReserveInventoryRequest {
+  string tenant_key = 1;
+  string warehouse_key = 2;
+  string order_key = 3;
+  repeated ReserveInventoryLine lines = 4;
+  string requested_by = 5;
+}
+
+message ReserveInventoryLine {
+  string asset_key = 1;
+  string sku_code = 2;
+  int64 quantity = 3;
+  string reservation_reason = 4;
+}
+
+message ReserveInventoryResponse {
+  string reservation_key = 1;
+  string reservation_status = 2;
+  repeated ReserveInventoryResult results = 3;
+  google.protobuf.Timestamp reserved_at = 4;
+}
+
+message ReserveInventoryResult {
+  string asset_key = 1;
+  string sku_code = 2;
+  int64 requested_quantity = 3;
+  int64 reserved_quantity = 4;
+  string failure_reason = 5;
+}

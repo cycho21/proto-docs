@@ -5,12 +5,13 @@ import os from 'node:os';
 import path from 'node:path';
 import childProcess from 'node:child_process';
 import { loadDictionary } from '../src/dictionary.ts';
-import { findMissingMappings, writeCandidates } from '../src/candidates.ts';
+import { findMissingMappings, promoteCandidateOverride, validateCandidateOutput, writeCandidates } from '../src/candidates.ts';
 import { lintComments } from '../src/linter.ts';
 import { compareProtoStructure } from '../src/astGuard.ts';
 import { guardDictionaryChange, sha256File } from '../src/dictionaryGuard.ts';
 import { checkFreshness } from '../src/freshness.ts';
 import { BufDocGenerator } from '../src/docGenerator.ts';
+import { applyDictionaryComments } from '../src/commentApplier.ts';
 
 const root = process.cwd();
 const dictPath = path.join(root, 'docs/dictionary/word-dictionary.json');
@@ -26,14 +27,49 @@ test('dictionary loading validates sample dictionary', () => {
   assert.equal(dictionary['Asset.owner_key'].canonical_description, 'Internal key that identifies the asset owner.');
 });
 
-test('missing mapping is detected and candidate file is generated', () => {
+test('missing mapping is detected and message candidate file is generated', () => {
   const dictionary = loadDictionary(dictPath);
   const misses = findMissingMappings(unmappedProto, dictionary);
   assert.equal(misses.length, 1);
   const out = tmpDir();
   const written = writeCandidates(misses, out, '2026-06-06');
-  assert.equal(written.length, 1);
-  assert.match(fs.readFileSync(written[0], 'utf8'), /FusionRequest\.fusion_material_id/);
+  assert.equal(path.basename(written.wordDictionary), 'word-dictionary.json');
+  assert.equal(written.messages.length, 1);
+  assert.equal(path.basename(written.messages[0]), 'FusionRequest.json');
+  assert.deepEqual(validateCandidateOutput(out).ok, true);
+  const wordDictionary = JSON.parse(fs.readFileSync(written.wordDictionary, 'utf8'));
+  assert.equal(wordDictionary.fusion_material_id.scope, 'fusion_material_id');
+  assert.equal(wordDictionary.fusion_material_id.status, 'draft_for_human_review');
+  const candidate = JSON.parse(fs.readFileSync(written.messages[0], 'utf8'));
+  assert.equal(candidate.candidate_type, 'message_dictionary');
+  assert.equal(candidate.message_name, 'FusionRequest');
+  assert.equal(candidate.status, 'pending_human_review');
+  assert.equal(candidate.fields.length, 1);
+  assert.equal(candidate.fields[0].field_name, 'fusion_material_id');
+  assert.equal(candidate.fields[0].word_dictionary_scope, 'fusion_material_id');
+  assert.equal(candidate.fields[0].word_dictionary_entry.scope, 'fusion_material_id');
+  assert.equal(candidate.fields[0].message_field_scope, 'FusionRequest.fusion_material_id');
+  assert.equal(candidate.fields[0].effective_dictionary_scope, 'fusion_material_id');
+  assert.equal(candidate.fields[0].message_dictionary_override, null);
+  assert.equal(candidate.fields[0].inference.has_message_specific_meaning, false);
+  assert.notEqual(candidate.fields[0].word_dictionary_entry.canonical_description, 'TODO: Human review required');
+  assert.match(candidate.fields[0].word_dictionary_entry.canonical_description, /fusion material/i);
+  assert.match(candidate.fields[0].inference.candidate_override.canonical_description, /fusion request/i);
+});
+
+test('message override candidate can be promoted and still validates', () => {
+  const dictionary = loadDictionary(dictPath);
+  const misses = findMissingMappings(unmappedProto, dictionary);
+  const out = tmpDir();
+  writeCandidates(misses, out, '2026-06-06');
+  const promoted = promoteCandidateOverride(out, 'FusionRequest', 'fusion_material_id');
+  assert.equal(promoted.scope, 'FusionRequest.fusion_material_id');
+  const candidate = JSON.parse(fs.readFileSync(path.join(out, 'messages', 'FusionRequest.json'), 'utf8'));
+  const field = candidate.fields[0];
+  assert.equal(field.effective_dictionary_scope, 'FusionRequest.fusion_material_id');
+  assert.equal(field.message_dictionary_override.scope, 'FusionRequest.fusion_material_id');
+  assert.equal(field.inference.has_message_specific_meaning, true);
+  assert.equal(validateCandidateOutput(out).ok, true);
 });
 
 test('forbidden alias fails lint', () => {
@@ -55,6 +91,32 @@ test('semantic drift fails when unapproved meaning is appended to approved text'
   const proto = write(path.join(dir, 'drift-appended.proto'), fs.readFileSync(validProto, 'utf8').replace('Internal key that identifies the asset owner.', 'Internal key that identifies the asset owner. Customer reference for billing.'));
   const issues = lintComments(proto, loadDictionary(dictPath));
   assert.ok(issues.some((issue) => issue.rule === 'Semantic Drift'));
+});
+
+test('dictionary comments are applied, lint clean, and proto structure is preserved', () => {
+  const dir = tmpDir();
+  const before = write(path.join(dir, 'before.proto'), `syntax = "proto3";\n\npackage sample.asset.v1;\n\nmessage Asset {\n  string asset_key = 1;\n\n  // Wrong owner text.\n  string owner_key = 2;\n}\n`);
+  const after = path.join(dir, 'after.proto');
+  const dictionary = loadDictionary(dictPath);
+  const result = applyDictionaryComments(before, dictionary, { outputPath: after });
+  assert.equal(result.changed, true);
+  const afterText = fs.readFileSync(after, 'utf8');
+  assert.match(afterText, /\/\/ Internal key that identifies the asset\.\n  string asset_key = 1;/);
+  assert.match(afterText, /\/\/ Internal key that identifies the asset owner\.\n  string owner_key = 2;/);
+  assert.deepEqual(lintComments(after, dictionary), []);
+  assert.equal(compareProtoStructure(before, after).equal, true);
+});
+
+test('CLI apply-comments writes annotated proto that passes lint and AST guard', () => {
+  const dir = tmpDir();
+  const before = write(path.join(dir, 'before.proto'), `syntax = "proto3";\n\npackage sample.asset.v1;\n\nmessage GetAssetRequest {\n  string asset_key = 1;\n}\n`);
+  const after = path.join(dir, 'after.proto');
+  const apply = run(['apply-comments', '--proto', before, '--dictionary', 'docs/dictionary/word-dictionary.json', '--out', after]);
+  assert.equal(apply.status, 0, apply.stderr || apply.stdout);
+  const lint = run(['lint-comments', '--proto', after, '--dictionary', 'docs/dictionary/word-dictionary.json']);
+  assert.equal(lint.status, 0, lint.stderr || lint.stdout);
+  const guard = run(['guard-ast', '--before', before, '--after', after]);
+  assert.equal(guard.status, 0, guard.stderr || guard.stdout);
 });
 
 test('AST guard allows comment-only changes and rejects structural changes', () => {

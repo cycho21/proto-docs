@@ -1,0 +1,63 @@
+syntax = "proto3";
+
+package samples.workflow.transfer;
+
+import "google/protobuf/timestamp.proto";
+
+service AssetTransferService {
+  // Creates a transfer request between warehouses.
+  rpc CreateTransfer(CreateTransferRequest) returns (CreateTransferResponse);
+
+  // Approves or rejects a pending transfer request.
+  rpc ReviewTransfer(ReviewTransferRequest) returns (ReviewTransferResponse);
+}
+
+message CreateTransferRequest {
+  string tenant_key = 1;
+  string source_warehouse_key = 2;
+  string destination_warehouse_key = 3;
+  string transfer_reason = 4;
+  repeated TransferLine lines = 5;
+  string requested_by = 6;
+}
+
+message TransferLine {
+  string asset_key = 1;
+  string sku_code = 2;
+  string lot_code = 3;
+  int64 quantity = 4;
+  string handling_instruction = 5;
+}
+
+message CreateTransferResponse {
+  string transfer_key = 1;
+  string transfer_status = 2;
+  repeated TransferLine accepted_lines = 3;
+  repeated TransferLine rejected_lines = 4;
+  google.protobuf.Timestamp created_at = 5;
+}
+
+message ReviewTransferRequest {
+  string tenant_key = 1;
+  string transfer_key = 2;
+  string reviewer_key = 3;
+  string review_decision = 4;
+  string review_comment = 5;
+}
+
+message ReviewTransferResponse {
+  string transfer_key = 1;
+  string transfer_status = 2;
+  string reviewed_by = 3;
+  google.protobuf.Timestamp reviewed_at = 4;
+}
+
+message TransferAuditEvent {
+  string transfer_key = 1;
+  string event_type = 2;
+  string actor_key = 3;
+  string previous_status = 4;
+  string next_status = 5;
+  string event_note = 6;
+  google.protobuf.Timestamp event_at = 7;
+}

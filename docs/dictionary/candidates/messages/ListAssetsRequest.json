@@ -1,0 +1,409 @@
+{
+  "candidate_type": "message_dictionary",
+  "message_name": "ListAssetsRequest",
+  "file": "samples\\proto\\workflow\\asset_inventory.proto",
+  "status": "pending_human_review",
+  "detected_at": "2026-06-06",
+  "review_notes": [
+    "Use the global word_dictionary entry by default for each field.",
+    "Only populate message_dictionary_override when LLM/domain review determines the message changes the field meaning."
+  ],
+  "fields": [
+    {
+      "field_name": "tenant_key",
+      "field_type": "string",
+      "repeated": false,
+      "number": 1,
+      "word_dictionary_scope": "tenant_key",
+      "word_dictionary_entry": {
+        "term": "tenant_key",
+        "scope": "tenant_key",
+        "canonical_description": "Key that identifies the tenant.",
+        "aliases": [
+          "tenantKey"
+        ],
+        "forbidden_aliases": [],
+        "allowed_contexts": [
+          "tenant",
+          "key"
+        ],
+        "approved_examples": [
+          "Key that identifies the tenant."
+        ],
+        "status": "draft_for_human_review",
+        "version": 1,
+        "owner": "@domain-owner",
+        "last_reviewed_at": "2026-06-06",
+        "visibility": "public",
+        "source": "field_name"
+      },
+      "message_field_scope": "ListAssetsRequest.tenant_key",
+      "effective_dictionary_scope": "tenant_key",
+      "message_dictionary_override": null,
+      "inference": {
+        "has_message_specific_meaning": false,
+        "candidate_override": {
+          "term": "tenant_key",
+          "scope": "ListAssetsRequest.tenant_key",
+          "canonical_description": "Key that identifies the tenant in the list assets request.",
+          "aliases": [
+            "tenantKey"
+          ],
+          "forbidden_aliases": [],
+          "allowed_contexts": [
+            "tenant",
+            "key"
+          ],
+          "approved_examples": [
+            "Key that identifies the tenant in the list assets request."
+          ],
+          "status": "draft_for_human_review",
+          "version": 1,
+          "owner": "@domain-owner",
+          "last_reviewed_at": "2026-06-06",
+          "visibility": "public",
+          "source": "message_context_inference"
+        },
+        "reason": "Default uses the global word_dictionary. Move candidate_override into message_dictionary_override only if LLM/domain review confirms a different message-specific meaning."
+      },
+      "evidence": {
+        "file": "samples\\proto\\workflow\\asset_inventory.proto",
+        "message": "ListAssetsRequest",
+        "field": "tenant_key",
+        "field_type": "string",
+        "repeated": false,
+        "number": 1
+      }
+    },
+    {
+      "field_name": "warehouse_key",
+      "field_type": "string",
+      "repeated": false,
+      "number": 2,
+      "word_dictionary_scope": "warehouse_key",
+      "word_dictionary_entry": {
+        "term": "warehouse_key",
+        "scope": "warehouse_key",
+        "canonical_description": "Key that identifies the warehouse.",
+        "aliases": [
+          "warehouseKey"
+        ],
+        "forbidden_aliases": [],
+        "allowed_contexts": [
+          "warehouse",
+          "key"
+        ],
+        "approved_examples": [
+          "Key that identifies the warehouse."
+        ],
+        "status": "draft_for_human_review",
+        "version": 1,
+        "owner": "@domain-owner",
+        "last_reviewed_at": "2026-06-06",
+        "visibility": "public",
+        "source": "field_name"
+      },
+      "message_field_scope": "ListAssetsRequest.warehouse_key",
+      "effective_dictionary_scope": "warehouse_key",
+      "message_dictionary_override": null,
+      "inference": {
+        "has_message_specific_meaning": false,
+        "candidate_override": {
+          "term": "warehouse_key",
+          "scope": "ListAssetsRequest.warehouse_key",
+          "canonical_description": "Key that identifies the warehouse in the list assets request.",
+          "aliases": [
+            "warehouseKey"
+          ],
+          "forbidden_aliases": [],
+          "allowed_contexts": [
+            "warehouse",
+            "key"
+          ],
+          "approved_examples": [
+            "Key that identifies the warehouse in the list assets request."
+          ],
+          "status": "draft_for_human_review",
+          "version": 1,
+          "owner": "@domain-owner",
+          "last_reviewed_at": "2026-06-06",
+          "visibility": "public",
+          "source": "message_context_inference"
+        },
+        "reason": "Default uses the global word_dictionary. Move candidate_override into message_dictionary_override only if LLM/domain review confirms a different message-specific meaning."
+      },
+      "evidence": {
+        "file": "samples\\proto\\workflow\\asset_inventory.proto",
+        "message": "ListAssetsRequest",
+        "field": "warehouse_key",
+        "field_type": "string",
+        "repeated": false,
+        "number": 2
+      }
+    },
+    {
+      "field_name": "asset_keys",
+      "field_type": "string",
+      "repeated": true,
+      "number": 3,
+      "word_dictionary_scope": "asset_keys",
+      "word_dictionary_entry": {
+        "term": "asset_keys",
+        "scope": "asset_keys",
+        "canonical_description": "Keys that identify the asset values.",
+        "aliases": [
+          "assetKeys"
+        ],
+        "forbidden_aliases": [],
+        "allowed_contexts": [
+          "asset",
+          "keys"
+        ],
+        "approved_examples": [
+          "Keys that identify the asset values."
+        ],
+        "status": "draft_for_human_review",
+        "version": 1,
+        "owner": "@domain-owner",
+        "last_reviewed_at": "2026-06-06",
+        "visibility": "public",
+        "source": "field_name"
+      },
+      "message_field_scope": "ListAssetsRequest.asset_keys",
+      "effective_dictionary_scope": "asset_keys",
+      "message_dictionary_override": null,
+      "inference": {
+        "has_message_specific_meaning": false,
+        "candidate_override": {
+          "term": "asset_keys",
+          "scope": "ListAssetsRequest.asset_keys",
+          "canonical_description": "Keys that identify the asset values used by the list assets request.",
+          "aliases": [
+            "assetKeys"
+          ],
+          "forbidden_aliases": [],
+          "allowed_contexts": [
+            "asset",
+            "keys"
+          ],
+          "approved_examples": [
+            "Keys that identify the asset values used by the list assets request."
+          ],
+          "status": "draft_for_human_review",
+          "version": 1,
+          "owner": "@domain-owner",
+          "last_reviewed_at": "2026-06-06",
+          "visibility": "public",
+          "source": "message_context_inference"
+        },
+        "reason": "Default uses the global word_dictionary. Move candidate_override into message_dictionary_override only if LLM/domain review confirms a different message-specific meaning."
+      },
+      "evidence": {
+        "file": "samples\\proto\\workflow\\asset_inventory.proto",
+        "message": "ListAssetsRequest",
+        "field": "asset_keys",
+        "field_type": "string",
+        "repeated": true,
+        "number": 3
+      }
+    },
+    {
+      "field_name": "lifecycle_status",
+      "field_type": "string",
+      "repeated": false,
+      "number": 4,
+      "word_dictionary_scope": "lifecycle_status",
+      "word_dictionary_entry": {
+        "term": "lifecycle_status",
+        "scope": "lifecycle_status",
+        "canonical_description": "Status value for lifecycle.",
+        "aliases": [
+          "lifecycleStatus"
+        ],
+        "forbidden_aliases": [],
+        "allowed_contexts": [
+          "lifecycle",
+          "status"
+        ],
+        "approved_examples": [
+          "Status value for lifecycle."
+        ],
+        "status": "draft_for_human_review",
+        "version": 1,
+        "owner": "@domain-owner",
+        "last_reviewed_at": "2026-06-06",
+        "visibility": "public",
+        "source": "field_name"
+      },
+      "message_field_scope": "ListAssetsRequest.lifecycle_status",
+      "effective_dictionary_scope": "lifecycle_status",
+      "message_dictionary_override": null,
+      "inference": {
+        "has_message_specific_meaning": false,
+        "candidate_override": {
+          "term": "lifecycle_status",
+          "scope": "ListAssetsRequest.lifecycle_status",
+          "canonical_description": "Status value for the list assets request.",
+          "aliases": [
+            "lifecycleStatus"
+          ],
+          "forbidden_aliases": [],
+          "allowed_contexts": [
+            "lifecycle",
+            "status"
+          ],
+          "approved_examples": [
+            "Status value for the list assets request."
+          ],
+          "status": "draft_for_human_review",
+          "version": 1,
+          "owner": "@domain-owner",
+          "last_reviewed_at": "2026-06-06",
+          "visibility": "public",
+          "source": "message_context_inference"
+        },
+        "reason": "Default uses the global word_dictionary. Move candidate_override into message_dictionary_override only if LLM/domain review confirms a different message-specific meaning."
+      },
+      "evidence": {
+        "file": "samples\\proto\\workflow\\asset_inventory.proto",
+        "message": "ListAssetsRequest",
+        "field": "lifecycle_status",
+        "field_type": "string",
+        "repeated": false,
+        "number": 4
+      }
+    },
+    {
+      "field_name": "page_size",
+      "field_type": "int32",
+      "repeated": false,
+      "number": 5,
+      "word_dictionary_scope": "page_size",
+      "word_dictionary_entry": {
+        "term": "page_size",
+        "scope": "page_size",
+        "canonical_description": "Page Size value.",
+        "aliases": [
+          "pageSize"
+        ],
+        "forbidden_aliases": [],
+        "allowed_contexts": [
+          "page",
+          "size"
+        ],
+        "approved_examples": [
+          "Page Size value."
+        ],
+        "status": "draft_for_human_review",
+        "version": 1,
+        "owner": "@domain-owner",
+        "last_reviewed_at": "2026-06-06",
+        "visibility": "public",
+        "source": "field_name"
+      },
+      "message_field_scope": "ListAssetsRequest.page_size",
+      "effective_dictionary_scope": "page_size",
+      "message_dictionary_override": null,
+      "inference": {
+        "has_message_specific_meaning": false,
+        "candidate_override": {
+          "term": "page_size",
+          "scope": "ListAssetsRequest.page_size",
+          "canonical_description": "Page Size value for the list assets request.",
+          "aliases": [
+            "pageSize"
+          ],
+          "forbidden_aliases": [],
+          "allowed_contexts": [
+            "page",
+            "size"
+          ],
+          "approved_examples": [
+            "Page Size value for the list assets request."
+          ],
+          "status": "draft_for_human_review",
+          "version": 1,
+          "owner": "@domain-owner",
+          "last_reviewed_at": "2026-06-06",
+          "visibility": "public",
+          "source": "message_context_inference"
+        },
+        "reason": "Default uses the global word_dictionary. Move candidate_override into message_dictionary_override only if LLM/domain review confirms a different message-specific meaning."
+      },
+      "evidence": {
+        "file": "samples\\proto\\workflow\\asset_inventory.proto",
+        "message": "ListAssetsRequest",
+        "field": "page_size",
+        "field_type": "int32",
+        "repeated": false,
+        "number": 5
+      }
+    },
+    {
+      "field_name": "page_token",
+      "field_type": "string",
+      "repeated": false,
+      "number": 6,
+      "word_dictionary_scope": "page_token",
+      "word_dictionary_entry": {
+        "term": "page_token",
+        "scope": "page_token",
+        "canonical_description": "Page Token value.",
+        "aliases": [
+          "pageToken"
+        ],
+        "forbidden_aliases": [],
+        "allowed_contexts": [
+          "page",
+          "token"
+        ],
+        "approved_examples": [
+          "Page Token value."
+        ],
+        "status": "draft_for_human_review",
+        "version": 1,
+        "owner": "@domain-owner",
+        "last_reviewed_at": "2026-06-06",
+        "visibility": "public",
+        "source": "field_name"
+      },
+      "message_field_scope": "ListAssetsRequest.page_token",
+      "effective_dictionary_scope": "page_token",
+      "message_dictionary_override": null,
+      "inference": {
+        "has_message_specific_meaning": false,
+        "candidate_override": {
+          "term": "page_token",
+          "scope": "ListAssetsRequest.page_token",
+          "canonical_description": "Page Token for the list assets request.",
+          "aliases": [
+            "pageToken"
+          ],
+          "forbidden_aliases": [],
+          "allowed_contexts": [
+            "page",
+            "token"
+          ],
+          "approved_examples": [
+            "Page Token for the list assets request."
+          ],
+          "status": "draft_for_human_review",
+          "version": 1,
+          "owner": "@domain-owner",
+          "last_reviewed_at": "2026-06-06",
+          "visibility": "public",
+          "source": "message_context_inference"
+        },
+        "reason": "Default uses the global word_dictionary. Move candidate_override into message_dictionary_override only if LLM/domain review confirms a different message-specific meaning."
+      },
+      "evidence": {
+        "file": "samples\\proto\\workflow\\asset_inventory.proto",
+        "message": "ListAssetsRequest",
+        "field": "page_token",
+        "field_type": "string",
+        "repeated": false,
+        "number": 6
+      }
+    }
+  ]
+}

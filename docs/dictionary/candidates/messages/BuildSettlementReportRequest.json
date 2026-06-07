@@ -1,0 +1,415 @@
+{
+  "candidate_type": "message_dictionary",
+  "message_name": "BuildSettlementReportRequest",
+  "file": "samples\\proto\\workflow\\settlement_report.proto",
+  "status": "pending_human_review",
+  "detected_at": "2026-06-06",
+  "review_notes": [
+    "Use the global word_dictionary entry by default for each field.",
+    "Only populate message_dictionary_override when LLM/domain review determines the message changes the field meaning."
+  ],
+  "fields": [
+    {
+      "field_name": "tenant_key",
+      "field_type": "string",
+      "repeated": false,
+      "number": 1,
+      "word_dictionary_scope": "tenant_key",
+      "word_dictionary_entry": {
+        "term": "tenant_key",
+        "scope": "tenant_key",
+        "canonical_description": "Key that identifies the tenant.",
+        "aliases": [
+          "tenantKey"
+        ],
+        "forbidden_aliases": [],
+        "allowed_contexts": [
+          "tenant",
+          "key"
+        ],
+        "approved_examples": [
+          "Key that identifies the tenant."
+        ],
+        "status": "draft_for_human_review",
+        "version": 1,
+        "owner": "@domain-owner",
+        "last_reviewed_at": "2026-06-06",
+        "visibility": "public",
+        "source": "field_name"
+      },
+      "message_field_scope": "BuildSettlementReportRequest.tenant_key",
+      "effective_dictionary_scope": "tenant_key",
+      "message_dictionary_override": null,
+      "inference": {
+        "has_message_specific_meaning": false,
+        "candidate_override": {
+          "term": "tenant_key",
+          "scope": "BuildSettlementReportRequest.tenant_key",
+          "canonical_description": "Key that identifies the tenant in the build settlement report request.",
+          "aliases": [
+            "tenantKey"
+          ],
+          "forbidden_aliases": [],
+          "allowed_contexts": [
+            "tenant",
+            "key"
+          ],
+          "approved_examples": [
+            "Key that identifies the tenant in the build settlement report request."
+          ],
+          "status": "draft_for_human_review",
+          "version": 1,
+          "owner": "@domain-owner",
+          "last_reviewed_at": "2026-06-06",
+          "visibility": "public",
+          "source": "message_context_inference"
+        },
+        "reason": "Default uses the global word_dictionary. Move candidate_override into message_dictionary_override only if LLM/domain review confirms a different message-specific meaning."
+      },
+      "evidence": {
+        "file": "samples\\proto\\workflow\\settlement_report.proto",
+        "message": "BuildSettlementReportRequest",
+        "field": "tenant_key",
+        "field_type": "string",
+        "repeated": false,
+        "number": 1
+      }
+    },
+    {
+      "field_name": "report_period_key",
+      "field_type": "string",
+      "repeated": false,
+      "number": 2,
+      "word_dictionary_scope": "report_period_key",
+      "word_dictionary_entry": {
+        "term": "report_period_key",
+        "scope": "report_period_key",
+        "canonical_description": "Key that identifies the report period.",
+        "aliases": [
+          "reportPeriodKey"
+        ],
+        "forbidden_aliases": [],
+        "allowed_contexts": [
+          "report",
+          "period",
+          "key"
+        ],
+        "approved_examples": [
+          "Key that identifies the report period."
+        ],
+        "status": "draft_for_human_review",
+        "version": 1,
+        "owner": "@domain-owner",
+        "last_reviewed_at": "2026-06-06",
+        "visibility": "public",
+        "source": "field_name"
+      },
+      "message_field_scope": "BuildSettlementReportRequest.report_period_key",
+      "effective_dictionary_scope": "report_period_key",
+      "message_dictionary_override": null,
+      "inference": {
+        "has_message_specific_meaning": false,
+        "candidate_override": {
+          "term": "report_period_key",
+          "scope": "BuildSettlementReportRequest.report_period_key",
+          "canonical_description": "Key that identifies the report period in the build settlement report request.",
+          "aliases": [
+            "reportPeriodKey"
+          ],
+          "forbidden_aliases": [],
+          "allowed_contexts": [
+            "report",
+            "period",
+            "key"
+          ],
+          "approved_examples": [
+            "Key that identifies the report period in the build settlement report request."
+          ],
+          "status": "draft_for_human_review",
+          "version": 1,
+          "owner": "@domain-owner",
+          "last_reviewed_at": "2026-06-06",
+          "visibility": "public",
+          "source": "message_context_inference"
+        },
+        "reason": "Default uses the global word_dictionary. Move candidate_override into message_dictionary_override only if LLM/domain review confirms a different message-specific meaning."
+      },
+      "evidence": {
+        "file": "samples\\proto\\workflow\\settlement_report.proto",
+        "message": "BuildSettlementReportRequest",
+        "field": "report_period_key",
+        "field_type": "string",
+        "repeated": false,
+        "number": 2
+      }
+    },
+    {
+      "field_name": "period_start_at",
+      "field_type": "google.protobuf.Timestamp",
+      "repeated": false,
+      "number": 3,
+      "word_dictionary_scope": "period_start_at",
+      "word_dictionary_entry": {
+        "term": "period_start_at",
+        "scope": "period_start_at",
+        "canonical_description": "Timestamp for the period start event.",
+        "aliases": [
+          "periodStartAt"
+        ],
+        "forbidden_aliases": [],
+        "allowed_contexts": [
+          "period",
+          "start",
+          "at"
+        ],
+        "approved_examples": [
+          "Timestamp for the period start event."
+        ],
+        "status": "draft_for_human_review",
+        "version": 1,
+        "owner": "@domain-owner",
+        "last_reviewed_at": "2026-06-06",
+        "visibility": "public",
+        "source": "field_name"
+      },
+      "message_field_scope": "BuildSettlementReportRequest.period_start_at",
+      "effective_dictionary_scope": "period_start_at",
+      "message_dictionary_override": null,
+      "inference": {
+        "has_message_specific_meaning": false,
+        "candidate_override": {
+          "term": "period_start_at",
+          "scope": "BuildSettlementReportRequest.period_start_at",
+          "canonical_description": "Timestamp for the period start event in the build settlement report request.",
+          "aliases": [
+            "periodStartAt"
+          ],
+          "forbidden_aliases": [],
+          "allowed_contexts": [
+            "period",
+            "start",
+            "at"
+          ],
+          "approved_examples": [
+            "Timestamp for the period start event in the build settlement report request."
+          ],
+          "status": "draft_for_human_review",
+          "version": 1,
+          "owner": "@domain-owner",
+          "last_reviewed_at": "2026-06-06",
+          "visibility": "public",
+          "source": "message_context_inference"
+        },
+        "reason": "Default uses the global word_dictionary. Move candidate_override into message_dictionary_override only if LLM/domain review confirms a different message-specific meaning."
+      },
+      "evidence": {
+        "file": "samples\\proto\\workflow\\settlement_report.proto",
+        "message": "BuildSettlementReportRequest",
+        "field": "period_start_at",
+        "field_type": "google.protobuf.Timestamp",
+        "repeated": false,
+        "number": 3
+      }
+    },
+    {
+      "field_name": "period_end_at",
+      "field_type": "google.protobuf.Timestamp",
+      "repeated": false,
+      "number": 4,
+      "word_dictionary_scope": "period_end_at",
+      "word_dictionary_entry": {
+        "term": "period_end_at",
+        "scope": "period_end_at",
+        "canonical_description": "Timestamp for the period end event.",
+        "aliases": [
+          "periodEndAt"
+        ],
+        "forbidden_aliases": [],
+        "allowed_contexts": [
+          "period",
+          "end",
+          "at"
+        ],
+        "approved_examples": [
+          "Timestamp for the period end event."
+        ],
+        "status": "draft_for_human_review",
+        "version": 1,
+        "owner": "@domain-owner",
+        "last_reviewed_at": "2026-06-06",
+        "visibility": "public",
+        "source": "field_name"
+      },
+      "message_field_scope": "BuildSettlementReportRequest.period_end_at",
+      "effective_dictionary_scope": "period_end_at",
+      "message_dictionary_override": null,
+      "inference": {
+        "has_message_specific_meaning": false,
+        "candidate_override": {
+          "term": "period_end_at",
+          "scope": "BuildSettlementReportRequest.period_end_at",
+          "canonical_description": "Timestamp for the period end event in the build settlement report request.",
+          "aliases": [
+            "periodEndAt"
+          ],
+          "forbidden_aliases": [],
+          "allowed_contexts": [
+            "period",
+            "end",
+            "at"
+          ],
+          "approved_examples": [
+            "Timestamp for the period end event in the build settlement report request."
+          ],
+          "status": "draft_for_human_review",
+          "version": 1,
+          "owner": "@domain-owner",
+          "last_reviewed_at": "2026-06-06",
+          "visibility": "public",
+          "source": "message_context_inference"
+        },
+        "reason": "Default uses the global word_dictionary. Move candidate_override into message_dictionary_override only if LLM/domain review confirms a different message-specific meaning."
+      },
+      "evidence": {
+        "file": "samples\\proto\\workflow\\settlement_report.proto",
+        "message": "BuildSettlementReportRequest",
+        "field": "period_end_at",
+        "field_type": "google.protobuf.Timestamp",
+        "repeated": false,
+        "number": 4
+      }
+    },
+    {
+      "field_name": "warehouse_keys",
+      "field_type": "string",
+      "repeated": true,
+      "number": 5,
+      "word_dictionary_scope": "warehouse_keys",
+      "word_dictionary_entry": {
+        "term": "warehouse_keys",
+        "scope": "warehouse_keys",
+        "canonical_description": "Keys that identify the warehouse values.",
+        "aliases": [
+          "warehouseKeys"
+        ],
+        "forbidden_aliases": [],
+        "allowed_contexts": [
+          "warehouse",
+          "keys"
+        ],
+        "approved_examples": [
+          "Keys that identify the warehouse values."
+        ],
+        "status": "draft_for_human_review",
+        "version": 1,
+        "owner": "@domain-owner",
+        "last_reviewed_at": "2026-06-06",
+        "visibility": "public",
+        "source": "field_name"
+      },
+      "message_field_scope": "BuildSettlementReportRequest.warehouse_keys",
+      "effective_dictionary_scope": "warehouse_keys",
+      "message_dictionary_override": null,
+      "inference": {
+        "has_message_specific_meaning": false,
+        "candidate_override": {
+          "term": "warehouse_keys",
+          "scope": "BuildSettlementReportRequest.warehouse_keys",
+          "canonical_description": "Keys that identify the warehouse values used by the build settlement report request.",
+          "aliases": [
+            "warehouseKeys"
+          ],
+          "forbidden_aliases": [],
+          "allowed_contexts": [
+            "warehouse",
+            "keys"
+          ],
+          "approved_examples": [
+            "Keys that identify the warehouse values used by the build settlement report request."
+          ],
+          "status": "draft_for_human_review",
+          "version": 1,
+          "owner": "@domain-owner",
+          "last_reviewed_at": "2026-06-06",
+          "visibility": "public",
+          "source": "message_context_inference"
+        },
+        "reason": "Default uses the global word_dictionary. Move candidate_override into message_dictionary_override only if LLM/domain review confirms a different message-specific meaning."
+      },
+      "evidence": {
+        "file": "samples\\proto\\workflow\\settlement_report.proto",
+        "message": "BuildSettlementReportRequest",
+        "field": "warehouse_keys",
+        "field_type": "string",
+        "repeated": true,
+        "number": 5
+      }
+    },
+    {
+      "field_name": "transfer_keys",
+      "field_type": "string",
+      "repeated": true,
+      "number": 6,
+      "word_dictionary_scope": "transfer_keys",
+      "word_dictionary_entry": {
+        "term": "transfer_keys",
+        "scope": "transfer_keys",
+        "canonical_description": "Keys that identify the transfer values.",
+        "aliases": [
+          "transferKeys"
+        ],
+        "forbidden_aliases": [],
+        "allowed_contexts": [
+          "transfer",
+          "keys"
+        ],
+        "approved_examples": [
+          "Keys that identify the transfer values."
+        ],
+        "status": "draft_for_human_review",
+        "version": 1,
+        "owner": "@domain-owner",
+        "last_reviewed_at": "2026-06-06",
+        "visibility": "public",
+        "source": "field_name"
+      },
+      "message_field_scope": "BuildSettlementReportRequest.transfer_keys",
+      "effective_dictionary_scope": "transfer_keys",
+      "message_dictionary_override": null,
+      "inference": {
+        "has_message_specific_meaning": false,
+        "candidate_override": {
+          "term": "transfer_keys",
+          "scope": "BuildSettlementReportRequest.transfer_keys",
+          "canonical_description": "Keys that identify the transfer values used by the build settlement report request.",
+          "aliases": [
+            "transferKeys"
+          ],
+          "forbidden_aliases": [],
+          "allowed_contexts": [
+            "transfer",
+            "keys"
+          ],
+          "approved_examples": [
+            "Keys that identify the transfer values used by the build settlement report request."
+          ],
+          "status": "draft_for_human_review",
+          "version": 1,
+          "owner": "@domain-owner",
+          "last_reviewed_at": "2026-06-06",
+          "visibility": "public",
+          "source": "message_context_inference"
+        },
+        "reason": "Default uses the global word_dictionary. Move candidate_override into message_dictionary_override only if LLM/domain review confirms a different message-specific meaning."
+      },
+      "evidence": {
+        "file": "samples\\proto\\workflow\\settlement_report.proto",
+        "message": "BuildSettlementReportRequest",
+        "field": "transfer_keys",
+        "field_type": "string",
+        "repeated": true,
+        "number": 6
+      }
+    }
+  ]
+}

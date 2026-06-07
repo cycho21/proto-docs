@@ -1,0 +1,673 @@
+{
+  "candidate_type": "message_dictionary",
+  "message_name": "InventoryAsset",
+  "file": "samples\\proto\\workflow\\asset_inventory.proto",
+  "status": "pending_human_review",
+  "detected_at": "2026-06-06",
+  "review_notes": [
+    "Use the global word_dictionary entry by default for each field.",
+    "Only populate message_dictionary_override when LLM/domain review determines the message changes the field meaning."
+  ],
+  "fields": [
+    {
+      "field_name": "asset_key",
+      "field_type": "string",
+      "repeated": false,
+      "number": 1,
+      "word_dictionary_scope": "asset_key",
+      "word_dictionary_entry": {
+        "term": "asset_key",
+        "scope": "asset_key",
+        "canonical_description": "Key that identifies the asset.",
+        "aliases": [
+          "assetKey"
+        ],
+        "forbidden_aliases": [],
+        "allowed_contexts": [
+          "asset",
+          "key"
+        ],
+        "approved_examples": [
+          "Key that identifies the asset."
+        ],
+        "status": "draft_for_human_review",
+        "version": 1,
+        "owner": "@domain-owner",
+        "last_reviewed_at": "2026-06-06",
+        "visibility": "public",
+        "source": "field_name"
+      },
+      "message_field_scope": "InventoryAsset.asset_key",
+      "effective_dictionary_scope": "asset_key",
+      "message_dictionary_override": null,
+      "inference": {
+        "has_message_specific_meaning": false,
+        "candidate_override": {
+          "term": "asset_key",
+          "scope": "InventoryAsset.asset_key",
+          "canonical_description": "Key that identifies the asset in the inventory asset.",
+          "aliases": [
+            "assetKey"
+          ],
+          "forbidden_aliases": [],
+          "allowed_contexts": [
+            "asset",
+            "key"
+          ],
+          "approved_examples": [
+            "Key that identifies the asset in the inventory asset."
+          ],
+          "status": "draft_for_human_review",
+          "version": 1,
+          "owner": "@domain-owner",
+          "last_reviewed_at": "2026-06-06",
+          "visibility": "public",
+          "source": "message_context_inference"
+        },
+        "reason": "Default uses the global word_dictionary. Move candidate_override into message_dictionary_override only if LLM/domain review confirms a different message-specific meaning."
+      },
+      "evidence": {
+        "file": "samples\\proto\\workflow\\asset_inventory.proto",
+        "message": "InventoryAsset",
+        "field": "asset_key",
+        "field_type": "string",
+        "repeated": false,
+        "number": 1
+      }
+    },
+    {
+      "field_name": "tenant_key",
+      "field_type": "string",
+      "repeated": false,
+      "number": 2,
+      "word_dictionary_scope": "tenant_key",
+      "word_dictionary_entry": {
+        "term": "tenant_key",
+        "scope": "tenant_key",
+        "canonical_description": "Key that identifies the tenant.",
+        "aliases": [
+          "tenantKey"
+        ],
+        "forbidden_aliases": [],
+        "allowed_contexts": [
+          "tenant",
+          "key"
+        ],
+        "approved_examples": [
+          "Key that identifies the tenant."
+        ],
+        "status": "draft_for_human_review",
+        "version": 1,
+        "owner": "@domain-owner",
+        "last_reviewed_at": "2026-06-06",
+        "visibility": "public",
+        "source": "field_name"
+      },
+      "message_field_scope": "InventoryAsset.tenant_key",
+      "effective_dictionary_scope": "tenant_key",
+      "message_dictionary_override": null,
+      "inference": {
+        "has_message_specific_meaning": false,
+        "candidate_override": {
+          "term": "tenant_key",
+          "scope": "InventoryAsset.tenant_key",
+          "canonical_description": "Key that identifies the tenant in the inventory asset.",
+          "aliases": [
+            "tenantKey"
+          ],
+          "forbidden_aliases": [],
+          "allowed_contexts": [
+            "tenant",
+            "key"
+          ],
+          "approved_examples": [
+            "Key that identifies the tenant in the inventory asset."
+          ],
+          "status": "draft_for_human_review",
+          "version": 1,
+          "owner": "@domain-owner",
+          "last_reviewed_at": "2026-06-06",
+          "visibility": "public",
+          "source": "message_context_inference"
+        },
+        "reason": "Default uses the global word_dictionary. Move candidate_override into message_dictionary_override only if LLM/domain review confirms a different message-specific meaning."
+      },
+      "evidence": {
+        "file": "samples\\proto\\workflow\\asset_inventory.proto",
+        "message": "InventoryAsset",
+        "field": "tenant_key",
+        "field_type": "string",
+        "repeated": false,
+        "number": 2
+      }
+    },
+    {
+      "field_name": "warehouse_key",
+      "field_type": "string",
+      "repeated": false,
+      "number": 3,
+      "word_dictionary_scope": "warehouse_key",
+      "word_dictionary_entry": {
+        "term": "warehouse_key",
+        "scope": "warehouse_key",
+        "canonical_description": "Key that identifies the warehouse.",
+        "aliases": [
+          "warehouseKey"
+        ],
+        "forbidden_aliases": [],
+        "allowed_contexts": [
+          "warehouse",
+          "key"
+        ],
+        "approved_examples": [
+          "Key that identifies the warehouse."
+        ],
+        "status": "draft_for_human_review",
+        "version": 1,
+        "owner": "@domain-owner",
+        "last_reviewed_at": "2026-06-06",
+        "visibility": "public",
+        "source": "field_name"
+      },
+      "message_field_scope": "InventoryAsset.warehouse_key",
+      "effective_dictionary_scope": "warehouse_key",
+      "message_dictionary_override": null,
+      "inference": {
+        "has_message_specific_meaning": false,
+        "candidate_override": {
+          "term": "warehouse_key",
+          "scope": "InventoryAsset.warehouse_key",
+          "canonical_description": "Key that identifies the warehouse in the inventory asset.",
+          "aliases": [
+            "warehouseKey"
+          ],
+          "forbidden_aliases": [],
+          "allowed_contexts": [
+            "warehouse",
+            "key"
+          ],
+          "approved_examples": [
+            "Key that identifies the warehouse in the inventory asset."
+          ],
+          "status": "draft_for_human_review",
+          "version": 1,
+          "owner": "@domain-owner",
+          "last_reviewed_at": "2026-06-06",
+          "visibility": "public",
+          "source": "message_context_inference"
+        },
+        "reason": "Default uses the global word_dictionary. Move candidate_override into message_dictionary_override only if LLM/domain review confirms a different message-specific meaning."
+      },
+      "evidence": {
+        "file": "samples\\proto\\workflow\\asset_inventory.proto",
+        "message": "InventoryAsset",
+        "field": "warehouse_key",
+        "field_type": "string",
+        "repeated": false,
+        "number": 3
+      }
+    },
+    {
+      "field_name": "sku_code",
+      "field_type": "string",
+      "repeated": false,
+      "number": 4,
+      "word_dictionary_scope": "sku_code",
+      "word_dictionary_entry": {
+        "term": "sku_code",
+        "scope": "sku_code",
+        "canonical_description": "Code value for sku.",
+        "aliases": [
+          "skuCode"
+        ],
+        "forbidden_aliases": [],
+        "allowed_contexts": [
+          "sku",
+          "code"
+        ],
+        "approved_examples": [
+          "Code value for sku."
+        ],
+        "status": "draft_for_human_review",
+        "version": 1,
+        "owner": "@domain-owner",
+        "last_reviewed_at": "2026-06-06",
+        "visibility": "public",
+        "source": "field_name"
+      },
+      "message_field_scope": "InventoryAsset.sku_code",
+      "effective_dictionary_scope": "sku_code",
+      "message_dictionary_override": null,
+      "inference": {
+        "has_message_specific_meaning": false,
+        "candidate_override": {
+          "term": "sku_code",
+          "scope": "InventoryAsset.sku_code",
+          "canonical_description": "Code value for the sku in the inventory asset.",
+          "aliases": [
+            "skuCode"
+          ],
+          "forbidden_aliases": [],
+          "allowed_contexts": [
+            "sku",
+            "code"
+          ],
+          "approved_examples": [
+            "Code value for the sku in the inventory asset."
+          ],
+          "status": "draft_for_human_review",
+          "version": 1,
+          "owner": "@domain-owner",
+          "last_reviewed_at": "2026-06-06",
+          "visibility": "public",
+          "source": "message_context_inference"
+        },
+        "reason": "Default uses the global word_dictionary. Move candidate_override into message_dictionary_override only if LLM/domain review confirms a different message-specific meaning."
+      },
+      "evidence": {
+        "file": "samples\\proto\\workflow\\asset_inventory.proto",
+        "message": "InventoryAsset",
+        "field": "sku_code",
+        "field_type": "string",
+        "repeated": false,
+        "number": 4
+      }
+    },
+    {
+      "field_name": "batch_code",
+      "field_type": "string",
+      "repeated": false,
+      "number": 5,
+      "word_dictionary_scope": "batch_code",
+      "word_dictionary_entry": {
+        "term": "batch_code",
+        "scope": "batch_code",
+        "canonical_description": "Code value for batch.",
+        "aliases": [
+          "batchCode"
+        ],
+        "forbidden_aliases": [],
+        "allowed_contexts": [
+          "batch",
+          "code"
+        ],
+        "approved_examples": [
+          "Code value for batch."
+        ],
+        "status": "draft_for_human_review",
+        "version": 1,
+        "owner": "@domain-owner",
+        "last_reviewed_at": "2026-06-06",
+        "visibility": "public",
+        "source": "field_name"
+      },
+      "message_field_scope": "InventoryAsset.batch_code",
+      "effective_dictionary_scope": "batch_code",
+      "message_dictionary_override": null,
+      "inference": {
+        "has_message_specific_meaning": false,
+        "candidate_override": {
+          "term": "batch_code",
+          "scope": "InventoryAsset.batch_code",
+          "canonical_description": "Code value for the batch in the inventory asset.",
+          "aliases": [
+            "batchCode"
+          ],
+          "forbidden_aliases": [],
+          "allowed_contexts": [
+            "batch",
+            "code"
+          ],
+          "approved_examples": [
+            "Code value for the batch in the inventory asset."
+          ],
+          "status": "draft_for_human_review",
+          "version": 1,
+          "owner": "@domain-owner",
+          "last_reviewed_at": "2026-06-06",
+          "visibility": "public",
+          "source": "message_context_inference"
+        },
+        "reason": "Default uses the global word_dictionary. Move candidate_override into message_dictionary_override only if LLM/domain review confirms a different message-specific meaning."
+      },
+      "evidence": {
+        "file": "samples\\proto\\workflow\\asset_inventory.proto",
+        "message": "InventoryAsset",
+        "field": "batch_code",
+        "field_type": "string",
+        "repeated": false,
+        "number": 5
+      }
+    },
+    {
+      "field_name": "available_quantity",
+      "field_type": "int64",
+      "repeated": false,
+      "number": 6,
+      "word_dictionary_scope": "available_quantity",
+      "word_dictionary_entry": {
+        "term": "available_quantity",
+        "scope": "available_quantity",
+        "canonical_description": "Quantity value for available.",
+        "aliases": [
+          "availableQuantity"
+        ],
+        "forbidden_aliases": [],
+        "allowed_contexts": [
+          "available",
+          "quantity"
+        ],
+        "approved_examples": [
+          "Quantity value for available."
+        ],
+        "status": "draft_for_human_review",
+        "version": 1,
+        "owner": "@domain-owner",
+        "last_reviewed_at": "2026-06-06",
+        "visibility": "public",
+        "source": "field_name"
+      },
+      "message_field_scope": "InventoryAsset.available_quantity",
+      "effective_dictionary_scope": "available_quantity",
+      "message_dictionary_override": null,
+      "inference": {
+        "has_message_specific_meaning": false,
+        "candidate_override": {
+          "term": "available_quantity",
+          "scope": "InventoryAsset.available_quantity",
+          "canonical_description": "Quantity value for the available in the inventory asset.",
+          "aliases": [
+            "availableQuantity"
+          ],
+          "forbidden_aliases": [],
+          "allowed_contexts": [
+            "available",
+            "quantity"
+          ],
+          "approved_examples": [
+            "Quantity value for the available in the inventory asset."
+          ],
+          "status": "draft_for_human_review",
+          "version": 1,
+          "owner": "@domain-owner",
+          "last_reviewed_at": "2026-06-06",
+          "visibility": "public",
+          "source": "message_context_inference"
+        },
+        "reason": "Default uses the global word_dictionary. Move candidate_override into message_dictionary_override only if LLM/domain review confirms a different message-specific meaning."
+      },
+      "evidence": {
+        "file": "samples\\proto\\workflow\\asset_inventory.proto",
+        "message": "InventoryAsset",
+        "field": "available_quantity",
+        "field_type": "int64",
+        "repeated": false,
+        "number": 6
+      }
+    },
+    {
+      "field_name": "reserved_quantity",
+      "field_type": "int64",
+      "repeated": false,
+      "number": 7,
+      "word_dictionary_scope": "reserved_quantity",
+      "word_dictionary_entry": {
+        "term": "reserved_quantity",
+        "scope": "reserved_quantity",
+        "canonical_description": "Quantity value for reserved.",
+        "aliases": [
+          "reservedQuantity"
+        ],
+        "forbidden_aliases": [],
+        "allowed_contexts": [
+          "reserved",
+          "quantity"
+        ],
+        "approved_examples": [
+          "Quantity value for reserved."
+        ],
+        "status": "draft_for_human_review",
+        "version": 1,
+        "owner": "@domain-owner",
+        "last_reviewed_at": "2026-06-06",
+        "visibility": "public",
+        "source": "field_name"
+      },
+      "message_field_scope": "InventoryAsset.reserved_quantity",
+      "effective_dictionary_scope": "reserved_quantity",
+      "message_dictionary_override": null,
+      "inference": {
+        "has_message_specific_meaning": false,
+        "candidate_override": {
+          "term": "reserved_quantity",
+          "scope": "InventoryAsset.reserved_quantity",
+          "canonical_description": "Quantity value for the reserved in the inventory asset.",
+          "aliases": [
+            "reservedQuantity"
+          ],
+          "forbidden_aliases": [],
+          "allowed_contexts": [
+            "reserved",
+            "quantity"
+          ],
+          "approved_examples": [
+            "Quantity value for the reserved in the inventory asset."
+          ],
+          "status": "draft_for_human_review",
+          "version": 1,
+          "owner": "@domain-owner",
+          "last_reviewed_at": "2026-06-06",
+          "visibility": "public",
+          "source": "message_context_inference"
+        },
+        "reason": "Default uses the global word_dictionary. Move candidate_override into message_dictionary_override only if LLM/domain review confirms a different message-specific meaning."
+      },
+      "evidence": {
+        "file": "samples\\proto\\workflow\\asset_inventory.proto",
+        "message": "InventoryAsset",
+        "field": "reserved_quantity",
+        "field_type": "int64",
+        "repeated": false,
+        "number": 7
+      }
+    },
+    {
+      "field_name": "lifecycle_status",
+      "field_type": "string",
+      "repeated": false,
+      "number": 8,
+      "word_dictionary_scope": "lifecycle_status",
+      "word_dictionary_entry": {
+        "term": "lifecycle_status",
+        "scope": "lifecycle_status",
+        "canonical_description": "Status value for lifecycle.",
+        "aliases": [
+          "lifecycleStatus"
+        ],
+        "forbidden_aliases": [],
+        "allowed_contexts": [
+          "lifecycle",
+          "status"
+        ],
+        "approved_examples": [
+          "Status value for lifecycle."
+        ],
+        "status": "draft_for_human_review",
+        "version": 1,
+        "owner": "@domain-owner",
+        "last_reviewed_at": "2026-06-06",
+        "visibility": "public",
+        "source": "field_name"
+      },
+      "message_field_scope": "InventoryAsset.lifecycle_status",
+      "effective_dictionary_scope": "lifecycle_status",
+      "message_dictionary_override": null,
+      "inference": {
+        "has_message_specific_meaning": false,
+        "candidate_override": {
+          "term": "lifecycle_status",
+          "scope": "InventoryAsset.lifecycle_status",
+          "canonical_description": "Status value for the inventory asset.",
+          "aliases": [
+            "lifecycleStatus"
+          ],
+          "forbidden_aliases": [],
+          "allowed_contexts": [
+            "lifecycle",
+            "status"
+          ],
+          "approved_examples": [
+            "Status value for the inventory asset."
+          ],
+          "status": "draft_for_human_review",
+          "version": 1,
+          "owner": "@domain-owner",
+          "last_reviewed_at": "2026-06-06",
+          "visibility": "public",
+          "source": "message_context_inference"
+        },
+        "reason": "Default uses the global word_dictionary. Move candidate_override into message_dictionary_override only if LLM/domain review confirms a different message-specific meaning."
+      },
+      "evidence": {
+        "file": "samples\\proto\\workflow\\asset_inventory.proto",
+        "message": "InventoryAsset",
+        "field": "lifecycle_status",
+        "field_type": "string",
+        "repeated": false,
+        "number": 8
+      }
+    },
+    {
+      "field_name": "received_at",
+      "field_type": "google.protobuf.Timestamp",
+      "repeated": false,
+      "number": 9,
+      "word_dictionary_scope": "received_at",
+      "word_dictionary_entry": {
+        "term": "received_at",
+        "scope": "received_at",
+        "canonical_description": "Timestamp for the received event.",
+        "aliases": [
+          "receivedAt"
+        ],
+        "forbidden_aliases": [],
+        "allowed_contexts": [
+          "received",
+          "at"
+        ],
+        "approved_examples": [
+          "Timestamp for the received event."
+        ],
+        "status": "draft_for_human_review",
+        "version": 1,
+        "owner": "@domain-owner",
+        "last_reviewed_at": "2026-06-06",
+        "visibility": "public",
+        "source": "field_name"
+      },
+      "message_field_scope": "InventoryAsset.received_at",
+      "effective_dictionary_scope": "received_at",
+      "message_dictionary_override": null,
+      "inference": {
+        "has_message_specific_meaning": false,
+        "candidate_override": {
+          "term": "received_at",
+          "scope": "InventoryAsset.received_at",
+          "canonical_description": "Timestamp for the received event in the inventory asset.",
+          "aliases": [
+            "receivedAt"
+          ],
+          "forbidden_aliases": [],
+          "allowed_contexts": [
+            "received",
+            "at"
+          ],
+          "approved_examples": [
+            "Timestamp for the received event in the inventory asset."
+          ],
+          "status": "draft_for_human_review",
+          "version": 1,
+          "owner": "@domain-owner",
+          "last_reviewed_at": "2026-06-06",
+          "visibility": "public",
+          "source": "message_context_inference"
+        },
+        "reason": "Default uses the global word_dictionary. Move candidate_override into message_dictionary_override only if LLM/domain review confirms a different message-specific meaning."
+      },
+      "evidence": {
+        "file": "samples\\proto\\workflow\\asset_inventory.proto",
+        "message": "InventoryAsset",
+        "field": "received_at",
+        "field_type": "google.protobuf.Timestamp",
+        "repeated": false,
+        "number": 9
+      }
+    },
+    {
+      "field_name": "expires_at",
+      "field_type": "google.protobuf.Timestamp",
+      "repeated": false,
+      "number": 10,
+      "word_dictionary_scope": "expires_at",
+      "word_dictionary_entry": {
+        "term": "expires_at",
+        "scope": "expires_at",
+        "canonical_description": "Timestamp for the expires event.",
+        "aliases": [
+          "expiresAt"
+        ],
+        "forbidden_aliases": [],
+        "allowed_contexts": [
+          "expires",
+          "at"
+        ],
+        "approved_examples": [
+          "Timestamp for the expires event."
+        ],
+        "status": "draft_for_human_review",
+        "version": 1,
+        "owner": "@domain-owner",
+        "last_reviewed_at": "2026-06-06",
+        "visibility": "public",
+        "source": "field_name"
+      },
+      "message_field_scope": "InventoryAsset.expires_at",
+      "effective_dictionary_scope": "expires_at",
+      "message_dictionary_override": null,
+      "inference": {
+        "has_message_specific_meaning": false,
+        "candidate_override": {
+          "term": "expires_at",
+          "scope": "InventoryAsset.expires_at",
+          "canonical_description": "Timestamp for the expires event in the inventory asset.",
+          "aliases": [
+            "expiresAt"
+          ],
+          "forbidden_aliases": [],
+          "allowed_contexts": [
+            "expires",
+            "at"
+          ],
+          "approved_examples": [
+            "Timestamp for the expires event in the inventory asset."
+          ],
+          "status": "draft_for_human_review",
+          "version": 1,
+          "owner": "@domain-owner",
+          "last_reviewed_at": "2026-06-06",
+          "visibility": "public",
+          "source": "message_context_inference"
+        },
+        "reason": "Default uses the global word_dictionary. Move candidate_override into message_dictionary_override only if LLM/domain review confirms a different message-specific meaning."
+      },
+      "evidence": {
+        "file": "samples\\proto\\workflow\\asset_inventory.proto",
+        "message": "InventoryAsset",
+        "field": "expires_at",
+        "field_type": "google.protobuf.Timestamp",
+        "repeated": false,
+        "number": 10
+      }
+    }
+  ]
+}

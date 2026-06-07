@@ -1,12 +1,13 @@
 #!/usr/bin/env node
 import { loadDictionary } from './dictionary.ts';
 import { scanProtoPath } from './protoScanner.ts';
-import { findMissingMappings, writeCandidates } from './candidates.ts';
+import { findMissingMappings, promoteCandidateOverride, validateCandidateOutput, writeCandidates } from './candidates.ts';
 import { lintComments } from './linter.ts';
 import { compareProtoStructure } from './astGuard.ts';
 import { guardDictionaryChange } from './dictionaryGuard.ts';
 import { createDocGenerator } from './docGenerator.ts';
 import { checkFreshness } from './freshness.ts';
+import { applyDictionaryComments } from './commentApplier.ts';
 
 function arg(name, fallback) {
   const ix = process.argv.indexOf(`--${name}`);
@@ -22,6 +23,9 @@ const dictPath = arg('dictionary', 'docs/dictionary/word-dictionary.json');
 const candidatesDir = arg('candidates', 'docs/dictionary/candidates');
 const docsDir = arg('docs', 'docs/generated');
 const baselineHashPath = arg('dictionary-baseline-hash', 'docs/dictionary/word-dictionary.sha256');
+const outPath = arg('out', protoPath);
+const messageName = arg('message', undefined);
+const fieldName = arg('field', undefined);
 
 try {
   if (cmd === 'scan') {
@@ -32,6 +36,15 @@ try {
     const written = writeCandidates(misses, candidatesDir, arg('detected-at', undefined));
     print({ missing: misses.length, written });
     if (misses.length > 0 && flag('fail-on-missing')) process.exitCode = 1;
+  } else if (cmd === 'validate-candidates') {
+    const result = validateCandidateOutput(candidatesDir);
+    print(result);
+  } else if (cmd === 'promote-candidate-override') {
+    const result = promoteCandidateOverride(candidatesDir, messageName, fieldName);
+    print(result);
+  } else if (cmd === 'apply-comments') {
+    const result = applyDictionaryComments(protoPath, loadDictionary(dictPath), { outputPath: outPath });
+    print(result);
   } else if (cmd === 'lint-comments') {
     const issues = lintComments(protoPath, loadDictionary(dictPath));
     print({ issues });
@@ -61,7 +74,7 @@ try {
     print({ ok, lintIssues: lint, astEqual: ast.equal, dictionaryGuard: dictionary, freshness: fresh });
     if (!ok) process.exitCode = 1;
   } else {
-    print('Usage: proto-docs <scan|generate-candidates|lint-comments|guard-ast|guard-dictionary|generate-docs|check-freshness|verify> [--proto path] [--dictionary path]');
+    print('Usage: proto-docs <scan|generate-candidates|validate-candidates|promote-candidate-override|apply-comments|lint-comments|guard-ast|guard-dictionary|generate-docs|check-freshness|verify> [--proto path] [--dictionary path]');
   }
 } catch (error) {
   fail(error.message);

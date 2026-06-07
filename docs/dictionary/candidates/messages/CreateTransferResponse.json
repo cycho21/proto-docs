@@ -1,0 +1,343 @@
+{
+  "candidate_type": "message_dictionary",
+  "message_name": "CreateTransferResponse",
+  "file": "samples\\proto\\workflow\\transfer_workflow.proto",
+  "status": "pending_human_review",
+  "detected_at": "2026-06-06",
+  "review_notes": [
+    "Use the global word_dictionary entry by default for each field.",
+    "Only populate message_dictionary_override when LLM/domain review determines the message changes the field meaning."
+  ],
+  "fields": [
+    {
+      "field_name": "transfer_key",
+      "field_type": "string",
+      "repeated": false,
+      "number": 1,
+      "word_dictionary_scope": "transfer_key",
+      "word_dictionary_entry": {
+        "term": "transfer_key",
+        "scope": "transfer_key",
+        "canonical_description": "Key that identifies the transfer.",
+        "aliases": [
+          "transferKey"
+        ],
+        "forbidden_aliases": [],
+        "allowed_contexts": [
+          "transfer",
+          "key"
+        ],
+        "approved_examples": [
+          "Key that identifies the transfer."
+        ],
+        "status": "draft_for_human_review",
+        "version": 1,
+        "owner": "@domain-owner",
+        "last_reviewed_at": "2026-06-06",
+        "visibility": "public",
+        "source": "field_name"
+      },
+      "message_field_scope": "CreateTransferResponse.transfer_key",
+      "effective_dictionary_scope": "transfer_key",
+      "message_dictionary_override": null,
+      "inference": {
+        "has_message_specific_meaning": false,
+        "candidate_override": {
+          "term": "transfer_key",
+          "scope": "CreateTransferResponse.transfer_key",
+          "canonical_description": "Key that identifies the transfer in the create transfer response.",
+          "aliases": [
+            "transferKey"
+          ],
+          "forbidden_aliases": [],
+          "allowed_contexts": [
+            "transfer",
+            "key"
+          ],
+          "approved_examples": [
+            "Key that identifies the transfer in the create transfer response."
+          ],
+          "status": "draft_for_human_review",
+          "version": 1,
+          "owner": "@domain-owner",
+          "last_reviewed_at": "2026-06-06",
+          "visibility": "public",
+          "source": "message_context_inference"
+        },
+        "reason": "Default uses the global word_dictionary. Move candidate_override into message_dictionary_override only if LLM/domain review confirms a different message-specific meaning."
+      },
+      "evidence": {
+        "file": "samples\\proto\\workflow\\transfer_workflow.proto",
+        "message": "CreateTransferResponse",
+        "field": "transfer_key",
+        "field_type": "string",
+        "repeated": false,
+        "number": 1
+      }
+    },
+    {
+      "field_name": "transfer_status",
+      "field_type": "string",
+      "repeated": false,
+      "number": 2,
+      "word_dictionary_scope": "transfer_status",
+      "word_dictionary_entry": {
+        "term": "transfer_status",
+        "scope": "transfer_status",
+        "canonical_description": "Status value for transfer.",
+        "aliases": [
+          "transferStatus"
+        ],
+        "forbidden_aliases": [],
+        "allowed_contexts": [
+          "transfer",
+          "status"
+        ],
+        "approved_examples": [
+          "Status value for transfer."
+        ],
+        "status": "draft_for_human_review",
+        "version": 1,
+        "owner": "@domain-owner",
+        "last_reviewed_at": "2026-06-06",
+        "visibility": "public",
+        "source": "field_name"
+      },
+      "message_field_scope": "CreateTransferResponse.transfer_status",
+      "effective_dictionary_scope": "transfer_status",
+      "message_dictionary_override": null,
+      "inference": {
+        "has_message_specific_meaning": false,
+        "candidate_override": {
+          "term": "transfer_status",
+          "scope": "CreateTransferResponse.transfer_status",
+          "canonical_description": "Status value for the create transfer response.",
+          "aliases": [
+            "transferStatus"
+          ],
+          "forbidden_aliases": [],
+          "allowed_contexts": [
+            "transfer",
+            "status"
+          ],
+          "approved_examples": [
+            "Status value for the create transfer response."
+          ],
+          "status": "draft_for_human_review",
+          "version": 1,
+          "owner": "@domain-owner",
+          "last_reviewed_at": "2026-06-06",
+          "visibility": "public",
+          "source": "message_context_inference"
+        },
+        "reason": "Default uses the global word_dictionary. Move candidate_override into message_dictionary_override only if LLM/domain review confirms a different message-specific meaning."
+      },
+      "evidence": {
+        "file": "samples\\proto\\workflow\\transfer_workflow.proto",
+        "message": "CreateTransferResponse",
+        "field": "transfer_status",
+        "field_type": "string",
+        "repeated": false,
+        "number": 2
+      }
+    },
+    {
+      "field_name": "accepted_lines",
+      "field_type": "TransferLine",
+      "repeated": true,
+      "number": 3,
+      "word_dictionary_scope": "accepted_lines",
+      "word_dictionary_entry": {
+        "term": "accepted_lines",
+        "scope": "accepted_lines",
+        "canonical_description": "Accepted Lines value.",
+        "aliases": [
+          "acceptedLines"
+        ],
+        "forbidden_aliases": [],
+        "allowed_contexts": [
+          "accepted",
+          "lines"
+        ],
+        "approved_examples": [
+          "Accepted Lines value."
+        ],
+        "status": "draft_for_human_review",
+        "version": 1,
+        "owner": "@domain-owner",
+        "last_reviewed_at": "2026-06-06",
+        "visibility": "public",
+        "source": "field_name"
+      },
+      "message_field_scope": "CreateTransferResponse.accepted_lines",
+      "effective_dictionary_scope": "accepted_lines",
+      "message_dictionary_override": null,
+      "inference": {
+        "has_message_specific_meaning": false,
+        "candidate_override": {
+          "term": "accepted_lines",
+          "scope": "CreateTransferResponse.accepted_lines",
+          "canonical_description": "Accepted Lines value for the create transfer response.",
+          "aliases": [
+            "acceptedLines"
+          ],
+          "forbidden_aliases": [],
+          "allowed_contexts": [
+            "accepted",
+            "lines"
+          ],
+          "approved_examples": [
+            "Accepted Lines value for the create transfer response."
+          ],
+          "status": "draft_for_human_review",
+          "version": 1,
+          "owner": "@domain-owner",
+          "last_reviewed_at": "2026-06-06",
+          "visibility": "public",
+          "source": "message_context_inference"
+        },
+        "reason": "Default uses the global word_dictionary. Move candidate_override into message_dictionary_override only if LLM/domain review confirms a different message-specific meaning."
+      },
+      "evidence": {
+        "file": "samples\\proto\\workflow\\transfer_workflow.proto",
+        "message": "CreateTransferResponse",
+        "field": "accepted_lines",
+        "field_type": "TransferLine",
+        "repeated": true,
+        "number": 3
+      }
+    },
+    {
+      "field_name": "rejected_lines",
+      "field_type": "TransferLine",
+      "repeated": true,
+      "number": 4,
+      "word_dictionary_scope": "rejected_lines",
+      "word_dictionary_entry": {
+        "term": "rejected_lines",
+        "scope": "rejected_lines",
+        "canonical_description": "Rejected Lines value.",
+        "aliases": [
+          "rejectedLines"
+        ],
+        "forbidden_aliases": [],
+        "allowed_contexts": [
+          "rejected",
+          "lines"
+        ],
+        "approved_examples": [
+          "Rejected Lines value."
+        ],
+        "status": "draft_for_human_review",
+        "version": 1,
+        "owner": "@domain-owner",
+        "last_reviewed_at": "2026-06-06",
+        "visibility": "public",
+        "source": "field_name"
+      },
+      "message_field_scope": "CreateTransferResponse.rejected_lines",
+      "effective_dictionary_scope": "rejected_lines",
+      "message_dictionary_override": null,
+      "inference": {
+        "has_message_specific_meaning": false,
+        "candidate_override": {
+          "term": "rejected_lines",
+          "scope": "CreateTransferResponse.rejected_lines",
+          "canonical_description": "Rejected Lines value for the create transfer response.",
+          "aliases": [
+            "rejectedLines"
+          ],
+          "forbidden_aliases": [],
+          "allowed_contexts": [
+            "rejected",
+            "lines"
+          ],
+          "approved_examples": [
+            "Rejected Lines value for the create transfer response."
+          ],
+          "status": "draft_for_human_review",
+          "version": 1,
+          "owner": "@domain-owner",
+          "last_reviewed_at": "2026-06-06",
+          "visibility": "public",
+          "source": "message_context_inference"
+        },
+        "reason": "Default uses the global word_dictionary. Move candidate_override into message_dictionary_override only if LLM/domain review confirms a different message-specific meaning."
+      },
+      "evidence": {
+        "file": "samples\\proto\\workflow\\transfer_workflow.proto",
+        "message": "CreateTransferResponse",
+        "field": "rejected_lines",
+        "field_type": "TransferLine",
+        "repeated": true,
+        "number": 4
+      }
+    },
+    {
+      "field_name": "created_at",
+      "field_type": "google.protobuf.Timestamp",
+      "repeated": false,
+      "number": 5,
+      "word_dictionary_scope": "created_at",
+      "word_dictionary_entry": {
+        "term": "created_at",
+        "scope": "created_at",
+        "canonical_description": "Timestamp for the created event.",
+        "aliases": [
+          "createdAt"
+        ],
+        "forbidden_aliases": [],
+        "allowed_contexts": [
+          "created",
+          "at"
+        ],
+        "approved_examples": [
+          "Timestamp for the created event."
+        ],
+        "status": "draft_for_human_review",
+        "version": 1,
+        "owner": "@domain-owner",
+        "last_reviewed_at": "2026-06-06",
+        "visibility": "public",
+        "source": "field_name"
+      },
+      "message_field_scope": "CreateTransferResponse.created_at",
+      "effective_dictionary_scope": "created_at",
+      "message_dictionary_override": null,
+      "inference": {
+        "has_message_specific_meaning": false,
+        "candidate_override": {
+          "term": "created_at",
+          "scope": "CreateTransferResponse.created_at",
+          "canonical_description": "Timestamp for the created event in the create transfer response.",
+          "aliases": [
+            "createdAt"
+          ],
+          "forbidden_aliases": [],
+          "allowed_contexts": [
+            "created",
+            "at"
+          ],
+          "approved_examples": [
+            "Timestamp for the created event in the create transfer response."
+          ],
+          "status": "draft_for_human_review",
+          "version": 1,
+          "owner": "@domain-owner",
+          "last_reviewed_at": "2026-06-06",
+          "visibility": "public",
+          "source": "message_context_inference"
+        },
+        "reason": "Default uses the global word_dictionary. Move candidate_override into message_dictionary_override only if LLM/domain review confirms a different message-specific meaning."
+      },
+      "evidence": {
+        "file": "samples\\proto\\workflow\\transfer_workflow.proto",
+        "message": "CreateTransferResponse",
+        "field": "created_at",
+        "field_type": "google.protobuf.Timestamp",
+        "repeated": false,
+        "number": 5
+      }
+    }
+  ]
+}

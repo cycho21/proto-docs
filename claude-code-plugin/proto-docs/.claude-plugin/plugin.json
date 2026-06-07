@@ -1,0 +1,20 @@
+{
+  "name": "proto-docs",
+  "version": "0.1.0",
+  "description": "Generates and validates Proto Dictionary candidates, comments, and guardrails for Claude Code.",
+  "author": {
+    "name": "Proto Docs Team"
+  },
+  "license": "UNLICENSED",
+  "keywords": [
+    "protobuf",
+    "proto",
+    "documentation",
+    "dictionary",
+    "hooks",
+    "validation"
+  ],
+  "commands": "./commands",
+  "skills": "./skills",
+  "hooks": "./hooks/hooks.json"
+}

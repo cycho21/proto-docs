@@ -1,0 +1,277 @@
+{
+  "candidate_type": "message_dictionary",
+  "message_name": "ReviewTransferResponse",
+  "file": "samples\\proto\\workflow\\transfer_workflow.proto",
+  "status": "pending_human_review",
+  "detected_at": "2026-06-06",
+  "review_notes": [
+    "Use the global word_dictionary entry by default for each field.",
+    "Only populate message_dictionary_override when LLM/domain review determines the message changes the field meaning."
+  ],
+  "fields": [
+    {
+      "field_name": "transfer_key",
+      "field_type": "string",
+      "repeated": false,
+      "number": 1,
+      "word_dictionary_scope": "transfer_key",
+      "word_dictionary_entry": {
+        "term": "transfer_key",
+        "scope": "transfer_key",
+        "canonical_description": "Key that identifies the transfer.",
+        "aliases": [
+          "transferKey"
+        ],
+        "forbidden_aliases": [],
+        "allowed_contexts": [
+          "transfer",
+          "key"
+        ],
+        "approved_examples": [
+          "Key that identifies the transfer."
+        ],
+        "status": "draft_for_human_review",
+        "version": 1,
+        "owner": "@domain-owner",
+        "last_reviewed_at": "2026-06-06",
+        "visibility": "public",
+        "source": "field_name"
+      },
+      "message_field_scope": "ReviewTransferResponse.transfer_key",
+      "effective_dictionary_scope": "transfer_key",
+      "message_dictionary_override": null,
+      "inference": {
+        "has_message_specific_meaning": false,
+        "candidate_override": {
+          "term": "transfer_key",
+          "scope": "ReviewTransferResponse.transfer_key",
+          "canonical_description": "Key that identifies the transfer in the review transfer response.",
+          "aliases": [
+            "transferKey"
+          ],
+          "forbidden_aliases": [],
+          "allowed_contexts": [
+            "transfer",
+            "key"
+          ],
+          "approved_examples": [
+            "Key that identifies the transfer in the review transfer response."
+          ],
+          "status": "draft_for_human_review",
+          "version": 1,
+          "owner": "@domain-owner",
+          "last_reviewed_at": "2026-06-06",
+          "visibility": "public",
+          "source": "message_context_inference"
+        },
+        "reason": "Default uses the global word_dictionary. Move candidate_override into message_dictionary_override only if LLM/domain review confirms a different message-specific meaning."
+      },
+      "evidence": {
+        "file": "samples\\proto\\workflow\\transfer_workflow.proto",
+        "message": "ReviewTransferResponse",
+        "field": "transfer_key",
+        "field_type": "string",
+        "repeated": false,
+        "number": 1
+      }
+    },
+    {
+      "field_name": "transfer_status",
+      "field_type": "string",
+      "repeated": false,
+      "number": 2,
+      "word_dictionary_scope": "transfer_status",
+      "word_dictionary_entry": {
+        "term": "transfer_status",
+        "scope": "transfer_status",
+        "canonical_description": "Status value for transfer.",
+        "aliases": [
+          "transferStatus"
+        ],
+        "forbidden_aliases": [],
+        "allowed_contexts": [
+          "transfer",
+          "status"
+        ],
+        "approved_examples": [
+          "Status value for transfer."
+        ],
+        "status": "draft_for_human_review",
+        "version": 1,
+        "owner": "@domain-owner",
+        "last_reviewed_at": "2026-06-06",
+        "visibility": "public",
+        "source": "field_name"
+      },
+      "message_field_scope": "ReviewTransferResponse.transfer_status",
+      "effective_dictionary_scope": "transfer_status",
+      "message_dictionary_override": null,
+      "inference": {
+        "has_message_specific_meaning": false,
+        "candidate_override": {
+          "term": "transfer_status",
+          "scope": "ReviewTransferResponse.transfer_status",
+          "canonical_description": "Status value for the review transfer response.",
+          "aliases": [
+            "transferStatus"
+          ],
+          "forbidden_aliases": [],
+          "allowed_contexts": [
+            "transfer",
+            "status"
+          ],
+          "approved_examples": [
+            "Status value for the review transfer response."
+          ],
+          "status": "draft_for_human_review",
+          "version": 1,
+          "owner": "@domain-owner",
+          "last_reviewed_at": "2026-06-06",
+          "visibility": "public",
+          "source": "message_context_inference"
+        },
+        "reason": "Default uses the global word_dictionary. Move candidate_override into message_dictionary_override only if LLM/domain review confirms a different message-specific meaning."
+      },
+      "evidence": {
+        "file": "samples\\proto\\workflow\\transfer_workflow.proto",
+        "message": "ReviewTransferResponse",
+        "field": "transfer_status",
+        "field_type": "string",
+        "repeated": false,
+        "number": 2
+      }
+    },
+    {
+      "field_name": "reviewed_by",
+      "field_type": "string",
+      "repeated": false,
+      "number": 3,
+      "word_dictionary_scope": "reviewed_by",
+      "word_dictionary_entry": {
+        "term": "reviewed_by",
+        "scope": "reviewed_by",
+        "canonical_description": "Reviewed By value.",
+        "aliases": [
+          "reviewedBy"
+        ],
+        "forbidden_aliases": [],
+        "allowed_contexts": [
+          "reviewed",
+          "by"
+        ],
+        "approved_examples": [
+          "Reviewed By value."
+        ],
+        "status": "draft_for_human_review",
+        "version": 1,
+        "owner": "@domain-owner",
+        "last_reviewed_at": "2026-06-06",
+        "visibility": "public",
+        "source": "field_name"
+      },
+      "message_field_scope": "ReviewTransferResponse.reviewed_by",
+      "effective_dictionary_scope": "reviewed_by",
+      "message_dictionary_override": null,
+      "inference": {
+        "has_message_specific_meaning": false,
+        "candidate_override": {
+          "term": "reviewed_by",
+          "scope": "ReviewTransferResponse.reviewed_by",
+          "canonical_description": "Reviewed By for the review transfer response.",
+          "aliases": [
+            "reviewedBy"
+          ],
+          "forbidden_aliases": [],
+          "allowed_contexts": [
+            "reviewed",
+            "by"
+          ],
+          "approved_examples": [
+            "Reviewed By for the review transfer response."
+          ],
+          "status": "draft_for_human_review",
+          "version": 1,
+          "owner": "@domain-owner",
+          "last_reviewed_at": "2026-06-06",
+          "visibility": "public",
+          "source": "message_context_inference"
+        },
+        "reason": "Default uses the global word_dictionary. Move candidate_override into message_dictionary_override only if LLM/domain review confirms a different message-specific meaning."
+      },
+      "evidence": {
+        "file": "samples\\proto\\workflow\\transfer_workflow.proto",
+        "message": "ReviewTransferResponse",
+        "field": "reviewed_by",
+        "field_type": "string",
+        "repeated": false,
+        "number": 3
+      }
+    },
+    {
+      "field_name": "reviewed_at",
+      "field_type": "google.protobuf.Timestamp",
+      "repeated": false,
+      "number": 4,
+      "word_dictionary_scope": "reviewed_at",
+      "word_dictionary_entry": {
+        "term": "reviewed_at",
+        "scope": "reviewed_at",
+        "canonical_description": "Timestamp for the reviewed event.",
+        "aliases": [
+          "reviewedAt"
+        ],
+        "forbidden_aliases": [],
+        "allowed_contexts": [
+          "reviewed",
+          "at"
+        ],
+        "approved_examples": [
+          "Timestamp for the reviewed event."
+        ],
+        "status": "draft_for_human_review",
+        "version": 1,
+        "owner": "@domain-owner",
+        "last_reviewed_at": "2026-06-06",
+        "visibility": "public",
+        "source": "field_name"
+      },
+      "message_field_scope": "ReviewTransferResponse.reviewed_at",
+      "effective_dictionary_scope": "reviewed_at",
+      "message_dictionary_override": null,
+      "inference": {
+        "has_message_specific_meaning": false,
+        "candidate_override": {
+          "term": "reviewed_at",
+          "scope": "ReviewTransferResponse.reviewed_at",
+          "canonical_description": "Timestamp for the reviewed event in the review transfer response.",
+          "aliases": [
+            "reviewedAt"
+          ],
+          "forbidden_aliases": [],
+          "allowed_contexts": [
+            "reviewed",
+            "at"
+          ],
+          "approved_examples": [
+            "Timestamp for the reviewed event in the review transfer response."
+          ],
+          "status": "draft_for_human_review",
+          "version": 1,
+          "owner": "@domain-owner",
+          "last_reviewed_at": "2026-06-06",
+          "visibility": "public",
+          "source": "message_context_inference"
+        },
+        "reason": "Default uses the global word_dictionary. Move candidate_override into message_dictionary_override only if LLM/domain review confirms a different message-specific meaning."
+      },
+      "evidence": {
+        "file": "samples\\proto\\workflow\\transfer_workflow.proto",
+        "message": "ReviewTransferResponse",
+        "field": "reviewed_at",
+        "field_type": "google.protobuf.Timestamp",
+        "repeated": false,
+        "number": 4
+      }
+    }
+  ]
+}

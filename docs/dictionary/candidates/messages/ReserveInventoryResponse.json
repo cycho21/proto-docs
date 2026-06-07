@@ -1,0 +1,271 @@
+{
+  "candidate_type": "message_dictionary",
+  "message_name": "ReserveInventoryResponse",
+  "file": "samples\\proto\\workflow\\asset_inventory.proto",
+  "status": "pending_human_review",
+  "detected_at": "2026-06-06",
+  "review_notes": [
+    "Use the global word_dictionary entry by default for each field.",
+    "Only populate message_dictionary_override when LLM/domain review determines the message changes the field meaning."
+  ],
+  "fields": [
+    {
+      "field_name": "reservation_key",
+      "field_type": "string",
+      "repeated": false,
+      "number": 1,
+      "word_dictionary_scope": "reservation_key",
+      "word_dictionary_entry": {
+        "term": "reservation_key",
+        "scope": "reservation_key",
+        "canonical_description": "Key that identifies the reservation.",
+        "aliases": [
+          "reservationKey"
+        ],
+        "forbidden_aliases": [],
+        "allowed_contexts": [
+          "reservation",
+          "key"
+        ],
+        "approved_examples": [
+          "Key that identifies the reservation."
+        ],
+        "status": "draft_for_human_review",
+        "version": 1,
+        "owner": "@domain-owner",
+        "last_reviewed_at": "2026-06-06",
+        "visibility": "public",
+        "source": "field_name"
+      },
+      "message_field_scope": "ReserveInventoryResponse.reservation_key",
+      "effective_dictionary_scope": "reservation_key",
+      "message_dictionary_override": null,
+      "inference": {
+        "has_message_specific_meaning": false,
+        "candidate_override": {
+          "term": "reservation_key",
+          "scope": "ReserveInventoryResponse.reservation_key",
+          "canonical_description": "Key that identifies the reservation in the reserve inventory response.",
+          "aliases": [
+            "reservationKey"
+          ],
+          "forbidden_aliases": [],
+          "allowed_contexts": [
+            "reservation",
+            "key"
+          ],
+          "approved_examples": [
+            "Key that identifies the reservation in the reserve inventory response."
+          ],
+          "status": "draft_for_human_review",
+          "version": 1,
+          "owner": "@domain-owner",
+          "last_reviewed_at": "2026-06-06",
+          "visibility": "public",
+          "source": "message_context_inference"
+        },
+        "reason": "Default uses the global word_dictionary. Move candidate_override into message_dictionary_override only if LLM/domain review confirms a different message-specific meaning."
+      },
+      "evidence": {
+        "file": "samples\\proto\\workflow\\asset_inventory.proto",
+        "message": "ReserveInventoryResponse",
+        "field": "reservation_key",
+        "field_type": "string",
+        "repeated": false,
+        "number": 1
+      }
+    },
+    {
+      "field_name": "reservation_status",
+      "field_type": "string",
+      "repeated": false,
+      "number": 2,
+      "word_dictionary_scope": "reservation_status",
+      "word_dictionary_entry": {
+        "term": "reservation_status",
+        "scope": "reservation_status",
+        "canonical_description": "Status value for reservation.",
+        "aliases": [
+          "reservationStatus"
+        ],
+        "forbidden_aliases": [],
+        "allowed_contexts": [
+          "reservation",
+          "status"
+        ],
+        "approved_examples": [
+          "Status value for reservation."
+        ],
+        "status": "draft_for_human_review",
+        "version": 1,
+        "owner": "@domain-owner",
+        "last_reviewed_at": "2026-06-06",
+        "visibility": "public",
+        "source": "field_name"
+      },
+      "message_field_scope": "ReserveInventoryResponse.reservation_status",
+      "effective_dictionary_scope": "reservation_status",
+      "message_dictionary_override": null,
+      "inference": {
+        "has_message_specific_meaning": false,
+        "candidate_override": {
+          "term": "reservation_status",
+          "scope": "ReserveInventoryResponse.reservation_status",
+          "canonical_description": "Status value for the reserve inventory response.",
+          "aliases": [
+            "reservationStatus"
+          ],
+          "forbidden_aliases": [],
+          "allowed_contexts": [
+            "reservation",
+            "status"
+          ],
+          "approved_examples": [
+            "Status value for the reserve inventory response."
+          ],
+          "status": "draft_for_human_review",
+          "version": 1,
+          "owner": "@domain-owner",
+          "last_reviewed_at": "2026-06-06",
+          "visibility": "public",
+          "source": "message_context_inference"
+        },
+        "reason": "Default uses the global word_dictionary. Move candidate_override into message_dictionary_override only if LLM/domain review confirms a different message-specific meaning."
+      },
+      "evidence": {
+        "file": "samples\\proto\\workflow\\asset_inventory.proto",
+        "message": "ReserveInventoryResponse",
+        "field": "reservation_status",
+        "field_type": "string",
+        "repeated": false,
+        "number": 2
+      }
+    },
+    {
+      "field_name": "results",
+      "field_type": "ReserveInventoryResult",
+      "repeated": true,
+      "number": 3,
+      "word_dictionary_scope": "results",
+      "word_dictionary_entry": {
+        "term": "results",
+        "scope": "results",
+        "canonical_description": "Results value.",
+        "aliases": [],
+        "forbidden_aliases": [],
+        "allowed_contexts": [
+          "results"
+        ],
+        "approved_examples": [
+          "Results value."
+        ],
+        "status": "draft_for_human_review",
+        "version": 1,
+        "owner": "@domain-owner",
+        "last_reviewed_at": "2026-06-06",
+        "visibility": "public",
+        "source": "field_name"
+      },
+      "message_field_scope": "ReserveInventoryResponse.results",
+      "effective_dictionary_scope": "results",
+      "message_dictionary_override": null,
+      "inference": {
+        "has_message_specific_meaning": false,
+        "candidate_override": {
+          "term": "results",
+          "scope": "ReserveInventoryResponse.results",
+          "canonical_description": "Results value for the reserve inventory response.",
+          "aliases": [],
+          "forbidden_aliases": [],
+          "allowed_contexts": [
+            "results"
+          ],
+          "approved_examples": [
+            "Results value for the reserve inventory response."
+          ],
+          "status": "draft_for_human_review",
+          "version": 1,
+          "owner": "@domain-owner",
+          "last_reviewed_at": "2026-06-06",
+          "visibility": "public",
+          "source": "message_context_inference"
+        },
+        "reason": "Default uses the global word_dictionary. Move candidate_override into message_dictionary_override only if LLM/domain review confirms a different message-specific meaning."
+      },
+      "evidence": {
+        "file": "samples\\proto\\workflow\\asset_inventory.proto",
+        "message": "ReserveInventoryResponse",
+        "field": "results",
+        "field_type": "ReserveInventoryResult",
+        "repeated": true,
+        "number": 3
+      }
+    },
+    {
+      "field_name": "reserved_at",
+      "field_type": "google.protobuf.Timestamp",
+      "repeated": false,
+      "number": 4,
+      "word_dictionary_scope": "reserved_at",
+      "word_dictionary_entry": {
+        "term": "reserved_at",
+        "scope": "reserved_at",
+        "canonical_description": "Timestamp for the reserved event.",
+        "aliases": [
+          "reservedAt"
+        ],
+        "forbidden_aliases": [],
+        "allowed_contexts": [
+          "reserved",
+          "at"
+        ],
+        "approved_examples": [
+          "Timestamp for the reserved event."
+        ],
+        "status": "draft_for_human_review",
+        "version": 1,
+        "owner": "@domain-owner",
+        "last_reviewed_at": "2026-06-06",
+        "visibility": "public",
+        "source": "field_name"
+      },
+      "message_field_scope": "ReserveInventoryResponse.reserved_at",
+      "effective_dictionary_scope": "reserved_at",
+      "message_dictionary_override": null,
+      "inference": {
+        "has_message_specific_meaning": false,
+        "candidate_override": {
+          "term": "reserved_at",
+          "scope": "ReserveInventoryResponse.reserved_at",
+          "canonical_description": "Timestamp for the reserved event in the reserve inventory response.",
+          "aliases": [
+            "reservedAt"
+          ],
+          "forbidden_aliases": [],
+          "allowed_contexts": [
+            "reserved",
+            "at"
+          ],
+          "approved_examples": [
+            "Timestamp for the reserved event in the reserve inventory response."
+          ],
+          "status": "draft_for_human_review",
+          "version": 1,
+          "owner": "@domain-owner",
+          "last_reviewed_at": "2026-06-06",
+          "visibility": "public",
+          "source": "message_context_inference"
+        },
+        "reason": "Default uses the global word_dictionary. Move candidate_override into message_dictionary_override only if LLM/domain review confirms a different message-specific meaning."
+      },
+      "evidence": {
+        "file": "samples\\proto\\workflow\\asset_inventory.proto",
+        "message": "ReserveInventoryResponse",
+        "field": "reserved_at",
+        "field_type": "google.protobuf.Timestamp",
+        "repeated": false,
+        "number": 4
+      }
+    }
+  ]
+}

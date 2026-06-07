@@ -1,0 +1,413 @@
+{
+  "candidate_type": "message_dictionary",
+  "message_name": "BuildSettlementReportResponse",
+  "file": "samples\\proto\\workflow\\settlement_report.proto",
+  "status": "pending_human_review",
+  "detected_at": "2026-06-06",
+  "review_notes": [
+    "Use the global word_dictionary entry by default for each field.",
+    "Only populate message_dictionary_override when LLM/domain review determines the message changes the field meaning."
+  ],
+  "fields": [
+    {
+      "field_name": "report_key",
+      "field_type": "string",
+      "repeated": false,
+      "number": 1,
+      "word_dictionary_scope": "report_key",
+      "word_dictionary_entry": {
+        "term": "report_key",
+        "scope": "report_key",
+        "canonical_description": "Key that identifies the report.",
+        "aliases": [
+          "reportKey"
+        ],
+        "forbidden_aliases": [],
+        "allowed_contexts": [
+          "report",
+          "key"
+        ],
+        "approved_examples": [
+          "Key that identifies the report."
+        ],
+        "status": "draft_for_human_review",
+        "version": 1,
+        "owner": "@domain-owner",
+        "last_reviewed_at": "2026-06-06",
+        "visibility": "public",
+        "source": "field_name"
+      },
+      "message_field_scope": "BuildSettlementReportResponse.report_key",
+      "effective_dictionary_scope": "report_key",
+      "message_dictionary_override": null,
+      "inference": {
+        "has_message_specific_meaning": false,
+        "candidate_override": {
+          "term": "report_key",
+          "scope": "BuildSettlementReportResponse.report_key",
+          "canonical_description": "Key that identifies the report in the build settlement report response.",
+          "aliases": [
+            "reportKey"
+          ],
+          "forbidden_aliases": [],
+          "allowed_contexts": [
+            "report",
+            "key"
+          ],
+          "approved_examples": [
+            "Key that identifies the report in the build settlement report response."
+          ],
+          "status": "draft_for_human_review",
+          "version": 1,
+          "owner": "@domain-owner",
+          "last_reviewed_at": "2026-06-06",
+          "visibility": "public",
+          "source": "message_context_inference"
+        },
+        "reason": "Default uses the global word_dictionary. Move candidate_override into message_dictionary_override only if LLM/domain review confirms a different message-specific meaning."
+      },
+      "evidence": {
+        "file": "samples\\proto\\workflow\\settlement_report.proto",
+        "message": "BuildSettlementReportResponse",
+        "field": "report_key",
+        "field_type": "string",
+        "repeated": false,
+        "number": 1
+      }
+    },
+    {
+      "field_name": "report_status",
+      "field_type": "string",
+      "repeated": false,
+      "number": 2,
+      "word_dictionary_scope": "report_status",
+      "word_dictionary_entry": {
+        "term": "report_status",
+        "scope": "report_status",
+        "canonical_description": "Status value for report.",
+        "aliases": [
+          "reportStatus"
+        ],
+        "forbidden_aliases": [],
+        "allowed_contexts": [
+          "report",
+          "status"
+        ],
+        "approved_examples": [
+          "Status value for report."
+        ],
+        "status": "draft_for_human_review",
+        "version": 1,
+        "owner": "@domain-owner",
+        "last_reviewed_at": "2026-06-06",
+        "visibility": "public",
+        "source": "field_name"
+      },
+      "message_field_scope": "BuildSettlementReportResponse.report_status",
+      "effective_dictionary_scope": "report_status",
+      "message_dictionary_override": null,
+      "inference": {
+        "has_message_specific_meaning": false,
+        "candidate_override": {
+          "term": "report_status",
+          "scope": "BuildSettlementReportResponse.report_status",
+          "canonical_description": "Status value for the build settlement report response.",
+          "aliases": [
+            "reportStatus"
+          ],
+          "forbidden_aliases": [],
+          "allowed_contexts": [
+            "report",
+            "status"
+          ],
+          "approved_examples": [
+            "Status value for the build settlement report response."
+          ],
+          "status": "draft_for_human_review",
+          "version": 1,
+          "owner": "@domain-owner",
+          "last_reviewed_at": "2026-06-06",
+          "visibility": "public",
+          "source": "message_context_inference"
+        },
+        "reason": "Default uses the global word_dictionary. Move candidate_override into message_dictionary_override only if LLM/domain review confirms a different message-specific meaning."
+      },
+      "evidence": {
+        "file": "samples\\proto\\workflow\\settlement_report.proto",
+        "message": "BuildSettlementReportResponse",
+        "field": "report_status",
+        "field_type": "string",
+        "repeated": false,
+        "number": 2
+      }
+    },
+    {
+      "field_name": "settlement_lines",
+      "field_type": "SettlementLine",
+      "repeated": true,
+      "number": 3,
+      "word_dictionary_scope": "settlement_lines",
+      "word_dictionary_entry": {
+        "term": "settlement_lines",
+        "scope": "settlement_lines",
+        "canonical_description": "Settlement Lines value.",
+        "aliases": [
+          "settlementLines"
+        ],
+        "forbidden_aliases": [],
+        "allowed_contexts": [
+          "settlement",
+          "lines"
+        ],
+        "approved_examples": [
+          "Settlement Lines value."
+        ],
+        "status": "draft_for_human_review",
+        "version": 1,
+        "owner": "@domain-owner",
+        "last_reviewed_at": "2026-06-06",
+        "visibility": "public",
+        "source": "field_name"
+      },
+      "message_field_scope": "BuildSettlementReportResponse.settlement_lines",
+      "effective_dictionary_scope": "settlement_lines",
+      "message_dictionary_override": null,
+      "inference": {
+        "has_message_specific_meaning": false,
+        "candidate_override": {
+          "term": "settlement_lines",
+          "scope": "BuildSettlementReportResponse.settlement_lines",
+          "canonical_description": "Settlement Lines value for the build settlement report response.",
+          "aliases": [
+            "settlementLines"
+          ],
+          "forbidden_aliases": [],
+          "allowed_contexts": [
+            "settlement",
+            "lines"
+          ],
+          "approved_examples": [
+            "Settlement Lines value for the build settlement report response."
+          ],
+          "status": "draft_for_human_review",
+          "version": 1,
+          "owner": "@domain-owner",
+          "last_reviewed_at": "2026-06-06",
+          "visibility": "public",
+          "source": "message_context_inference"
+        },
+        "reason": "Default uses the global word_dictionary. Move candidate_override into message_dictionary_override only if LLM/domain review confirms a different message-specific meaning."
+      },
+      "evidence": {
+        "file": "samples\\proto\\workflow\\settlement_report.proto",
+        "message": "BuildSettlementReportResponse",
+        "field": "settlement_lines",
+        "field_type": "SettlementLine",
+        "repeated": true,
+        "number": 3
+      }
+    },
+    {
+      "field_name": "total_moved_quantity",
+      "field_type": "int64",
+      "repeated": false,
+      "number": 4,
+      "word_dictionary_scope": "total_moved_quantity",
+      "word_dictionary_entry": {
+        "term": "total_moved_quantity",
+        "scope": "total_moved_quantity",
+        "canonical_description": "Quantity value for total moved.",
+        "aliases": [
+          "totalMovedQuantity"
+        ],
+        "forbidden_aliases": [],
+        "allowed_contexts": [
+          "total",
+          "moved",
+          "quantity"
+        ],
+        "approved_examples": [
+          "Quantity value for total moved."
+        ],
+        "status": "draft_for_human_review",
+        "version": 1,
+        "owner": "@domain-owner",
+        "last_reviewed_at": "2026-06-06",
+        "visibility": "public",
+        "source": "field_name"
+      },
+      "message_field_scope": "BuildSettlementReportResponse.total_moved_quantity",
+      "effective_dictionary_scope": "total_moved_quantity",
+      "message_dictionary_override": null,
+      "inference": {
+        "has_message_specific_meaning": false,
+        "candidate_override": {
+          "term": "total_moved_quantity",
+          "scope": "BuildSettlementReportResponse.total_moved_quantity",
+          "canonical_description": "Total moved quantity for the build settlement report response.",
+          "aliases": [
+            "totalMovedQuantity"
+          ],
+          "forbidden_aliases": [],
+          "allowed_contexts": [
+            "total",
+            "moved",
+            "quantity"
+          ],
+          "approved_examples": [
+            "Total moved quantity for the build settlement report response."
+          ],
+          "status": "draft_for_human_review",
+          "version": 1,
+          "owner": "@domain-owner",
+          "last_reviewed_at": "2026-06-06",
+          "visibility": "public",
+          "source": "message_context_inference"
+        },
+        "reason": "Default uses the global word_dictionary. Move candidate_override into message_dictionary_override only if LLM/domain review confirms a different message-specific meaning."
+      },
+      "evidence": {
+        "file": "samples\\proto\\workflow\\settlement_report.proto",
+        "message": "BuildSettlementReportResponse",
+        "field": "total_moved_quantity",
+        "field_type": "int64",
+        "repeated": false,
+        "number": 4
+      }
+    },
+    {
+      "field_name": "total_settlement_amount",
+      "field_type": "int64",
+      "repeated": false,
+      "number": 5,
+      "word_dictionary_scope": "total_settlement_amount",
+      "word_dictionary_entry": {
+        "term": "total_settlement_amount",
+        "scope": "total_settlement_amount",
+        "canonical_description": "Amount value for total settlement.",
+        "aliases": [
+          "totalSettlementAmount"
+        ],
+        "forbidden_aliases": [],
+        "allowed_contexts": [
+          "total",
+          "settlement",
+          "amount"
+        ],
+        "approved_examples": [
+          "Amount value for total settlement."
+        ],
+        "status": "draft_for_human_review",
+        "version": 1,
+        "owner": "@domain-owner",
+        "last_reviewed_at": "2026-06-06",
+        "visibility": "public",
+        "source": "field_name"
+      },
+      "message_field_scope": "BuildSettlementReportResponse.total_settlement_amount",
+      "effective_dictionary_scope": "total_settlement_amount",
+      "message_dictionary_override": null,
+      "inference": {
+        "has_message_specific_meaning": false,
+        "candidate_override": {
+          "term": "total_settlement_amount",
+          "scope": "BuildSettlementReportResponse.total_settlement_amount",
+          "canonical_description": "Total settlement amount for the build settlement report response.",
+          "aliases": [
+            "totalSettlementAmount"
+          ],
+          "forbidden_aliases": [],
+          "allowed_contexts": [
+            "total",
+            "settlement",
+            "amount"
+          ],
+          "approved_examples": [
+            "Total settlement amount for the build settlement report response."
+          ],
+          "status": "draft_for_human_review",
+          "version": 1,
+          "owner": "@domain-owner",
+          "last_reviewed_at": "2026-06-06",
+          "visibility": "public",
+          "source": "message_context_inference"
+        },
+        "reason": "Default uses the global word_dictionary. Move candidate_override into message_dictionary_override only if LLM/domain review confirms a different message-specific meaning."
+      },
+      "evidence": {
+        "file": "samples\\proto\\workflow\\settlement_report.proto",
+        "message": "BuildSettlementReportResponse",
+        "field": "total_settlement_amount",
+        "field_type": "int64",
+        "repeated": false,
+        "number": 5
+      }
+    },
+    {
+      "field_name": "built_at",
+      "field_type": "google.protobuf.Timestamp",
+      "repeated": false,
+      "number": 6,
+      "word_dictionary_scope": "built_at",
+      "word_dictionary_entry": {
+        "term": "built_at",
+        "scope": "built_at",
+        "canonical_description": "Timestamp for the built event.",
+        "aliases": [
+          "builtAt"
+        ],
+        "forbidden_aliases": [],
+        "allowed_contexts": [
+          "built",
+          "at"
+        ],
+        "approved_examples": [
+          "Timestamp for the built event."
+        ],
+        "status": "draft_for_human_review",
+        "version": 1,
+        "owner": "@domain-owner",
+        "last_reviewed_at": "2026-06-06",
+        "visibility": "public",
+        "source": "field_name"
+      },
+      "message_field_scope": "BuildSettlementReportResponse.built_at",
+      "effective_dictionary_scope": "built_at",
+      "message_dictionary_override": null,
+      "inference": {
+        "has_message_specific_meaning": false,
+        "candidate_override": {
+          "term": "built_at",
+          "scope": "BuildSettlementReportResponse.built_at",
+          "canonical_description": "Timestamp for the built event in the build settlement report response.",
+          "aliases": [
+            "builtAt"
+          ],
+          "forbidden_aliases": [],
+          "allowed_contexts": [
+            "built",
+            "at"
+          ],
+          "approved_examples": [
+            "Timestamp for the built event in the build settlement report response."
+          ],
+          "status": "draft_for_human_review",
+          "version": 1,
+          "owner": "@domain-owner",
+          "last_reviewed_at": "2026-06-06",
+          "visibility": "public",
+          "source": "message_context_inference"
+        },
+        "reason": "Default uses the global word_dictionary. Move candidate_override into message_dictionary_override only if LLM/domain review confirms a different message-specific meaning."
+      },
+      "evidence": {
+        "file": "samples\\proto\\workflow\\settlement_report.proto",
+        "message": "BuildSettlementReportResponse",
+        "field": "built_at",
+        "field_type": "google.protobuf.Timestamp",
+        "repeated": false,
+        "number": 6
+      }
+    }
+  ]
+}
