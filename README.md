@@ -14,6 +14,12 @@ Proto Docs는 LLM을 “의미 후보 생성과 주석 작성”에만 사용하
 
 ![산출물 흐름](docs/assets/proto-docs-artifact-flow.svg)
 
+## 전체 Workflow
+
+아래 흐름은 Dictionary 기반 Proto 주석 작성부터 검증, 문서 생성, 최신성 확인까지의 전체 로컬 workflow입니다.
+
+![Proto Docs 전체 Workflow](docs/assets/proto-docs-workflow.svg)
+
 ## 주요 기능
 
 - Claude Code 플러그인으로 commands, skills, hooks 제공
@@ -163,12 +169,6 @@ npm run proto-docs -- verify
 ```bash
 npm run proto-docs -- generate-docs -- --generator markdown-sample
 ```
-
-## 전체 Workflow
-
-아래 흐름은 Dictionary 기반 Proto 주석 작성부터 검증, 문서 생성, 최신성 확인까지의 전체 로컬 workflow입니다.
-
-![Proto Docs 전체 Workflow](docs/assets/proto-docs-workflow.svg)
 
 ## 문서
 
