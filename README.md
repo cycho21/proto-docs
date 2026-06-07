@@ -4,6 +4,16 @@ Proto Docs는 Claude Code에서 Proto 주석 작성, Dictionary 후보 생성, �
 
 이 플러그인은 LLM이 Proto 의미를 임의로 확정하지 못하도록 하고, 승인된 Dictionary와 기계적 검증으로 Proto 문서화 흐름을 통제합니다.
 
+## 개발 모델
+
+Proto Docs는 LLM을 “의미 후보 생성과 주석 작성”에만 사용하고, 의미 확정은 사용자 승인으로, 최종 문서 생성은 결정론적 코드로 분리합니다. Claude Code hook/script는 위반이 감지되면 LLM에게 `[PROTO DOCS REMINDER]`를 출력하고 진행을 차단하도록 구성됩니다.
+
+![의미 통제 모델](docs/assets/proto-docs-semantic-control.svg)
+
+![책임 분리](docs/assets/proto-docs-responsibility-split.svg)
+
+![산출물 흐름](docs/assets/proto-docs-artifact-flow.svg)
+
 ## 주요 기능
 
 - Claude Code 플러그인으로 commands, skills, hooks 제공
@@ -71,6 +81,32 @@ claude-code-plugin/proto-docs/
 7. hook과 CLI가 Proto 구조 변경, Dictionary 변경, 주석 불일치를 검증합니다.
 8. 문서를 생성하고 최신성을 확인합니다.
 
+Claude Code에서는 자연어로 다음처럼 진행할 수 있습니다.
+
+```text
+이 proto 파일의 Dictionary 후보를 생성해줘.
+대상은 samples/proto/workflow/transfer_workflow.proto 야.
+```
+
+```text
+생성된 후보를 검토해줘.
+수십 개 scope를 전부 나열하지 말고, field-level 기본 승인 묶음과 message-specific override 검토 항목으로 요약해줘.
+```
+
+```text
+field-level 기본 승인 묶음은 승인할게.
+다만 transfer_status, review_decision 은 보류하고,
+SettlementLine.line_settlement_amount 는 message-specific override가 필요한지 따로 검토해줘.
+```
+
+```text
+승인한 후보만 Dictionary에 반영하고 검증까지 실행해줘.
+```
+
+```text
+승인된 Dictionary 기준으로 transfer_workflow.proto에 주석을 작성하고 전체 검증해줘.
+```
+
 ## 제공 commands
 
 플러그인은 다음 command 안내 파일을 제공합니다.
@@ -127,16 +163,6 @@ npm run proto-docs -- verify
 ```bash
 npm run proto-docs -- generate-docs -- --generator markdown-sample
 ```
-
-## 개발 모델
-
-Proto Docs는 LLM을 “의미 후보 생성과 주석 작성”에만 사용하고, 의미 확정은 사용자 승인으로, 최종 문서 생성은 결정론적 코드로 분리합니다. Claude Code hook/script는 위반이 감지되면 LLM에게 `[PROTO DOCS REMINDER]`를 출력하고 진행을 차단하도록 구성됩니다.
-
-![의미 통제 모델](docs/assets/proto-docs-semantic-control.svg)
-
-![책임 분리](docs/assets/proto-docs-responsibility-split.svg)
-
-![산출물 흐름](docs/assets/proto-docs-artifact-flow.svg)
 
 ## 전체 Workflow
 
