@@ -76,11 +76,11 @@ try {
   } else if (cmd === 'verify') {
     const dict = loadDictionary(dictPath);
     const lint = lintComments(protoPath, dict);
-    const ast = compareProtoStructure(arg('before', protoPath), arg('after', protoPath));
     const dictionary = guardDictionaryChange({ changed: flag('dictionary-changed'), dictionaryPath: dictPath, baselineHashPath, manifestPath: arg('approval-manifest', undefined) });
     const fresh = checkFreshness(protoPath, docsDir, { generator: arg('generator', 'markdown-sample') });
-    const ok = lint.length === 0 && ast.equal && dictionary.ok && fresh.ok;
-    print({ ok, lintIssues: lint, astEqual: ast.equal, dictionaryGuard: dictionary, freshness: fresh });
+    const ok = lint.length === 0 && dictionary.ok && fresh.ok;
+    // AST 체크는 before/after 컨텍스트가 필요하라 guard-ast 커맨드를 별도 실행하세요.
+    print({ ok, lintIssues: lint, dictionaryGuard: dictionary, freshness: fresh });
     if (!ok) process.exitCode = 1;
   } else {
     print('Usage: proto-docs <scan|generate-candidates|validate-candidates|review-candidates|promote-candidate-override|apply-comments|lint-comments|guard-ast|guard-dictionary|generate-docs|check-freshness|verify> [--proto path] [--dictionary path]');

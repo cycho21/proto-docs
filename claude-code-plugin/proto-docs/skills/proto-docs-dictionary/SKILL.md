@@ -24,11 +24,23 @@ Generate candidates in two layers:
 
 ## LLM writing rules
 
-- The LLM skill writes draft descriptions and suggests `inference.candidate_override` values.
-- Mechanical hooks/scripts validate shape/schema only; they do not decide domain meaning.
-- Keep `message_dictionary_override` as `null` unless LLM/domain review determines the message changes the field meaning.
-- If an override is needed, promote the reviewed override entry from `inference.candidate_override` to `message_dictionary_override` with `npm run proto-docs -- promote-candidate-override -- --candidates .proto-docs/dictionary/candidates --message <MessageName> --field <field_name>`.
-- Do not edit approved `word-dictionary.json` directly without approval evidence.
+Candidate 생성은 `/generate-candidates` 커맨드를 따른다. 핵심 원칙:
+
+1. **CLI 실행 전** proto 파일을 읽고 패키지명 / 서비스 / 메시지 구조를 바탕으로 도메인을 먼저 추론한다.
+2. CLI는 구조(field_name, scope, aliases 등) scaffold와 placeholder 설명을 생성한다.
+3. LLM이 placeholder(`~ value.` 패턴) 설명을 도메인 맥락에 맞는 예제적 표현으로 직접 재작성한다.
+4. `canonical_description` 을 바꿀 때는 반드시 `approved_examples` 도 `[새 canonical_description]` 으로 동기화한다.
+5. 메시지 맥락이 필드 의미를 바꾸는 경우에만 `message_dictionary_override` 를 사용한다.
+6. 승인된 `word-dictionary.json` 을 직접 편집하지 않는다.
+7. Mechanical hooks/scripts는 shape/schema만 검증한다. 도메인 의미는 LLM이 판단한다.
+
+message-specific override 프로모트:
+
+```bash
+npm run proto-docs -- promote-candidate-override -- \
+  --candidates .proto-docs/dictionary/candidates \
+  --message <MessageName> --field <field_name>
+```
 
 ## Natural-language candidate review UX
 

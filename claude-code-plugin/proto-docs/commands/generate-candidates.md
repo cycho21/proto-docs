@@ -43,6 +43,8 @@ CLI는 구조(field_name, scope, aliases 등)와 placeholder 설명을 생성한
 
 `word-dictionary.json` 의 각 항목과 필요한 경우 `messages/*.json` 의 `inference.candidate_override.canonical_description` 도 개선한다.
 
+**반드시**: `canonical_description` 을 바꿀 때는 `approved_examples` 도 함께 `[새 canonical_description]` 으로 업데이트한다. 두 값이 다르면 linter에 구멍이 생긴다.
+
 개선 후 검증:
 
 ```bash

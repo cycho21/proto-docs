@@ -62,7 +62,8 @@ process.stdin.on('end', () => {
   const beforeDictionary = readHeadJson(repoRelative(dictionary));
   const afterDictionary = JSON.parse(fs.readFileSync(dictionary, 'utf8'));
   const changed = changedScopes(beforeDictionary, afterDictionary);
-  if (changed.length > 0) {
+  // beforeDictionary === null 이면 git에 처음 추가되는 파일 — scope 승인 체크 스킵
+  if (changed.length > 0 && beforeDictionary !== null) {
     const approval = approvalForDictionary(dictionary);
     if (!approval) {
       reminder('Approved Dictionary scopes changed without approval manifest.', [
