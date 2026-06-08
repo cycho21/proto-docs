@@ -1,6 +1,6 @@
 import { resolveField } from './dictionary.ts';
 import { scanProtoPath } from './protoScanner.ts';
-import { findMissingMappings } from './candidates.ts';
+import { findMissingMappingsFromFiles } from './candidates.ts';
 
 function includesAny(text, terms) {
   const lower = text.toLowerCase();
@@ -20,7 +20,7 @@ export function lintComments(protoPath, dictionary, { failMissing = true } = {})
   const issues = [];
   const files = scanProtoPath(protoPath);
   if (failMissing) {
-    const missing = findMissingMappings(null, dictionary, files);
+    const missing = findMissingMappingsFromFiles(files, dictionary);
     for (const miss of missing) issues.push({ rule: 'Missing Mapping', message: `${miss.scope} has no dictionary mapping`, file: miss.file });
   }
   for (const file of files) {

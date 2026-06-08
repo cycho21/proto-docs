@@ -3,9 +3,9 @@ import path from 'node:path';
 import { resolveField } from './dictionary.ts';
 import { scanProtoPath } from './protoScanner.ts';
 
-export function findMissingMappings(protoPath, dictionary, scannedFiles = null) {
+export function findMissingMappingsFromFiles(files, dictionary) {
   const misses = [];
-  for (const file of (scannedFiles ?? scanProtoPath(protoPath))) {
+  for (const file of files) {
     for (const message of file.messages) {
       for (const field of message.fields) {
         if (!resolveField(dictionary, message.name, field.name)) {
@@ -24,6 +24,11 @@ export function findMissingMappings(protoPath, dictionary, scannedFiles = null) 
   }
   return misses;
 }
+
+export function findMissingMappings(protoPath, dictionary) {
+  return findMissingMappingsFromFiles(scanProtoPath(protoPath), dictionary);
+}
+
 
 function words(value) {
   return String(value ?? '').split('_').filter(Boolean);
@@ -383,13 +388,7 @@ export function compactCandidateReview(review) {
 }
 
 export function writeCandidates(misses, outputDir, detectedAt = new Date().toISOString().slice(0, 10)) {
-  fs.mkdirSync(outputDir, { recursive: true });
-  const messagesDir = path.join(outputDir, 'messages');
-  fs.mkdirSync(messagesDir, { recursive: true });
-
   const wordDictionary = buildWordDictionary(misses, detectedAt);
-  const dictionaryPath = path.join(outputDir, 'word-dictionary.json');
-  fs.writeFileSync(dictionaryPath, `${JSON.stringify(wordDictionary, null, 2)}\n`);
 
   const byMessage = new Map();
   for (const miss of misses) {
@@ -398,13 +397,30 @@ export function writeCandidates(misses, outputDir, detectedAt = new Date().toISO
     byMessage.set(miss.message, messageMisses);
   }
 
-  const messageFiles = [];
+  const messageCandidates = new Map();
   for (const [messageName, messageMisses] of byMessage) {
+    messageCandidates.set(messageName, buildMessageCandidate(messageName, messageMisses, wordDictionary, detectedAt));
+  }
+
+  // 파일 쓰기 전에 검증 — 실패 시 디스크에 잔여물 없음
+  validateCandidateDictionary(wordDictionary);
+  for (const candidate of messageCandidates.values()) {
+    validateMessageCandidate(candidate, wordDictionary);
+  }
+
+  fs.mkdirSync(outputDir, { recursive: true });
+  const messagesDir = path.join(outputDir, 'messages');
+  fs.mkdirSync(messagesDir, { recursive: true });
+
+  const dictionaryPath = path.join(outputDir, 'word-dictionary.json');
+  fs.writeFileSync(dictionaryPath, `${JSON.stringify(wordDictionary, null, 2)}\n`);
+
+  const messageFiles = [];
+  for (const [messageName, candidate] of messageCandidates) {
     const target = path.join(messagesDir, candidateFileName(messageName));
-    fs.writeFileSync(target, `${JSON.stringify(buildMessageCandidate(messageName, messageMisses, wordDictionary, detectedAt), null, 2)}\n`);
+    fs.writeFileSync(target, `${JSON.stringify(candidate, null, 2)}\n`);
     messageFiles.push(target);
   }
 
-  validateCandidateOutput(outputDir);
   return { wordDictionary: dictionaryPath, messages: messageFiles };
 }

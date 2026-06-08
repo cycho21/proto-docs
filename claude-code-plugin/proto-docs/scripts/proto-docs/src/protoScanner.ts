@@ -23,6 +23,8 @@ export function scanProtoFile(file) {
   const services = [];
   let currentMessage = null;
   let currentService = null;
+  let messageDepth = 0;
+  let serviceDepth = 0;
   let pendingComments = [];
   for (const line of lines) {
     const trimmed = line.trim();
@@ -37,6 +39,7 @@ export function scanProtoFile(file) {
     const messageMatch = trimmed.match(/^message\s+(\w+)\s*\{/);
     if (messageMatch) {
       currentMessage = { name: messageMatch[1], fields: [] };
+      messageDepth = 0;
       messages.push(currentMessage);
       pendingComments = [];
       continue;
@@ -44,13 +47,28 @@ export function scanProtoFile(file) {
     const serviceMatch = trimmed.match(/^service\s+(\w+)\s*\{/);
     if (serviceMatch) {
       currentService = { name: serviceMatch[1], rpcs: [] };
+      serviceDepth = 0;
       services.push(currentService);
       pendingComments = [];
       continue;
     }
+    if (trimmed.endsWith('{')) {
+      if (currentMessage) messageDepth++;
+      else if (currentService) serviceDepth++;
+      pendingComments = [];
+      continue;
+    }
     if (trimmed === '}') {
-      currentMessage = null;
-      currentService = null;
+      if (currentMessage && messageDepth > 0) {
+        messageDepth--;
+      } else if (currentService && serviceDepth > 0) {
+        serviceDepth--;
+      } else {
+        currentMessage = null;
+        currentService = null;
+        messageDepth = 0;
+        serviceDepth = 0;
+      }
       pendingComments = [];
       continue;
     }

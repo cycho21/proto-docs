@@ -11,7 +11,10 @@ import { applyDictionaryComments } from './commentApplier.ts';
 
 function arg(name, fallback) {
   const ix = process.argv.indexOf(`--${name}`);
-  return ix >= 0 ? process.argv[ix + 1] : fallback;
+  if (ix < 0) return fallback;
+  const next = process.argv[ix + 1];
+  if (next === undefined || next.startsWith('--')) return fallback;
+  return next;
 }
 function flag(name) { return process.argv.includes(`--${name}`); }
 function print(obj) { console.log(typeof obj === 'string' ? obj : JSON.stringify(obj, null, 2)); }
