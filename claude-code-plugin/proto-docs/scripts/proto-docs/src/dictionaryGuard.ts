@@ -1,4 +1,5 @@
 import fs from 'node:fs';
+import path from 'node:path';
 import crypto from 'node:crypto';
 
 export class LocalApprovalManifestProvider {
@@ -6,7 +7,8 @@ export class LocalApprovalManifestProvider {
   approvalsFor(filePath) {
     if (!this.manifestPath || !fs.existsSync(this.manifestPath)) return [];
     const manifest = JSON.parse(fs.readFileSync(this.manifestPath, 'utf8'));
-    return (manifest.dictionaryChanges ?? []).filter((entry) => entry.path === filePath || entry.path.endsWith(filePath));
+    const resolved = path.resolve(filePath);
+    return (manifest.dictionaryChanges ?? []).filter((entry) => path.resolve(entry.path) === resolved);
   }
 }
 

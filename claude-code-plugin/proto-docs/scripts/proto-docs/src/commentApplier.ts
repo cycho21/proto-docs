@@ -11,7 +11,9 @@ function removeTrailingLineComments(lines) {
 }
 
 export function applyDictionaryCommentsToText(protoText, dictionary) {
-  const lines = String(protoText).split(/\r?\n/);
+  const raw = String(protoText);
+  const crlf = raw.includes('\r\n');
+  const lines = raw.split(/\r?\n/);
   const output = [];
   let currentMessage = null;
 
@@ -45,7 +47,7 @@ export function applyDictionaryCommentsToText(protoText, dictionary) {
     output.push(line);
   }
 
-  return output.join('\n');
+  return output.join(crlf ? '\r\n' : '\n');
 }
 
 export function applyDictionaryComments(protoPath, dictionary, { outputPath = protoPath } = {}) {

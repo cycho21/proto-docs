@@ -5,11 +5,11 @@ export function listProtoFiles(inputPath: string): string[] {
   const stat = fs.statSync(inputPath);
   if (stat.isFile()) return [inputPath];
   const results: string[] = [];
-  for (const name of fs.readdirSync(inputPath).sort()) {
-    const full = path.join(inputPath, name);
-    if (fs.statSync(full).isDirectory()) {
+  for (const entry of fs.readdirSync(inputPath, { withFileTypes: true }).sort((a, b) => a.name.localeCompare(b.name))) {
+    const full = path.join(inputPath, entry.name);
+    if (entry.isDirectory()) {
       results.push(...listProtoFiles(full));
-    } else if (name.endsWith('.proto')) {
+    } else if (entry.name.endsWith('.proto')) {
       results.push(full);
     }
   }
@@ -73,7 +73,7 @@ export function scanProtoFile(file) {
         message: currentMessage.name
       });
       pendingComments = [];
-    } else if (trimmed && !trimmed.startsWith('option') && !trimmed.startsWith('syntax') && !trimmed.startsWith('package') && !trimmed.startsWith('import')) {
+    } else if (!trimmed.startsWith('option') && !trimmed.startsWith('syntax') && !trimmed.startsWith('package') && !trimmed.startsWith('import')) {
       pendingComments = [];
     }
   }

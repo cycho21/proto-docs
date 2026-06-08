@@ -18,11 +18,12 @@ function matchesApprovedComment(comment, approved) {
 
 export function lintComments(protoPath, dictionary, { failMissing = true } = {}) {
   const issues = [];
-  const missing = findMissingMappings(protoPath, dictionary);
+  const files = scanProtoPath(protoPath);
   if (failMissing) {
+    const missing = findMissingMappings(null, dictionary, files);
     for (const miss of missing) issues.push({ rule: 'Missing Mapping', message: `${miss.scope} has no dictionary mapping`, file: miss.file });
   }
-  for (const file of scanProtoPath(protoPath)) {
+  for (const file of files) {
     for (const message of file.messages) {
       for (const field of message.fields) {
         const entry = resolveField(dictionary, message.name, field.name);
@@ -32,10 +33,13 @@ export function lintComments(protoPath, dictionary, { failMissing = true } = {})
           continue;
         }
         const forbidden = includesAny(field.comment, entry.forbidden_aliases);
-        if (forbidden) issues.push({ rule: 'Forbidden Alias', message: `${message.name}.${field.name} uses forbidden alias '${forbidden}'`, file: file.file });
-        const approved = [entry.canonical_description, ...(entry.approved_examples ?? [])].filter(Boolean);
-        if (!matchesApprovedComment(field.comment, approved)) {
-          issues.push({ rule: 'Semantic Drift', message: `${message.name}.${field.name} comment must exactly match canonical description or an approved example`, file: file.file });
+        if (forbidden) {
+          issues.push({ rule: 'Forbidden Alias', message: `${message.name}.${field.name} uses forbidden alias '${forbidden}'`, file: file.file });
+        } else {
+          const approved = [entry.canonical_description, ...(entry.approved_examples ?? [])].filter(Boolean);
+          if (!matchesApprovedComment(field.comment, approved)) {
+            issues.push({ rule: 'Semantic Drift', message: `${message.name}.${field.name} comment must exactly match canonical description or an approved example`, file: file.file });
+          }
         }
       }
     }

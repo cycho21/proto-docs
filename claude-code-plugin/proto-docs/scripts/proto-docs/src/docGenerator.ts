@@ -62,7 +62,7 @@ function listGeneratedFiles(outDir) {
 
 function domainGroupFiles(protoPath, files) {
   const inputDir = path.resolve(protoPath);
-  const isSingleFile = fs.statSync(inputDir).isFile();
+  const isSingleFile = files.length === 1 && path.resolve(files[0].file) === inputDir;
   const byDomain = new Map();
   for (const file of files) {
     let domain;

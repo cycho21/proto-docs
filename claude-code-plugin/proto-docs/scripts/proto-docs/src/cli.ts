@@ -18,7 +18,7 @@ function print(obj) { console.log(typeof obj === 'string' ? obj : JSON.stringify
 function fail(message, details) { console.error(message); if (details) console.error(JSON.stringify(details, null, 2)); process.exitCode = 1; }
 
 const cmd = process.argv[2] ?? 'help';
-const protoPath = arg('proto', 'samples/proto/asset.proto');
+const protoPath = arg('proto', undefined);
 const dictPath = arg('dictionary', '.proto-docs/dictionary/word-dictionary.json');
 const candidatesDir = arg('candidates', '.proto-docs/dictionary/candidates');
 const docsDir = arg('docs', 'docs/generated');
@@ -53,7 +53,10 @@ try {
     print({ issues });
     if (issues.length) process.exitCode = 1;
   } else if (cmd === 'guard-ast') {
-    const result = compareProtoStructure(arg('before', protoPath), arg('after', protoPath));
+    const before = arg('before', undefined);
+    const after = arg('after', undefined);
+    if (!before || !after) throw new Error('guard-ast requires --before and --after');
+    const result = compareProtoStructure(before, after);
     print(result);
     if (!result.equal) process.exitCode = 1;
   } else if (cmd === 'guard-dictionary') {
@@ -70,7 +73,7 @@ try {
   } else if (cmd === 'verify') {
     const dict = loadDictionary(dictPath);
     const lint = lintComments(protoPath, dict);
-    const ast = compareProtoStructure(protoPath, protoPath);
+    const ast = compareProtoStructure(arg('before', protoPath), arg('after', protoPath));
     const dictionary = guardDictionaryChange({ changed: flag('dictionary-changed'), dictionaryPath: dictPath, baselineHashPath, manifestPath: arg('approval-manifest', undefined) });
     const fresh = checkFreshness(protoPath, docsDir, { generator: arg('generator', 'markdown-sample') });
     const ok = lint.length === 0 && ast.equal && dictionary.ok && fresh.ok;

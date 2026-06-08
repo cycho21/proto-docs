@@ -3,9 +3,9 @@ import path from 'node:path';
 import { resolveField } from './dictionary.ts';
 import { scanProtoPath } from './protoScanner.ts';
 
-export function findMissingMappings(protoPath, dictionary) {
+export function findMissingMappings(protoPath, dictionary, scannedFiles = null) {
   const misses = [];
-  for (const file of scanProtoPath(protoPath)) {
+  for (const file of (scannedFiles ?? scanProtoPath(protoPath))) {
     for (const message of file.messages) {
       for (const field of message.fields) {
         if (!resolveField(dictionary, message.name, field.name)) {
@@ -116,6 +116,8 @@ function dictionaryEntry({ fieldName, scope, description, detectedAt, source }) 
 function buildWordDictionary(misses, detectedAt) {
   const dictionary = {};
   for (const miss of misses) {
+    // NOTE: 같은 field_name이 여러 타입으로 쓰이는 경우 첫 번째 miss 기준으로 description이 결정됩니다.
+    // 타입이 다른 동명 필드는 promote 단계에서 message_dictionary_override로 재정의하세요.
     if (dictionary[miss.field]) continue;
     dictionary[miss.field] = dictionaryEntry({
       fieldName: miss.field,
@@ -257,8 +259,8 @@ export function promoteCandidateOverride(outputDir, messageName, fieldName) {
   field.effective_dictionary_scope = field.message_dictionary_override.scope;
   field.inference.has_message_specific_meaning = true;
   field.inference.reason = 'LLM/domain review promoted candidate_override to message_dictionary_override.';
-  fs.writeFileSync(messagePath, `${JSON.stringify(candidate, null, 2)}\n`);
   validateMessageCandidate(candidate, dictionary);
+  fs.writeFileSync(messagePath, `${JSON.stringify(candidate, null, 2)}\n`);
   return { messagePath, scope: field.message_dictionary_override.scope };
 }
 
