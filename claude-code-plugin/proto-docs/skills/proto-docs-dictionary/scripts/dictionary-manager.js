@@ -171,7 +171,20 @@ function validateDictionary(dictionaryPath) {
   return issues;
 }
 
-function approvedEntryFromCandidate(candidate) {
+// catch-all 생성 패턴: "Foo value." 또는 "Foo Bar value." — 도메인 설명 없는 placeholder
+const PLACEHOLDER_RE = /^[A-Z][\w\s]+ value\.$/;
+
+function isPlaceholderDescription(description) {
+  return PLACEHOLDER_RE.test(String(description ?? ''));
+}
+
+function approvedEntryFromCandidate(candidate, { allowPlaceholder = false } = {}) {
+  if (!allowPlaceholder && isPlaceholderDescription(candidate.canonical_description)) {
+    throw new Error(
+      `Scope "${candidate.scope}" has a placeholder description "${candidate.canonical_description}".\n` +
+      `Replace with a domain-specific description before promoting, or pass --allow-placeholder to override.`
+    );
+  }
   const entry = { ...candidate };
   delete entry.source;
   entry.status = 'approved';
@@ -214,6 +227,7 @@ function commandPromoteCandidates() {
   const scopes = [...approvedScopes(approval.approval)].sort();
   if (scopes.length === 0) throw new Error('approval manifest must include dictionaryChanges[].approvedScopes');
 
+  const allowPlaceholder = process.argv.includes('--allow-placeholder');
   const candidates = collectCandidateEntries(candidatesDir);
   const dictionary = readJson(dictionaryPath, {});
   const promoted = [];
@@ -221,7 +235,7 @@ function commandPromoteCandidates() {
     const candidate = candidates[scope];
     if (!candidate) throw new Error(`No candidate found for approved scope ${scope}`);
     if (dictionary[scope] && !process.argv.includes('--force')) throw new Error(`${scope} already exists; pass --force to overwrite`);
-    const approved = approvedEntryFromCandidate(candidate);
+    const approved = approvedEntryFromCandidate(candidate, { allowPlaceholder });
     const issues = validateEntry(scope, approved);
     if (issues.length) throw new Error(`Approved candidate ${scope} is invalid: ${issues.join('; ')}`);
     dictionary[scope] = approved;

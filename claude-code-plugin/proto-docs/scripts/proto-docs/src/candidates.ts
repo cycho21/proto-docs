@@ -63,7 +63,6 @@ function generalDescriptionFor(miss) {
   if (field.endsWith('_code')) return `Code value for ${fieldLabel.replace(/ code$/, '')}.`;
   if (field.endsWith('_url')) return `URL for ${fieldLabel.replace(/ url$/, '')}.`;
   if (field.startsWith('next_')) return `Next ${fieldLabel.replace(/^next /, '')} for pagination or state progression.`;
-  if (miss.field_type !== 'string' && miss.field_type !== 'bytes') return `${titleWords(field)} value.`;
   return `${titleWords(field)} value.`;
 }
 
