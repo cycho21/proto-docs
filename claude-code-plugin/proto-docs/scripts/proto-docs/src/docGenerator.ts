@@ -60,14 +60,39 @@ function listGeneratedFiles(outDir) {
   return fs.readdirSync(outDir).map((name) => path.join(outDir, name));
 }
 
+function domainGroupFiles(protoPath, files) {
+  const inputDir = path.resolve(protoPath);
+  const isSingleFile = fs.statSync(inputDir).isFile();
+  const byDomain = new Map();
+  for (const file of files) {
+    let domain;
+    if (isSingleFile) {
+      domain = path.basename(inputDir, '.proto');
+    } else {
+      const rel = path.relative(inputDir, path.resolve(file.file));
+      const parts = rel.split(path.sep);
+      domain = parts.length > 1 ? parts[0] : path.basename(file.file, '.proto');
+    }
+    const group = byDomain.get(domain) ?? [];
+    group.push(file);
+    byDomain.set(domain, group);
+  }
+  return byDomain;
+}
+
+function renderMarkdownForDomain(domain, fileResults) {
+  const parts = [`# ${domain}`, '', 'Generated deterministically from Proto comments.', '', ...fileResults.map(renderMarkdownForFile)];
+  return `${parts.join('\n').trim()}\n`;
+}
+
 function generateMarkdownFromProto(protoPath, outDir, generatorName) {
   fs.mkdirSync(outDir, { recursive: true });
   const files = scanProtoPath(protoPath);
+  const byDomain = domainGroupFiles(protoPath, files);
   const written = [];
-  for (const file of files) {
-    const baseName = path.basename(file.file, '.proto');
-    const target = path.join(outDir, `${baseName}.md`);
-    fs.writeFileSync(target, `<!-- generator: ${generatorName} -->\n${renderMarkdownForFile(file)}`);
+  for (const [domain, domainFiles] of byDomain) {
+    const target = path.join(outDir, `${domain}.md`);
+    fs.writeFileSync(target, `<!-- generator: ${generatorName} -->\n${renderMarkdownForDomain(domain, domainFiles)}`);
     written.push(target);
   }
   return written;
