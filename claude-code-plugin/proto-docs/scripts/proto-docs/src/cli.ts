@@ -1,4 +1,5 @@
 #!/usr/bin/env node
+import fs from 'node:fs';
 import { loadDictionary } from './dictionary.ts';
 import { scanProtoPath } from './protoScanner.ts';
 import { compactCandidateReview, findMissingMappings, promoteCandidateOverride, reviewCandidates, validateCandidateOutput, writeCandidates } from './candidates.ts';
@@ -34,10 +35,11 @@ try {
   if (cmd === 'scan') {
     print(scanProtoPath(protoPath));
   } else if (cmd === 'generate-candidates') {
-    const dict = loadDictionary(dictPath);
+    const dictExists = fs.existsSync(dictPath);
+    const dict = dictExists ? loadDictionary(dictPath) : {};
     const misses = findMissingMappings(protoPath, dict);
     const written = writeCandidates(misses, candidatesDir, arg('detected-at', undefined));
-    print({ missing: misses.length, written });
+    print({ missing: misses.length, written, ...(!dictExists && { note: `Dictionary not found at '${dictPath}'; all fields treated as missing. Run dictionary-manager init to create it.` }) });
     if (misses.length > 0 && flag('fail-on-missing')) process.exitCode = 1;
   } else if (cmd === 'validate-candidates') {
     const result = validateCandidateOutput(candidatesDir);
@@ -79,7 +81,7 @@ try {
     const dictionary = guardDictionaryChange({ changed: flag('dictionary-changed'), dictionaryPath: dictPath, baselineHashPath, manifestPath: arg('approval-manifest', undefined) });
     const fresh = checkFreshness(protoPath, docsDir, { generator: arg('generator', 'markdown-sample') });
     const ok = lint.length === 0 && dictionary.ok && fresh.ok;
-    // AST 체크는 before/after 컨텍스트가 필요하라 guard-ast 커맨드를 별도 실행하세요.
+    // AST 체크는 before/after 컨텍스트가 필요하므로 guard-ast 커맨드를 별도 실행하세요.
     print({ ok, lintIssues: lint, dictionaryGuard: dictionary, freshness: fresh });
     if (!ok) process.exitCode = 1;
   } else {

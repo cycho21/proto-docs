@@ -39,8 +39,10 @@ export function applyDictionaryCommentsToText(protoText, dictionary) {
         const indent = line.match(/^\s*/)?.[0] ?? '';
         removeTrailingLineComments(output);
         output.push(`${indent}// ${description}`);
+        output.push(line.replace(/\s*\/\/.*$/, ''));
+      } else {
+        output.push(line);
       }
-      output.push(line);
       continue;
     }
 

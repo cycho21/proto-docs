@@ -69,25 +69,59 @@ Ask for approval in batches, for example: “Approve the field-level defaults ba
 Run after creating or editing candidates:
 
 ```bash
-npm run proto-docs -- validate-candidates -- --candidates .proto-docs/dictionary/candidates
+node ${CLAUDE_PLUGIN_ROOT}/scripts/proto-docs/src/cli.ts validate-candidates \
+  --candidates .proto-docs/dictionary/candidates
 ```
 
 Promote a message-specific override only after LLM/domain review determines the message context changes the meaning:
 
 ```bash
-npm run proto-docs -- promote-candidate-override -- --candidates .proto-docs/dictionary/candidates --message SettlementLine --field asset_key
+node ${CLAUDE_PLUGIN_ROOT}/scripts/proto-docs/src/cli.ts promote-candidate-override \
+  --candidates .proto-docs/dictionary/candidates \
+  --message SettlementLine --field asset_key
 ```
 
 The candidate hook also runs this check after candidate file edits.
 
 ## Promotion to approved Dictionary
 
-Only after human/domain approval, promote approved scopes from candidates:
+Only after human/domain approval:
+
+**1. approval manifest 생성** — 사용자가 승인한 scope를 확인한 뒤 직접 파일을 작성한다:
+
+```bash
+# .proto-docs/dictionary/approval-manifest.json 생성
+```
+```json
+{
+  "dictionaryChanges": [{
+    "path": ".proto-docs/dictionary/word-dictionary.json",
+    "approvedBy": "@reviewer",
+    "reason": "<승인 사유>",
+    "approvedAt": "<YYYY-MM-DD>",
+    "approvedScopes": ["scope_a", "scope_b"]
+  }]
+}
+```
+
+**2. promote 실행**:
 
 ```bash
 node ${CLAUDE_PLUGIN_ROOT}/skills/proto-docs-dictionary/scripts/dictionary-manager.js promote-candidates \
   --candidates .proto-docs/dictionary/candidates \
   --dictionary .proto-docs/dictionary/word-dictionary.json \
+  --approval-manifest .proto-docs/dictionary/approval-manifest.json
+```
+
+**3. validate + hash 갱신**:
+
+```bash
+node ${CLAUDE_PLUGIN_ROOT}/skills/proto-docs-dictionary/scripts/dictionary-manager.js validate \
+  --dictionary .proto-docs/dictionary/word-dictionary.json
+
+node ${CLAUDE_PLUGIN_ROOT}/skills/proto-docs-dictionary/scripts/dictionary-manager.js hash \
+  --dictionary .proto-docs/dictionary/word-dictionary.json \
+  --hash .proto-docs/dictionary/word-dictionary.sha256 \
   --approval-manifest .proto-docs/dictionary/approval-manifest.json
 ```
 
@@ -101,9 +135,10 @@ Rules:
 ## Allowed
 
 - Read `.proto-docs/dictionary/word-dictionary.json`.
-- Run `npm run proto-docs -- generate-candidates -- --proto <path>`.
-- Run `npm run proto-docs -- validate-candidates -- --candidates .proto-docs/dictionary/candidates`.
+- Run `node ${CLAUDE_PLUGIN_ROOT}/scripts/proto-docs/src/cli.ts generate-candidates --proto <path>`.
+- Run `node ${CLAUDE_PLUGIN_ROOT}/scripts/proto-docs/src/cli.ts validate-candidates --candidates .proto-docs/dictionary/candidates`.
 - Create or update `.proto-docs/dictionary/candidates/word-dictionary.json` and files under `.proto-docs/dictionary/candidates/messages/`.
+- Create `.proto-docs/dictionary/approval-manifest.json` after human approves scopes.
 - Promote approved candidate scopes using `dictionary-manager.js promote-candidates` with approval evidence.
 
 ## Forbidden

@@ -174,12 +174,13 @@ function validateDictionary(dictionaryPath) {
 // catch-all 생성 패턴: "Foo value." 또는 "Foo Bar value." — 도메인 설명 없는 placeholder
 const PLACEHOLDER_RE = /^[A-Z][\w\s]+ value\.$/;
 
-function isPlaceholderDescription(description) {
-  return PLACEHOLDER_RE.test(String(description ?? ''));
+function isPlaceholderDescription(candidate) {
+  if (candidate?.source === 'catch_all_inference') return true;
+  return PLACEHOLDER_RE.test(String(candidate?.canonical_description ?? ''));
 }
 
 function approvedEntryFromCandidate(candidate, { allowPlaceholder = false } = {}) {
-  if (!allowPlaceholder && isPlaceholderDescription(candidate.canonical_description)) {
+  if (!allowPlaceholder && isPlaceholderDescription(candidate)) {
     throw new Error(
       `Scope "${candidate.scope}" has a placeholder description "${candidate.canonical_description}".\n` +
       `Replace with a domain-specific description before promoting, or pass --allow-placeholder to override.`

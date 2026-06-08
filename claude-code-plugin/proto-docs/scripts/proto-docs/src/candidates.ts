@@ -87,7 +87,20 @@ function messageDescriptionFor(miss) {
   if (field.endsWith('_url')) return `URL for the ${fieldLabel.replace(/ url$/, '')} in the ${messageLabel}.`;
   if (field.startsWith('next_')) return `Next ${fieldLabel.replace(/^next /, '')} for the ${messageLabel}.`;
   if (miss.field_type !== 'string' && miss.field_type !== 'bytes') return `${titleWords(field)} value for the ${messageLabel}.`;
-  return `${titleWords(field)} for the ${messageLabel}.`;
+  return `${titleWords(field)} value for the ${messageLabel}.`;
+}
+
+function isMessageCatchAll(miss) {
+  const field = miss.field;
+  return !(
+    field.endsWith('_key') || field.endsWith('_keys') ||
+    field.startsWith('total_') || field.endsWith('_status') ||
+    field.endsWith('_reason') || field.endsWith('_comment') ||
+    field.endsWith('_note') || field.endsWith('_at') ||
+    field.endsWith('_quantity') || field.endsWith('_amount') ||
+    field.endsWith('_code') || field.endsWith('_url') ||
+    field.startsWith('next_')
+  );
 }
 
 function candidateFileName(messageName) {
@@ -165,7 +178,7 @@ function buildMessageCandidate(messageName, messageMisses, wordDictionary, detec
             scope: miss.scope,
             description: messageDescriptionFor(miss),
             detectedAt,
-            source: 'message_context_inference'
+            source: isMessageCatchAll(miss) ? 'catch_all_inference' : 'message_context_inference'
           }),
           reason: 'Default uses the global word_dictionary. Move candidate_override into message_dictionary_override only if LLM/domain review confirms a different message-specific meaning.'
         },
@@ -334,7 +347,8 @@ export function reviewCandidates(outputDir) {
       {
         id: 'field-level-defaults',
         title: 'Approve field-level defaults first when their common meaning is acceptable.',
-        scopes: fieldScopes
+        scopes: fieldScopes,
+        scopeDescriptions: Object.fromEntries(fieldScopes.map((s) => [s, wordDictionary[s]?.canonical_description]))
       }
     ],
     messageOverrideReview: {
@@ -356,6 +370,7 @@ export function compactCandidateReview(review) {
     .slice(0, 10)
     .map((item) => ({
       field: item.field,
+      defaultDescription: item.defaultDescription,
       usageCount: item.count,
       sampleMessages: item.sampleMessages,
       recommendation: item.recommendation
@@ -369,7 +384,7 @@ export function compactCandidateReview(review) {
         id: fieldBatch.id,
         title: fieldBatch.title,
         scopeCount: fieldBatch.scopes.length,
-        sampleScopes: sampleList(fieldBatch.scopes, 15).sample,
+        sampleScopes: sampleList(fieldBatch.scopes, 15).sample.map((scope) => ({ scope, description: fieldBatch.scopeDescriptions?.[scope] })),
         omittedScopes: sampleList(fieldBatch.scopes, 15).omitted,
         approvalPrompt: 'Approve this whole batch if the shared field-level meanings are acceptable; otherwise list scopes to hold back.'
       }
